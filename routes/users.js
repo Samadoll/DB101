@@ -1,5 +1,3 @@
-// import GameBuildFacade from "../public/javascripts/GameBuildFacade";
-
 let express = require('express');
 let router = express.Router();
 
