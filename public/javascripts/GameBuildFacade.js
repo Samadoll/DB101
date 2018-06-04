@@ -10,7 +10,10 @@ class GameBuildFacade {
 
     // TODO: user Login, check account and password in Database
     login(id, password) {
-        return Promise.reject(null);
+        console.log("Login:: " + id + " :: " + password);
+        if (id === "gary" && password === "yes")
+            return Promise.resolve({code: 200, body: {result: "OK"}});
+        return Promise.reject({code: 400, body: {error: "invalid username/password."}});
     }
 
     // TODO: saved the table "account plays games"
