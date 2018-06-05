@@ -190,7 +190,7 @@ button:hover {
 #indexbtn {
     position: absolute;
     top: 300px;
-    width: 300px;
+    width: 360px;
     left: 50px;
     padding:8px;
 }
@@ -199,6 +199,15 @@ button:hover {
     position: absolute;
     top: 50px;
     left: 100px;
+}
+
+#indexcancel {
+    width: 20%;
+}
+
+#indexsu{
+    width: 30%;
+    background-color: skyblue;
 }
 
 /* Clear floats */
