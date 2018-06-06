@@ -4,7 +4,7 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let bodyParser = require('body-parser');
-
+let sql = require('./routes/SQL');
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 
@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/database', sql);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
