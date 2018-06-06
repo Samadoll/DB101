@@ -10,15 +10,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/toolbox', function(req, res, next) {
-    res.sendFile(__dirname + '../views/toolbox.html'); // TODO: just test, remove it later
+    res.sendFile(path.join(__dirname, '../views/toolbox.html'));
 });
 
 router.get('/login', (req, res, next) => {
-    res.sendFile(__dirname + '../views/login.html');
+    res.sendFile(path.join(__dirname, '../views/login.html'));
 });
 
 router.get('/signup', (req, res, next) => {
-    res.sendFile(__dirname + '../views/signup.html');
+    res.sendFile(path.join(__dirname, '../views/signup.html'));
 });
 
 router.post('/signup', (req, res, next) => {
