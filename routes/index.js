@@ -9,12 +9,34 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' }); // TODO: just test, remove it later
 });
 
-router.get('/hi', function(req, res, next) {
-    res.sendFile(path.join(__dirname + '../views/injex.html')); // TODO: just test, remove it later
+router.get('/toolbox', function(req, res, next) {
+    res.sendFile(__dirname + '../views/toolbox.html'); // TODO: just test, remove it later
 });
 
-router.get('/login', function (req, res, next) {
-    res.sendFile(path.join(__dirname, '../views/test.html'));
+router.get('/login', (req, res, next) => {
+    res.sendFile(__dirname + '../views/login.html');
+});
+
+router.get('/signup', (req, res, next) => {
+    res.sendFile(__dirname + '../views/signup.html');
+});
+
+router.post('/signup', (req, res, next) => {
+    console.log("Server::SignUp(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    const id = data['id'];
+    const name = data['name'];
+    const pw = data['pw'];
+    gameFacade.register(id, name, pw).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
 });
 
 router.post("/login", function (req, res, next) {
