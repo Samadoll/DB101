@@ -6,7 +6,7 @@ let gameFacade = require('../public/javascripts/GameBuildFacade');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' }); // TODO: just test, remove it later
+    res.sendFile(path.join(__dirname, "../views/index.html"));
 });
 
 router.get('/toolbox', function(req, res, next) {

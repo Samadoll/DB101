@@ -7,6 +7,8 @@ class GameBuildFacade {
 
     // TODO: register new account stored in Database
     // TODO: demo is to save to a json file, replace them later
+    // TODO: need to check deplicate
+    // TODO: delete accs.json and users.json later
     register(userID, name, password) {
         const data1 = fs.readFileSync("public/javascripts/accs.json", "utf-8");
         const accs = JSON.parse(data1);
@@ -116,7 +118,6 @@ class GameBuildFacade {
 
     // TODO: show all users from Database
     allUsers() {
-
         return Promise.resolve({code: 200, body: {result: null}});
     }
 }
