@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="stylesheets/items.css">
+
+</head>
+<body>
+    
+<h1> Items</h1>
+
+<div class="navbar">
+    <div class="dropdown">
+        <button class="dropbtn" onclick="filterSelection('all')"> Show all</button></div>
+    
+    <div class="dropdown">
+        <button class="dropbtn" onclick="filterSelection('attack')"> Attack
+        <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <div class="attack"><button class="btn" onclick="filterSelection('ad')">Damage</button></div>
+          <div class="attack"><button class="btn" onclick="filterSelection('cs')">Critical Strike</button></div>
+          <div class="attack"><button class="btn" onclick="filterSelection('as')">Attack Speed</button></div>
+          <div class="attack"><button class="btn" onclick="filterSelection('ls')">Life Steal</button></div>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn" onclick="filterSelection('defense')"> Defense
+        <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <div class="defense"><button class="btn" onclick="filterSelection('health')">Health</button></div>
+          <div class="defense"><button class="btn" onclick="filterSelection('mr')">Magic Resist</button></div>
+          <div class="defense"><button class="btn" onclick="filterSelection('arm')">Armor</button></div>
+          <div class="defense"><button class="btn" onclick="filterSelection('hr')">Health Regen</button></div>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn" onclick="filterSelection('magic')"> Magic
+        <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <div class="magic"><button class="btn" onclick="filterSelection('ap')">Ability Power</button></div>
+          <div class="magic"><button class="btn" onclick="filterSelection('cdr')">CD Reduction</button></div>
+          <div class="magic"><button class="btn" onclick="filterSelection('mana')">Mana</button></div>
+        </div>
+    </div>    
+    <div class="dropdown"><button class="dropbtn" onclick="filterSelection('consume')"> Consumable</button></div>    
+    <div class="dropdown"><button class="dropbtn" onclick="filterSelection('movement')"> Movement</button></div>    
+   
+</div>
+
+<div class="item">
+        
+    <div class="filterDiv magic defense mr health mana cdr">
+        <a href=abyssalmask.html>
+            <img class="itemimg" alt="Abyssal Mask" src="images/abyssalmask.png">
+            <p class="itemname">Abyssal Mask</p>
+        </a>
+    </div>
+        
+    <div class="filterDiv attack ad">
+        <a href=bfsword.html>
+            <img class="itemimg" alt="B.F. Sword" src="images/bfsword.png">
+            <p class="itemname">B.F. Sword</p>
+        </a>
+        
+    </div>
+    <div class="filterDiv consume">
+        <a href=controlward.html>
+            <img class="itemimg" alt="Control Ward" src="images/controlward.png">
+            <p class="itemname">Control Ward</p>
+        </a>
+    </div>
+    
+    <div class="filterDiv attack as cs movement" onclick="openTab('Statikk Shiv');">
+        <img class="itemimg" alt="Statikk Shiv" src="images/statikkshiv.png">
+        <p class="itemname">Statikk Shiv</p>
+    </div>
+    
+    
+    <div class="filterDiv attack ad ls">
+        <a href=bilgewatercutlass.html>
+            <img class="itemimg" alt="Bilgewater Cutlass" src="images/bilgewatercutlass.png">
+            <p class="itemname">Bilgewater Cutlass</p>
+        </a>
+    </div>
+    <div class="filterDiv defense health hr">
+        <a href=doransshield.html>
+            <img class="itemimg" alt="Doran's Shield" src="images/doransshield.png">
+            <p class="itemname">Doran's Shield</p>
+        </a>
+    </div>
+    <div class="filterDiv magic ap mana cdr">
+        <a href=lostchapter.html>
+            <img class="itemimg" alt="Lost Chapter" src="images/lostchapter.png">
+            <p class="itemname">Lost Chapter</p>
+        </a>
+    </div>
+    <div class="filterDiv movement">
+        <a href=lucidityb.html>
+            <img class="itemimg" alt="Ionian Boots of Lucidity" src="images/lucidityb.png">
+            <p class="itemname">Boots of Lucidity</p>
+        </a>
+    </div>
+    
+    <div class="filterDiv cs" onclick="openTab('BrawlersGloves');">
+        <img class="itemimg" alt="Brawler's Gloves" src="images/brawlersgloves.png">
+        <p class="itemname">Brawler's Gloves</p>
+    </div>
+    
+    <div class="filterDiv as" onclick="openTab('Dagger');">
+        <img class="itemimg" alt="Brawler's Gloves" src="images/dagger.png">
+        <p class="itemname">Dagger</p>
+    </div>
+    
+    <div class="filterDiv as cs movement" onclick="openTab('Zeal');">
+        <img class="itemimg" alt="Zeal" src="images/zeal.png">
+        <p class="itemname">Zeal</p>
+    </div>
+    
+    <div class="filterDiv as" onclick="openTab('KircheisShard');">
+        <img class="itemimg" alt="Kircheis Shard" src="images/kircheisshard.png">
+        <p class="itemname">Kircheis Shard</p>
+    </div>
+    
+    </div>
+    
+    <div id="Statikk Shiv" class="containerTab" style="display:none;">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <h2>Statikk Shiv</h2>
+        <img class="itemimg" alt="Statikk Shiv" src="images/statikkshiv.png">
+        <div class="composite">
+        <p>Composite:</p>
+            <div onclick="openTab('Zeal');">
+                <p>Zeal</p>
+                <img class="itemimg" alt="Zeal" src="images/zeal.png">
+            </div>
+            <div onclick="openTab('KircheisShard')">
+                <p>Kircheis Shard</p>
+                <img class="itemimg" alt="Kircheis Shard" src="images/kircheisshard.png">
+            </div>
+        </div>
+        
+        <p id="stat">
+            <li>Cost:2900</li>
+            <li>+35% Attack Speed</li>
+            <li>+30% Critical Strike Chance</li>
+            <li>+5% Movement Speed</li>
+        </p>
+        <p id="extrainfo">
+            <li>Passive: Moving and attacking will make an attack Energized.</li>
+
+           <li> UNIQUE Passive - Shiv Lightning: Your Energized attacks deal 60~140 bonus magic damage (based on level) to up to 5 targets on hit. This effect can critically strike.</li>
+        </p>
+    </div>
+    
+    <div id="Zeal" class="containerTab" style="display: none;">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <h2>Zeal</h2>
+        <img class="itemimg" alt="Zeal" src="images/zeal.png">
+        <div class="composite">
+        <p>Composite:</p>
+            <div onclick="openTab('BrawlersGloves');"> 
+                <p>Brawler's Gloves</p>
+                <img class="itemimg" alt="Brawler's Gloves" src="images/brawlersgloves.png">
+            </div>
+            <div onclick="openTab('Dagger');">
+                <p>Dagger</p>
+                <img class="itemimg" alt="Dagger" src="images/dagger.png">
+            </div>
+        </div>
+        
+        <p id="stat">
+            <li>Cost:1300</li>
+            <li>+15% Attack Speed</li>
+            <li>+15% Critical Strike Chance</li>
+        </p>
+        <p id="extrainfo">
+            <li>UNIQUE Passive: +5% Movement Speed</li>
+        </p>
+    </div>
+        
+    <div id="Kircheis Shard" class="containerTab" style="display: none;">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <h2>Kircheis Shard</h2>
+        <img class="itemimg" alt="Kircheis Shard" src="images/kircheisshard.png">
+        <div class="composite">
+            <p>Composite:</p>
+            <div onclick="openTab('Dagger');">
+                <p>Dagger</p>
+                <img class="itemimg" alt="Dagger" src="images/dagger.png">
+            </div>
+        </div>
+        <p id="stat">
+            <li>Cost:800</li>
+            <li>+15% Attack Speed</li>
+        </p>
+        <p id="extrainfo">
+            <li>Passive: Moving and attacking will make an attack Energized.</li>
+            
+            <li>UNIQUE Passive - Energized Strike: Your Energized attacks deal 50 bonus magic damage on hit.</li>
+        </p>
+    </div>
+    
+    <div id="Dagger" class="containerTab" style="display: none;">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <h2>Dagger</h2>
+        <img class="itemimg" alt="Dagger" src="images/dagger.png">
+        <p id="stat">
+            <li>Cost:300</li>
+            <li>+12% Attack Speed</li>
+        </p>
+    </div>
+    
+    <div id="BrawlersGloves" class="containerTab" style="display: none;">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <h2>Brawler's Gloves</h2>
+        <img class="itemimg" alt="Brawler's Gloves" src="images/brawlersgloves.png">
+        <p id="stat">
+        </p>
+        <p id="extrainfo">
+            <li>UNIQUE Passive: +10% Critical Strike Chance</li>
+        </p>
+    </div>
+    
+    <script>
+filterSelection('all')
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    removeClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+  }
+}
+
+function addClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function removeClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+        
+
+function openTab(tabName) {
+  var i, x;
+  x = document.getElementsByClassName("containerTab");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  document.getElementById(tabName).style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
+
