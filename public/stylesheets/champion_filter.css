@@ -1,0 +1,39 @@
+h2{
+    text-align: center;
+}
+
+
+
+
+.Container img {
+    border-radius: 100%;
+    margin: auto;
+}
+
+
+
+#myBtnContainer {
+    margin-left: 35%;
+    width: 35%;
+    border: 5px;
+}
+
+#myBtnContainer1 {
+    margin-top: 20px;
+    margin-left: 35%;
+    width: 35%;
+    border: 3px;
+    
+}
+
+.Container {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+h2 img{
+    width: 50%;
+    height: auto;
+    
+}
