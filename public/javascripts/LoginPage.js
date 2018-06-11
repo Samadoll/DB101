@@ -2,14 +2,16 @@ let loginB = document.getElementById("loginBut");
 let cancelB = document.getElementById("cancelBut");
 function loginFn() {
 
-    const username = document.getElementById("uname").value;
+    const accountID = document.getElementById("accountid").value;
     const password = document.getElementById("psw").value;
-    if (username.length > 0 && password.length > 0) {
+    if (accountID.length > 0 && password.length > 0) {
         let up = {};
-        up['un'] = username;
+        up['id'] = accountID;
         up['pw'] = password;
         let json = JSON.stringify(up);
-        sendReq("POST", "/login", "/", json);
+        let prev = document.referrer;
+        let des = prev.slice(prev.lastIndexOf("/")) + "=" + accountID;
+        sendReq("POST", "/login", des, json);
     } else {
         alert("Invalid format.");
     }

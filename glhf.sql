@@ -147,4 +147,8 @@ INSERT INTO `User` VALUES (0, 'Billy');
 INSERT INTO `User` VALUES (1, 'Gary');
 INSERT INTO `User` VALUES (2, 'Beyond');
 
+INSERT INTO `Account` VALUES (12345678, "billy", 0);
+INSERT INTO `Account` VALUES (123456789, "billy", 0);
+INSERT INTO `Account` VALUES (356846275, "gary", 1);
+INSERT INTO `Account` VALUES (9527, "beyond", 2);
 

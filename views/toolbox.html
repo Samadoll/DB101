@@ -15,8 +15,8 @@
         
         
             <nav>
-                <a class="nav" href="login">Login</a>
-                <a class="nav" href="signup">Signup</a>
+                <a id="login" class="nav" href="login">Login</a>
+                <a id="signup" class="nav" href="signup">Signup</a>
             </nav>
         
         
@@ -28,7 +28,7 @@
         </div>
         
          <div id="item">
-            <a href="items2.html">
+            <a href="items2">
             <img class="imgeffect" alt="itemcover" src="images/store.jpg">
                <p class="subtitle">ITEMS</p> 
             </a>
@@ -41,7 +41,19 @@
             </a>
         </div>
       
-       
+        <script>
+            let current = window.location.href;
+            if (current.indexOf("=") !== -1) {
+                let account = current.slice(current.indexOf("=") + 1);
+                console.log(account);
+                let log = document.getElementById("login");
+                let sign = document.getElementById("signup");
+                log.innerText = account;
+                sign.innerText = "SignOut";
+                log.href = "settings";
+                sign.href = "toolbox";
+            }
+        </script>
         
         
 <!--        <footer id="footer">designed by DB101</footer>-->

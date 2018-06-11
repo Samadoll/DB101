@@ -6,13 +6,13 @@
 
 </head>
 <body>
-    
+
 <h1> Items</h1>
 
 <div class="navbar">
     <div class="dropdown">
         <button class="dropbtn" onclick="filterSelection('all')"> Show all</button></div>
-    
+
     <div class="dropdown">
         <button class="dropbtn" onclick="filterSelection('attack')"> Attack
         <i class="fa fa-caret-down"></i>
@@ -44,27 +44,27 @@
           <div class="magic"><button class="btn" onclick="filterSelection('cdr')">CD Reduction</button></div>
           <div class="magic"><button class="btn" onclick="filterSelection('mana')">Mana</button></div>
         </div>
-    </div>    
-    <div class="dropdown"><button class="dropbtn" onclick="filterSelection('consume')"> Consumable</button></div>    
-    <div class="dropdown"><button class="dropbtn" onclick="filterSelection('movement')"> Movement</button></div>    
-   
+    </div>
+    <div class="dropdown"><button class="dropbtn" onclick="filterSelection('consume')"> Consumable</button></div>
+    <div class="dropdown"><button class="dropbtn" onclick="filterSelection('movement')"> Movement</button></div>
+
 </div>
 
 <div class="item">
-        
+
     <div class="filterDiv magic defense mr health mana cdr">
         <a href=abyssalmask.html>
             <img class="itemimg" alt="Abyssal Mask" src="../public/images/abyssalmask.png">
             <p class="itemname">Abyssal Mask</p>
         </a>
     </div>
-        
+
     <div class="filterDiv attack ad">
         <a href=bfsword.html>
             <img class="itemimg" alt="B.F. Sword" src="../public/images/bfsword.png">
             <p class="itemname">B.F. Sword</p>
         </a>
-        
+
     </div>
     <div class="filterDiv consume">
         <a href=controlward.html>
@@ -72,13 +72,13 @@
             <p class="itemname">Control Ward</p>
         </a>
     </div>
-    
+
     <div class="filterDiv attack as cs movement" onclick="openTab('Statikk Shiv');">
         <img class="itemimg" alt="Statikk Shiv" src="../public/images/statikkshiv.png">
         <p class="itemname">Statikk Shiv</p>
     </div>
-    
-    
+
+
     <div class="filterDiv attack ad ls">
         <a href=bilgewatercutlass.html>
             <img class="itemimg" alt="Bilgewater Cutlass" src="../public/images/bilgewatercutlass.png">
@@ -103,29 +103,29 @@
             <p class="itemname">Boots of Lucidity</p>
         </a>
     </div>
-    
+
     <div class="filterDiv cs" onclick="openTab('BrawlersGloves');">
         <img class="itemimg" alt="Brawler's Gloves" src="../public/images/brawlersgloves.png">
         <p class="itemname">Brawler's Gloves</p>
     </div>
-    
+
     <div class="filterDiv as" onclick="openTab('Dagger');">
         <img class="itemimg" alt="Brawler's Gloves" src="../public/images/dagger.png">
         <p class="itemname">Dagger</p>
     </div>
-    
+
     <div class="filterDiv as cs movement" onclick="openTab('Zeal');">
         <img class="itemimg" alt="Zeal" src="../public/images/zeal.png">
         <p class="itemname">Zeal</p>
     </div>
-    
+
     <div class="filterDiv as" onclick="openTab('KircheisShard');">
         <img class="itemimg" alt="Kircheis Shard" src="../public/images/kircheisshard.png">
         <p class="itemname">Kircheis Shard</p>
     </div>
-    
+
     </div>
-    
+
     <div id="Statikk Shiv" class="containerTab" style="display:none;">
         <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
         <h2>Statikk Shiv</h2>
@@ -141,7 +141,7 @@
                 <img class="itemimg" alt="Kircheis Shard" src="../public/images/kircheisshard.png">
             </div>
         </div>
-        
+
         <p id="stat">
             <li>Cost:2900</li>
             <li>+35% Attack Speed</li>
@@ -154,7 +154,7 @@
            <li> UNIQUE Passive - Shiv Lightning: Your Energized attacks deal 60~140 bonus magic damage (based on level) to up to 5 targets on hit. This effect can critically strike.</li>
         </p>
     </div>
-    
+
     <div id="Zeal" class="containerTab" style="display: none;">
         <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
         <h2>Zeal</h2>
@@ -171,7 +171,7 @@
             <li>UNIQUE Passive: +5% Movement Speed</li>
         </p>
     </div>
-        
+
     <div id="Kircheis Shard" class="containerTab" style="display: none;">
         <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
         <h2>Kircheis Shard</h2>
@@ -184,11 +184,11 @@
         </p>
         <p id="extrainfo">
             <li>Passive: Moving and attacking will make an attack Energized.</li>
-            
+
             <li>UNIQUE Passive - Energized Strike: Your Energized attacks deal 50 bonus magic damage on hit.</li>
         </p>
     </div>
-    
+
     <div id="Dagger" class="containerTab" style="display: none;">
         <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
         <h2>Dagger</h2>
@@ -198,7 +198,7 @@
             <li>+12% Attack Speed</li>
         </p>
     </div>
-    
+
     <div id="BrawlersGloves" class="containerTab" style="display: none;">
         <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
         <h2>Brawler's Gloves</h2>

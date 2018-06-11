@@ -13,6 +13,10 @@ router.get('/toolbox', function(req, res, next) {
     res.sendFile(path.join(__dirname, '../views/toolbox.html'));
 });
 
+router.get('/toolbox=:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/toolbox.html'));
+});
+
 router.get('/login', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/login.html'));
 });
@@ -21,14 +25,23 @@ router.get('/signup', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/signup.html'));
 });
 
+router.get('/items2', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/items2.html'));
+});
+
+router.get('/settings', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/accountcancellation.html'));
+});
+
 router.post('/signup', (req, res, next) => {
     console.log("Server::SignUp(..)");
     const raw = req.body;
     const data = JSON.parse(Object.keys(raw)[0]);
     const id = data['id'];
+    const accid = data['accID'];
     const name = data['name'];
     const pw = data['pw'];
-    gameFacade.register(id, name, pw).then((response) => {
+    gameFacade.register(id, accid, name, pw).then((response) => {
         res.status(response.code);
         res.json(response.body);
         console.log(response.code);
@@ -43,9 +56,9 @@ router.post("/login", function (req, res, next) {
     console.log("Server::Login(..)");
     const raw = req.body;
     const data = JSON.parse(Object.keys(raw)[0]);
-    const username = data['un'];
+    const accountID = data['id'];
     const password = data['pw'];
-    gameFacade.login(username, password).then((response) => {
+    gameFacade.login(accountID, password).then((response) => {
         res.status(response.code);
         res.json(response.body);
         console.log(response.code);

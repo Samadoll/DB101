@@ -9,18 +9,20 @@ class GameBuildFacade {
     // TODO: demo is to save to a json file, replace them later
     // TODO: need to check deplicate
     // TODO: delete accs.json and users.json later
-    register(userID, name, password) {
+    register(userID, accID, name, password) {
         const data1 = fs.readFileSync("public/javascripts/accs.json", "utf-8");
         const accs = JSON.parse(data1);
         const data2 = fs.readFileSync("public/javascripts/users.json", "utf-8");
         const user = JSON.parse(data2);
-        const newAccID = (Object.keys(accs).length + 1).toString();
-        if (Object.keys(user).includes(userID)) {
-            user[userID].push(newAccID);
-        } else {
-            user[userID] = [newAccID];
+        if (Object.keys(accs).includes(accID)) {
+            return Promise.reject({code: 400, body: {error: "Account has been taken."}})
         }
-        accs[newAccID] = password;
+        if (Object.keys(user).includes(userID)) {
+            user[userID].push(accID);
+        } else {
+            user[userID] = [accID];
+        }
+        accs[accID] = password;
         fs.writeFileSync("public/javascripts/accs.json", JSON.stringify(accs), "utf-8");
         fs.writeFileSync("public/javascripts/users.json", JSON.stringify(user), "utf-8");
         return Promise.resolve({code: 200, body: {result: "OK"}});
