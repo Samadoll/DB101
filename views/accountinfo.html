@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="stylesheets/accountinfo.css">
+
+</head>
+<body>
+
+<div class="header">
+  <a href="toolbox.html" class="logo">LOL TOOLBOX</a>
+  <div class="header-right">
+    <a class="active" href="#home">Account Information</a>
+    <div class="dropdown">
+        <button class="dropbtn" id="own">Champion Roles
+            <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content">
+          <div><button class="btn" onclick="filterSelection('fighter')">Fighter</button></div>
+          <div><button class="btn" onclick="filterSelection('assassin')">Assassin</button></div>
+          <div><button class="btn" onclick="filterSelection('mage')">Mage</button></div>
+          <div><button class="btn" onclick="filterSelection('marksman')">Marksman</button></div>
+          <div><button class="btn" onclick="filterSelection('support')">Support</button></div>
+          <div><button class="btn" onclick="filterSelection('tank')">Tank</button></div>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn"> Settings
+        <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="accountcancellation.html">Account Cancellation</a>
+            <a href="resetpwd.html">Password Reset</a>
+            <a href="toolbox.html" id="logout">Log Out</a>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding-left:20px">
+    <h1 id="username">User name</h1>
+    <p id="userid">Userid</p>
+    <p id="accountid">Accountid</p>
+    <div class="champions">
+       
+    <h3>Owned Champions</h3>
+    <div class="filterDiv marksman">
+        <a href=caitlyn.html>
+            <img class="champimg" alt="Caitlyn" src="images/caitlyn.png">
+            <p class="champname">Caitlyn</p>
+        </a>
+    </div>
+        
+    <div class="filterDiv tank">
+        <a href=maokai.html>
+            <img class="champimg" alt="Maokai" src="images/maokai.png">
+            <p class="champname">Maokai</p>
+        </a>
+        
+    </div>
+    <div class="filterDiv fighter">
+        <a href=aatrox.html>
+            <img class="champimg" alt="Aatrox" src="images/aatrox.png">
+            <p class="champname">Aatrox</p>
+        </a>
+    </div>
+    </div>
+    
+</div>
+
+<script>
+filterSelection('all')
+function filterSelection(c) {
+  var x, i, b;
+  x = document.getElementsByClassName("filterDiv");
+  b = document.getElementById("own");
+  if (c == "all") c = "";
+  if (c != "") addClass(b, "active")
+  for (i = 0; i < x.length; i++) {
+    removeClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+  }
+}
+
+function addClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function removeClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}  
+    
+</script>
+</body>
+</html>
+
