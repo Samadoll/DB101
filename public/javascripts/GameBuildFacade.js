@@ -1,4 +1,17 @@
 let fs = require("fs");
+let mysql = require('mysql');
+
+const db = mysql.createConnection({
+    host : 'localhost',
+    user :'root',
+    password: 'password',
+    multipleStatements: true
+});
+db.connect(function (err) {
+    if(err) throw err;
+    console.log('Database connected');
+});
+
 class GameBuildFacade {
 
     constructor() {
@@ -7,13 +20,25 @@ class GameBuildFacade {
 
     // TODO: register new account stored in Database
     // TODO: demo is to save to a json file, replace them later
-    // TODO: need to check deplicate
+    // TODO: need to check duplicate
     // TODO: delete accs.json and users.json later
     register(userID, accID, name, password) {
         const data1 = fs.readFileSync("public/javascripts/accs.json", "utf-8");
         const accs = JSON.parse(data1);
         const data2 = fs.readFileSync("public/javascripts/users.json", "utf-8");
         const user = JSON.parse(data2);
+
+
+        let signup = "USE `GLHF`; INSERT INTO `USER` VALUES (";
+        signup += userID + ", '" + name + "');";
+        console.log('name is ' + name);
+        console.log(signup);
+        db.query(signup, function (err, result) {
+            if(err) throw err;
+        });
+
+
+
         if (Object.keys(accs).includes(accID)) {
             return Promise.reject({code: 400, body: {error: "Account has been taken."}})
         }

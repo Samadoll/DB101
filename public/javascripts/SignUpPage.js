@@ -1,5 +1,6 @@
 let cancelBut = document.getElementById("cancelB");
 let signupBut = document.getElementById("signupB");
+
 function signUp() {
     if (document.getElementById("userid").value.length > 0 &&
         document.getElementById("psw").value.length > 0 &&
@@ -10,12 +11,13 @@ function signUp() {
             const userID = document.getElementById("userid").value;
             const accID = document.getElementById("accountid").value;
             let username = "";
-            if (document.getElementById("username").hasAttribute("value"))
-                username = document.getElementById("username");
+            if (document.getElementById("username").value.length > 0)
+                username = document.getElementById("username").value;
             const psw = document.getElementById("psw").value;
             const pswRepeat = document.getElementById("psw-repeat").value;
             if (psw === pswRepeat) {
-                // sendReq(userID, username, psw);
+                //sendReq(userID, username, psw);
+
                 let user = {};
                 user['id'] = userID;
                 user['accID'] = accID;
