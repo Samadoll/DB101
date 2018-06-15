@@ -1,4 +1,17 @@
 let fs = require("fs");
+let mysql = require('mysql');
+
+const db = mysql.createConnection({
+    host : 'localhost',
+    user :'root',
+    password: 'password',
+    multipleStatements: true
+});
+db.connect(function (err) {
+    if(err) throw err;
+    console.log('Database connected in Facade');
+});
+
 class GameBuildFacade {
 
     constructor() {
@@ -10,32 +23,71 @@ class GameBuildFacade {
     // TODO: need to check deplicate
     // TODO: delete accs.json and users.json later
     register(userID, accID, name, password) {
-        const data1 = fs.readFileSync("public/javascripts/accs.json", "utf-8");
-        const accs = JSON.parse(data1);
-        const data2 = fs.readFileSync("public/javascripts/users.json", "utf-8");
-        const user = JSON.parse(data2);
-        if (Object.keys(accs).includes(accID)) {
-            return Promise.reject({code: 400, body: {error: "Account has been taken."}})
-        }
-        if (Object.keys(user).includes(userID)) {
-            user[userID].push(accID);
-        } else {
-            user[userID] = [accID];
-        }
-        accs[accID] = password;
-        fs.writeFileSync("public/javascripts/accs.json", JSON.stringify(accs), "utf-8");
-        fs.writeFileSync("public/javascripts/users.json", JSON.stringify(user), "utf-8");
-        return Promise.resolve({code: 200, body: {result: "OK"}});
+        let signupUser = "USE `GLHF`; INSERT INTO user(id, name) VALUES (";
+        signupUser += userID + ", '" + name + "') ON DUPLICATE KEY UPDATE name = VALUES(name);";
+        console.log(signupUser);
+        db.query(signupUser, function (err) {
+            if(err) throw err;
+        });
+
+        return new Promise((fulfill, reject)=>{
+            db.query("USE `GLHF`; SELECT COUNT(*) FROM Account where id = " + accID, function (err, result) {
+                if(err) throw err;
+                console.log(result[1][0]['COUNT(*)'] === 1);
+                if(result[1][0]['COUNT(*)'] === 1){
+                    reject({code: 400, body: {error: "Account has been taken."}});
+                }else {
+                    let signupAcc = "USE `GLHF`; INSERT INTO `Account` VALUES (";
+                    signupAcc += accID + ", '" + password + "', " + userID + ");";
+                    console.log(signupAcc);
+                    db.query(signupAcc, function (err) {
+                        if (err) throw err;
+                        fulfill({code: 200, body: {result: "OK"}});
+                    });
+                }
+            });
+        });
+
+        // const data1 = fs.readFileSync("public/javascripts/accs.json", "utf-8");
+        // const accs = JSON.parse(data1);
+        // const data2 = fs.readFileSync("public/javascripts/users.json", "utf-8");
+        // const user = JSON.parse(data2);
+        // if (Object.keys(accs).includes(accID)) {
+        //     return Promise.reject({code: 400, body: {error: "Account has been taken."}})
+        // }
+        // if (Object.keys(user).includes(userID)) {
+        //     user[userID].push(accID);
+        // } else {
+        //     user[userID] = [accID];
+        // }
+        // accs[accID] = password;
+        // fs.writeFileSync("public/javascripts/accs.json", JSON.stringify(accs), "utf-8");
+        // fs.writeFileSync("public/javascripts/users.json", JSON.stringify(user), "utf-8");
+        // return Promise.resolve({code: 200, body: {result: "OK"}});
     }
 
     // TODO: user Login, check account and password in Database
     login(id, password) {
-        const data = fs.readFileSync("public/javascripts/accs.json", "utf-8");
-        const accs = JSON.parse(data);
-        console.log("Login:: " + id + " :: " + password);
-        if (accs[id] === password)
-            return Promise.resolve({code: 200, body: {result: "OK"}});
-        return Promise.reject({code: 400, body: {error: "invalid username/password."}});
+        return new Promise((fulfill, reject) => {
+            let signIn = "USE `GLHF`; SELECT COUNT(*) FROM Account where id = " + id + " AND password = '" + password +"';";
+            console.log(signIn);
+            db.query(signIn, function (err, result) {
+                if(err) throw err;
+                console.log(result[1][0]['COUNT(*)'] === 1);
+                if(result[1][0]['COUNT(*)'] === 1){
+                    fulfill({code: 200, body: {result: "OK"}});
+                }else{
+                    reject({code: 400, body: {error: "Invalid username/password."}});
+                }
+            });
+        });
+
+        // const data = fs.readFileSync("public/javascripts/accs.json", "utf-8");
+        // const accs = JSON.parse(data);
+        // console.log("Login:: " + id + " :: " + password);
+        // if (accs[id] === password)
+        //     return Promise.resolve({code: 200, body: {result: "OK"}});
+        // return Promise.reject({code: 400, body: {error: "invalid username/password."}});
     }
 
     // TODO: add get username
