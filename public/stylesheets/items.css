@@ -107,3 +107,34 @@ img{
     color: black;
 }
 
+nav{
+        font-family: "impact";
+        font-size: 20px;
+        word-spacing: 20px;
+        float: right;
+        position: absolute;
+        right:100px;
+        top:40px;
+}
+.nav{
+        text-decoration: none;
+        position:relative;
+        color:blueviolet;
+        
+}
+
+.nav:after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        border-bottom: 1px solid black;
+        transition: 0.4s;
+    
+}
+
+.nav:hover:after{
+        width:110%;
+    
+}
