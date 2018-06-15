@@ -2,12 +2,16 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="stylesheets/items.css">
+<link rel="stylesheet" href="../public/stylesheets/items.css">
 
 </head>
 <body>
     
 <h1> Items</h1>
+    
+    <nav>
+        <a class="nav" href="toolbox.html">Back</a>
+    </nav>
 
 <div class="navbar">
     <div class="dropdown">
@@ -53,79 +57,90 @@
 <div class="item">
         
     <div class="filterDiv magic defense mr health mana cdr">
-        <a href=abyssalmask.html>
+        <a href=singleitem.html>
             <img class="itemimg" alt="Abyssal Mask" src="images/abyssalmask.png">
             <p class="itemname">Abyssal Mask</p>
         </a>
     </div>
         
     <div class="filterDiv attack ad">
-        <a href=bfsword.html>
+        <a href=singleitem.html>
             <img class="itemimg" alt="B.F. Sword" src="images/bfsword.png">
             <p class="itemname">B.F. Sword</p>
         </a>
         
     </div>
     <div class="filterDiv consume">
-        <a href=controlward.html>
+        <a href=singleitem.html>
             <img class="itemimg" alt="Control Ward" src="images/controlward.png">
             <p class="itemname">Control Ward</p>
         </a>
     </div>
     
-    <div class="filterDiv attack as cs movement" onclick="openTab('Statikk Shiv');">
-        <img class="itemimg" alt="Statikk Shiv" src="images/statikkshiv.png">
-        <p class="itemname">Statikk Shiv</p>
+    <div class="filterDiv attack as cs movement">
+        <a href=singleitem.html>
+            <img class="itemimg" alt="Statikk Shiv" src="images/statikkshiv.png">
+            <p class="itemname">Statikk Shiv</p>
+        </a>
     </div>
     
     
     <div class="filterDiv attack ad ls">
-        <a href=bilgewatercutlass.html>
+        <a href=singleitem.html>
             <img class="itemimg" alt="Bilgewater Cutlass" src="images/bilgewatercutlass.png">
             <p class="itemname">Bilgewater Cutlass</p>
         </a>
     </div>
     <div class="filterDiv defense health hr">
-        <a href=doransshield.html>
+        <a href=singleitem.html>
             <img class="itemimg" alt="Doran's Shield" src="images/doransshield.png">
             <p class="itemname">Doran's Shield</p>
         </a>
     </div>
     <div class="filterDiv magic ap mana cdr">
-        <a href=lostchapter.html>
+        <a href=singleitem.html>
             <img class="itemimg" alt="Lost Chapter" src="images/lostchapter.png">
             <p class="itemname">Lost Chapter</p>
         </a>
     </div>
     <div class="filterDiv movement">
-        <a href=lucidityb.html>
+        <a href=singleitem.html>
             <img class="itemimg" alt="Ionian Boots of Lucidity" src="images/lucidityb.png">
             <p class="itemname">Boots of Lucidity</p>
         </a>
     </div>
     
-    <div class="filterDiv cs" onclick="openTab('BrawlersGloves');">
-        <img class="itemimg" alt="Brawler's Gloves" src="images/brawlersgloves.png">
-        <p class="itemname">Brawler's Gloves</p>
+    <div class="filterDiv cs">
+        <a href=singleitem.html>
+            <img class="itemimg" alt="Brawler's Gloves" src="images/brawlersgloves.png">
+            <p class="itemname">Brawler's Gloves</p>
+        </a>
     </div>
     
-    <div class="filterDiv as" onclick="openTab('Dagger');">
-        <img class="itemimg" alt="Brawler's Gloves" src="images/dagger.png">
+    <div class="filterDiv as">
+        <a href=singleitem.html>
+        <img class="itemimg" alt="Dagger" src="images/dagger.png">
         <p class="itemname">Dagger</p>
+        </a>
     </div>
     
-    <div class="filterDiv as cs movement" onclick="openTab('Zeal');">
-        <img class="itemimg" alt="Zeal" src="images/zeal.png">
-        <p class="itemname">Zeal</p>
+    <div class="filterDiv as cs movement">
+        <a href=singleitem.html>
+            <img class="itemimg" alt="Zeal" src="images/zeal.png">
+            <p class="itemname">Zeal</p>
+        </a>
     </div>
     
     <div class="filterDiv as" onclick="openTab('KircheisShard');">
-        <img class="itemimg" alt="Kircheis Shard" src="images/kircheisshard.png">
-        <p class="itemname">Kircheis Shard</p>
+        <a href=singleitem.html>
+            <img class="itemimg" alt="Kircheis Shard" src="images/kircheisshard.png">
+            <p class="itemname">Kircheis Shard</p>
+        </a>
     </div>
     
     </div>
     
+<!--
     <div id="Statikk Shiv" class="containerTab" style="display:none;">
         <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
         <h2>Statikk Shiv</h2>
@@ -223,6 +238,7 @@
             <li>UNIQUE Passive: +10% Critical Strike Chance</li>
         </p>
     </div>
+-->
     
     <script>
 filterSelection('all')
@@ -269,14 +285,14 @@ for (var i = 0; i < btns.length; i++) {
 }
         
 
-function openTab(tabName) {
-  var i, x;
-  x = document.getElementsByClassName("containerTab");
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
-  }
-  document.getElementById(tabName).style.display = "block";
-}
+//function openTab(tabName) {
+//  var i, x;
+//  x = document.getElementsByClassName("containerTab");
+//  for (i = 0; i < x.length; i++) {
+//     x[i].style.display = "none";
+//  }
+//  document.getElementById(tabName).style.display = "block";
+//}
 
 </script>
 
