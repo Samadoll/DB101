@@ -7,9 +7,18 @@ function sendReq(action, site, des, json) {
         console.log(json);
         xmlReq.onload = function () {
             if (this.status === 200) {
+                alert("Succeeded!");
                 fulfill(this.response);
                 console.log("final");
-                location.href = des;
+                if (des === "settings") {
+                    const result = JSON.parse(this.response).result.split(":");
+                    const userID = result[0];
+                    const accID = result[1];
+                    const champions = result[2];
+                    location.href = "settings/" + userID+ "&" + accID + "/champion=" + champions;
+                } else {
+                    location.href = des;
+                }
             } else {
                 reject(this.response);
                 console.log("fail");

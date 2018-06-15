@@ -4,7 +4,7 @@
     
 <meta charset="utf-8">
 <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-<link rel="stylesheet" href="stylesheets/stylesheet.css">
+<link rel="stylesheet" href="../../stylesheets/stylesheet.css">
 </head>
 <body>
 
@@ -19,12 +19,9 @@
       
     <label for="accountid"><b>Account ID</b></label>
     <input id="accountid" type="text" placeholder="Enter account ID" name="aid" required>
-      
-    <label for="username"><b>User Name</b></label>
-    <input id="username" type="text" placeholder="Enter user name if you want" name="un" optional>
 
-    <label for="psw"><b>Old Password</b></label>
-    <input id="psw" type="password" placeholder="Enter Password" name="oldpsw" required>
+    <label for="old-psw"><b>Old Password</b></label>
+    <input id="old-psw" type="password" placeholder="Enter Password" name="oldpsw" required>
       
     <label for="psw"><b>New Password</b></label>
     <input id="psw" type="password" placeholder="Enter Password" name="newpsw" required>
@@ -34,12 +31,13 @@
     
 
     <div class="clearfix">
-        <button id="cancelB" class="cancelbtn" href="accountinfo.html">Cancel</button>
-        <button id="resetpwd" type="button" class="btn">Sign Up</button>
+        <button id="cancelB" type="button" class="cancelbtn">Cancel</button>
+        <button id="resetpwd" type="button" class="btn">Reset</button>
     </div>
   </div>
 </form>
-
+<script type="text/javascript" src="../../javascripts/UserReset.js"></script>
+<script type="text/javascript" src="../../javascripts/SendReq.js"></script>
 
 </body>
 </html>

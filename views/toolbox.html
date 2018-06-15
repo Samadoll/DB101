@@ -41,20 +41,21 @@
             </a>
         </div>
       
-        <script>
-            let current = window.location.href;
-            if (current.indexOf("=") !== -1) {
-                let account = current.slice(current.indexOf("=") + 1);
-                console.log(account);
-                let log = document.getElementById("login");
-                let sign = document.getElementById("signup");
-                log.innerText = account;
-                sign.innerText = "SignOut";
-                log.href = "settings";
-                sign.href = "toolbox";
-            }
-        </script>
-        
+        <!--<script>-->
+            <!--let current = window.location.href;-->
+            <!--if (current.indexOf("=") !== -1) {-->
+                <!--let account = current.slice(current.indexOf("=") + 1);-->
+                <!--console.log(account);-->
+                <!--let log = document.getElementById("login");-->
+                <!--let sign = document.getElementById("signup");-->
+                <!--log.innerText = account;-->
+                <!--sign.innerText = "SignOut";-->
+                <!--log.href = "settings&account=" + account;-->
+                <!--sign.href = "toolbox";-->
+            <!--}-->
+        <!--</script>-->
+        <script src="javascripts/ToolBoxPage.js" type="text/javascript"></script>
+        <script src="javascripts/SendReq.js" type="text/javascript"></script>
         
 <!--        <footer id="footer">designed by DB101</footer>-->
 
