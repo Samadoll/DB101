@@ -38,6 +38,49 @@ class GameBuildFacade {
         return Promise.reject({code: 400, body: {error: "invalid username/password."}});
     }
 
+    // TODO: add get username
+    getUserInfo(accountID) {
+        const data = fs.readFileSync("public/javascripts/users.json", "utf-8");
+        const users = JSON.parse(data);
+        const user = Object.keys(users).find(key => users[key].includes(accountID));
+        const info = user + ":" + accountID + ":" + this.showOwnChampions(accountID);
+        return Promise.resolve({code: 200, body: {result: info}});
+    }
+
+    // TODO: delete Account from database
+    deleteAccount(userID, accID, password) {
+        console.log("Delete:: " + userID + " :: " + accID + " :: " + password);
+        const data1 = fs.readFileSync("public/javascripts/accs.json", "utf-8");
+        const accs = JSON.parse(data1);
+        const data2 = fs.readFileSync("public/javascripts/users.json", "utf-8");
+        const user = JSON.parse(data2);
+        if (user[userID].includes(accID) && accs[accID] === password) {
+            delete accs[accID];
+            user[userID].splice(user[userID].indexOf(accID), 1);
+            fs.writeFileSync("public/javascripts/accs.json", JSON.stringify(accs), "utf-8");
+            fs.writeFileSync("public/javascripts/users.json", JSON.stringify(user), "utf-8");
+            return Promise.resolve({code: 200, body: {result: "Succeeded."}});
+        } else {
+            return Promise.reject({code: 400, body: {error: "Fail to reset."}});
+        }
+    }
+
+    // TODO: reset password in database
+    resetPassword(userID, accID, old, newPWD) {
+        console.log("ResetPassword:: " + userID + " :: " + accID + " :: " + newPWD);
+        const data1 = fs.readFileSync("public/javascripts/accs.json", "utf-8");
+        const accs = JSON.parse(data1);
+        const data2 = fs.readFileSync("public/javascripts/users.json", "utf-8");
+        const user = JSON.parse(data2);
+        if (user[userID].includes(accID) && accs[accID] === old) {
+            accs[accID] = newPWD;
+            fs.writeFileSync("public/javascripts/accs.json", JSON.stringify(accs), "utf-8");
+            return Promise.resolve({code: 200, body: {result: "Succeeded."}});
+        } else {
+            return Promise.reject({code: 400, body: {error: "Fail to reset."}});
+        }
+    }
+
     // TODO: saved the table "account plays games"
     selectGame(accountID, gameID) {
         return Promise.reject(null);
@@ -49,8 +92,22 @@ class GameBuildFacade {
     }
 
     // TODO: show owned champions
-    showOwnChampions(accountID, gameID) {
-        return Promise.reject(null);
+    showOwnChampions(accountID) {
+        const data = fs.readFileSync("public/javascripts/hasChamp.json", "utf-8");
+        const accounts = JSON.parse(data);
+        if (!Object.keys(accounts).includes(accountID))
+            return "null";
+        const champions = accounts[accountID];
+        if (champions.length === 0)
+            return "null";
+        else {
+            let champion = "";
+            Object.keys(champions).forEach((index) => {
+                let aChampion = champions[index];
+                champion += index + "-" + aChampion[0] + "-" + aChampion[3] + "&";
+            });
+            return champion.slice(0, champion.length - 1);
+        }
     }
 
     // TODO: add games
@@ -94,8 +151,23 @@ class GameBuildFacade {
     }
 
     // TODO: show info of an Item
-    showItemInfo(id, gameID) {
-        return Promise.reject(null);
+    showItemInfo(id) {
+        const data = fs.readFileSync("public/javascripts/items.json", "utf-8");
+        const items = JSON.parse(data);
+        console.log(items[id]);
+        let name = items[id][0].replace(/\s+/g, "-");
+        let result = id + "/" + name + "/";
+        let stat = "";
+        if (items[id][1].includes(",")) {
+            stat = items[id][1].split(", ").join("&").replace(/\s+/g, "-").replace(/\+/g, "_").replace(/\%/g, "PERCENTAGE");
+        } else {
+            stat = items[id][1].replace(/\s+/g, "-").replace(/\+/g, "_").replace(/\%/g, "PERCENTAGE");
+        }
+        result += stat + "/";
+        let extra = items[id][2].replace(/\s+/g, "-").replace(/\+/g, "_").replace(/\%/g, "PERCENTAGE");
+        result += extra;
+        console.log(result);
+        return Promise.resolve({code: 200, body: {result: result}});
     }
 
     // TODO: update all Champions in Database via api

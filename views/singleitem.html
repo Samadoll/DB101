@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../../../stylesheets/items.css">
+
+</head>
+<body>
+    
+    <nav>
+        <a class="nav" id="goBack">Back</a>
+    </nav>
+    
+    <div class="containerTab" id="main">
+        <h2 id="itemname">Statikk Shiv</h2>
+        <img class="itemimg" alt="Statikk Shiv" src="../../../../images/statikkshiv.png">
+        <p id="stat">
+            <li>+35% Attack Speed</li>
+            <li>+30% Critical Strike Chance</li>
+            <li>+5% Movement Speed</li>
+        </p>
+        <p id="extrainfo">
+            <li>Passive: Moving and attacking will make an attack Energized.</li>
+
+           <li> UNIQUE Passive - Shiv Lightning: Your Energized attacks deal 60~140 bonus magic damage (based on level) to up to 5 targets on hit. This effect can critically strike.</li>
+        </p>
+    </div>
+    <script type="text/javascript">
+        document.getElementById("goBack").addEventListener("click", () => {
+            window.history.back();
+        });
+    </script>
+</body>
+</html>
