@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../public/stylesheets/items.css">
+<link rel="stylesheet" href="stylesheets/items.css">
 
 </head>
 <body>
@@ -10,7 +10,7 @@
 <h1> Items</h1>
     
     <nav>
-        <a class="nav" href="toolbox.html">Back</a>
+        <a class="nav" id="goBack">Back</a>
     </nav>
 
 <div class="navbar">
@@ -57,28 +57,28 @@
 <div class="item">
         
     <div class="filterDiv magic defense mr health mana cdr">
-        <a href=singleitem.html>
+        <a id="3036" onClick="getLinkWithID(this.id)">
             <img class="itemimg" alt="Abyssal Mask" src="images/abyssalmask.png">
             <p class="itemname">Abyssal Mask</p>
         </a>
     </div>
         
     <div class="filterDiv attack ad">
-        <a href=singleitem.html>
+        <a id="3087" onClick="getLinkWithID(this.id)">
             <img class="itemimg" alt="B.F. Sword" src="images/bfsword.png">
             <p class="itemname">B.F. Sword</p>
         </a>
         
     </div>
     <div class="filterDiv consume">
-        <a href=singleitem.html>
+        <a id="3087" onClick="getLinkWithID(this.id)">
             <img class="itemimg" alt="Control Ward" src="images/controlward.png">
             <p class="itemname">Control Ward</p>
         </a>
     </div>
     
     <div class="filterDiv attack as cs movement">
-        <a href=singleitem.html>
+        <a id="3087" onClick="getLinkWithID(this.id)">
             <img class="itemimg" alt="Statikk Shiv" src="images/statikkshiv.png">
             <p class="itemname">Statikk Shiv</p>
         </a>
@@ -86,53 +86,53 @@
     
     
     <div class="filterDiv attack ad ls">
-        <a href=singleitem.html>
+        <a id="3087" onClick="getLinkWithID(this.id)">
             <img class="itemimg" alt="Bilgewater Cutlass" src="images/bilgewatercutlass.png">
             <p class="itemname">Bilgewater Cutlass</p>
         </a>
     </div>
     <div class="filterDiv defense health hr">
-        <a href=singleitem.html>
+        <a id="3087" onClick="getLinkWithID(this.id)">
             <img class="itemimg" alt="Doran's Shield" src="images/doransshield.png">
             <p class="itemname">Doran's Shield</p>
         </a>
     </div>
     <div class="filterDiv magic ap mana cdr">
-        <a href=singleitem.html>
+        <a id="3087" onClick="getLinkWithID(this.id)">
             <img class="itemimg" alt="Lost Chapter" src="images/lostchapter.png">
             <p class="itemname">Lost Chapter</p>
         </a>
     </div>
     <div class="filterDiv movement">
-        <a href=singleitem.html>
+        <a id="3087" onClick="getLinkWithID(this.id)">
             <img class="itemimg" alt="Ionian Boots of Lucidity" src="images/lucidityb.png">
             <p class="itemname">Boots of Lucidity</p>
         </a>
     </div>
     
     <div class="filterDiv cs">
-        <a href=singleitem.html>
+        <a id="3087" onClick="getLinkWithID(this.id)">
             <img class="itemimg" alt="Brawler's Gloves" src="images/brawlersgloves.png">
             <p class="itemname">Brawler's Gloves</p>
         </a>
     </div>
     
     <div class="filterDiv as">
-        <a href=singleitem.html>
+        <a id="3087" onClick="getLinkWithID(this.id)">
         <img class="itemimg" alt="Dagger" src="images/dagger.png">
         <p class="itemname">Dagger</p>
         </a>
     </div>
     
     <div class="filterDiv as cs movement">
-        <a href=singleitem.html>
+        <a id="3087" onClick="getLinkWithID(this.id)">
             <img class="itemimg" alt="Zeal" src="images/zeal.png">
             <p class="itemname">Zeal</p>
         </a>
     </div>
     
     <div class="filterDiv as" onclick="openTab('KircheisShard');">
-        <a href=singleitem.html>
+        <a id="3087" onClick="getLinkWithID(this.id)">
             <img class="itemimg" alt="Kircheis Shard" src="images/kircheisshard.png">
             <p class="itemname">Kircheis Shard</p>
         </a>
@@ -295,6 +295,15 @@ for (var i = 0; i < btns.length; i++) {
 //}
 
 </script>
+<script type="text/javascript">
+    document.getElementById("goBack").addEventListener("click", () => {
+        window.history.back();
+    });
+    function getLinkWithID(id) {
+        sendReq("GET", "/getItemInfo=" + id, "getItem", "");
+    }
+</script>
+<script type="text/javascript" src="javascripts/SendReq.js"></script>
 
 </body>
 </html>

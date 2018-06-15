@@ -100,8 +100,14 @@ class GameBuildFacade {
         const champions = accounts[accountID];
         if (champions.length === 0)
             return "null";
-        else
-            return champions;
+        else {
+            let champion = "";
+            Object.keys(champions).forEach((index) => {
+                let aChampion = champions[index];
+                champion += index + "-" + aChampion[0] + "-" + aChampion[3] + "&";
+            });
+            return champion.slice(0, champion.length - 1);
+        }
     }
 
     // TODO: add games
@@ -145,8 +151,23 @@ class GameBuildFacade {
     }
 
     // TODO: show info of an Item
-    showItemInfo(id, gameID) {
-        return Promise.reject(null);
+    showItemInfo(id) {
+        const data = fs.readFileSync("public/javascripts/items.json", "utf-8");
+        const items = JSON.parse(data);
+        console.log(items[id]);
+        let name = items[id][0].replace(/\s+/g, "-");
+        let result = id + "/" + name + "/";
+        let stat = "";
+        if (items[id][1].includes(",")) {
+            stat = items[id][1].split(", ").join("&").replace(/\s+/g, "-").replace(/\+/g, "_").replace(/\%/g, "PERCENTAGE");
+        } else {
+            stat = items[id][1].replace(/\s+/g, "-").replace(/\+/g, "_").replace(/\%/g, "PERCENTAGE");
+        }
+        result += stat + "/";
+        let extra = items[id][2].replace(/\s+/g, "-").replace(/\+/g, "_").replace(/\%/g, "PERCENTAGE");
+        result += extra;
+        console.log(result);
+        return Promise.resolve({code: 200, body: {result: result}});
     }
 
     // TODO: update all Champions in Database via api

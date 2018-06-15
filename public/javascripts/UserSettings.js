@@ -1,7 +1,12 @@
-function addChampion(championName) {
+function addChampion(aChampion) {
+    const championInfo = aChampion.split("-");
+    const id = championInfo[0];
+    const championName = championInfo[1];
+    const type = championInfo[2];
     const lowercaseChamp = championName.toLowerCase();
     let newDiv = document.createElement("div");
-    newDiv.className = "filterDiv marksman show";
+    newDiv.className = "filterDiv " + type + " show";
+    newDiv.id = id;
     newDiv.innerHTML =
         '<a href=' + lowercaseChamp + '.html>\n' +
         '<img class="champimg" alt="' + championName + '" src="../../images/' + lowercaseChamp + '.png">\n' +
@@ -14,7 +19,7 @@ let splitUrl = current.split("/");
 const userInfo = splitUrl[splitUrl.length - 2];
 const champion = splitUrl[splitUrl.length - 1].split("=")[1];
 if (champion !== "null") {
-    const champions = champion.split(",");
+    const champions = champion.split("&");
     champions.forEach(addChampion);
 } else {
     let newEle = document.createElement("p");

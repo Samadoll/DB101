@@ -30,7 +30,7 @@
         <div class="dropdown-content">
             <a href="DeleteMyAccount">Account Cancellation</a>
             <a href="ResetPassword">Password Reset</a>
-            <a href="toolbox.html" id="logout">Log Out</a>
+            <a href="../../toolbox" id="logout">Log Out</a>
         </div>
     </div>
   </div>
@@ -54,7 +54,7 @@ function filterSelection(c) {
   x = document.getElementsByClassName("filterDiv");
   b = document.getElementById("own");
   if (c == "all") c = "";
-  if (c != "") addClass(b, "active")
+  if (c != "") addClass(b, "active");
   for (i = 0; i < x.length; i++) {
     removeClass(x[i], "show");
     if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");

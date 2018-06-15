@@ -4,7 +4,6 @@ function sendReq(action, site, des, json) {
         let xmlReq = new XMLHttpRequest();
         xmlReq.open(action, site, true);
         xmlReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        console.log(json);
         xmlReq.onload = function () {
             if (this.status === 200) {
                 alert("Succeeded!");
@@ -16,6 +15,9 @@ function sendReq(action, site, des, json) {
                     const accID = result[1];
                     const champions = result[2];
                     location.href = "settings/" + userID+ "&" + accID + "/champion=" + champions;
+                } else if (des === "getItem") {
+                    const result = JSON.parse(this.response).result;
+                    location.href = "itemInfo/" + result;
                 } else {
                     location.href = des;
                 }
