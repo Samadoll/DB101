@@ -20,7 +20,7 @@
     <p id="championname1">Not selected yet.</p>
 </div>
     
-<button id="confirm">Confirm</button>
+<a id="confirm" href="">Confirm</a>
 
 
 <div class="selectedchampion" id="against">
@@ -106,7 +106,6 @@ function filterSelection(c) {
     removeClass(x[i], "show");
     if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
   }
-  confirm();
 }
 
 function filterSelection2(c) {
@@ -117,7 +116,6 @@ function filterSelection2(c) {
     removeClass(x[i], "show");
     if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
   }
-  confirm();
 }
 
 function addClass(element, name) {
@@ -178,6 +176,7 @@ function myFunction(imgs) {
     var imgText = document.getElementById("championname1");
     champImg.src = imgs.src;
     imgText.innerHTML = imgs.id;
+    confirm();
 }
      
 function myFunction2(imgs) {
@@ -185,16 +184,18 @@ function myFunction2(imgs) {
     var imgText = document.getElementById("championname2");
     champImg.src = imgs.src;
     imgText.innerHTML = imgs.id;
+    confirm();
 }
      
      
 function confirm(){
-    var yours = document.getElementById("yours");
-    var against = document.getElementById("against");
+    var yours = document.getElementById("championname1");
+    var against = document.getElementById("championname2");
     var confirm = document.getElementById("confirm");
-    if (yours.style.display == "block"){
-        if (against.style.display == "block") 
-            confirm.style.display = "block";
+    if (yours.innerHTML != "Not selected yet."){
+        if (against.innerHTML != "Not selected yet.") 
+            confirm.style.backgroundColor = "#4CAF50";
+            confirm.href = "toolbox.html";
     }
 }
 
