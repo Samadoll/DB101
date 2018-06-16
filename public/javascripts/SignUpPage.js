@@ -10,8 +10,8 @@ function signUp() {
             const userID = document.getElementById("userid").value;
             const accID = document.getElementById("accountid").value;
             let username = "";
-            if (document.getElementById("username").hasAttribute("value"))
-                username = document.getElementById("username");
+            if (document.getElementById("username").value.length > 0)
+                username = document.getElementById("username").value;
             const psw = document.getElementById("psw").value;
             const pswRepeat = document.getElementById("psw-repeat").value;
             if (psw === pswRepeat) {

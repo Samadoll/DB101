@@ -1,4 +1,17 @@
 let fs = require("fs");
+let mysql = require('mysql');
+
+const db = mysql.createConnection({
+    host : 'localhost',
+    user :'root',
+    password: 'password',
+    multipleStatements: true
+});
+db.connect(function (err) {
+    if(err) throw err;
+    console.log('Database connected in Facade');
+});
+
 class GameBuildFacade {
 
     constructor() {
@@ -10,41 +23,154 @@ class GameBuildFacade {
     // TODO: need to check deplicate
     // TODO: delete accs.json and users.json later
     register(userID, accID, name, password) {
-        const data1 = fs.readFileSync("public/javascripts/accs.json", "utf-8");
-        const accs = JSON.parse(data1);
-        const data2 = fs.readFileSync("public/javascripts/users.json", "utf-8");
-        const user = JSON.parse(data2);
-        if (Object.keys(accs).includes(accID)) {
-            return Promise.reject({code: 400, body: {error: "Account has been taken."}})
-        }
-        if (Object.keys(user).includes(userID)) {
-            user[userID].push(accID);
-        } else {
-            user[userID] = [accID];
-        }
-        accs[accID] = password;
-        fs.writeFileSync("public/javascripts/accs.json", JSON.stringify(accs), "utf-8");
-        fs.writeFileSync("public/javascripts/users.json", JSON.stringify(user), "utf-8");
-        return Promise.resolve({code: 200, body: {result: "OK"}});
+        let signupUser = "USE `GLHF`; INSERT INTO user(id, name) VALUES (";
+        signupUser += userID + ", '" + name + "') ON DUPLICATE KEY UPDATE name = VALUES(name);";
+        console.log(signupUser);
+        db.query(signupUser, function (err) {
+            if(err) throw err;
+        });
+
+        return new Promise((fulfill, reject)=>{
+            db.query("USE `GLHF`; SELECT COUNT(*) FROM Account where id = " + accID, function (err, result) {
+                if(err) throw err;
+                console.log(result[1][0]['COUNT(*)'] === 1);
+                if(result[1][0]['COUNT(*)'] === 1){
+                    reject({code: 400, body: {error: "Account has been taken."}});
+                }else {
+                    let signupAcc = "USE `GLHF`; INSERT INTO `Account` VALUES (";
+                    signupAcc += accID + ", '" + password + "', " + userID + ");";
+                    console.log(signupAcc);
+                    db.query(signupAcc, function (err) {
+                        if (err) throw err;
+                        fulfill({code: 200, body: {result: "OK"}});
+                    });
+                }
+            });
+        });
+
+        // const data1 = fs.readFileSync("public/javascripts/accs.json", "utf-8");
+        // const accs = JSON.parse(data1);
+        // const data2 = fs.readFileSync("public/javascripts/users.json", "utf-8");
+        // const user = JSON.parse(data2);
+        // if (Object.keys(accs).includes(accID)) {
+        //     return Promise.reject({code: 400, body: {error: "Account has been taken."}})
+        // }
+        // if (Object.keys(user).includes(userID)) {
+        //     user[userID].push(accID);
+        // } else {
+        //     user[userID] = [accID];
+        // }
+        // accs[accID] = password;
+        // fs.writeFileSync("public/javascripts/accs.json", JSON.stringify(accs), "utf-8");
+        // fs.writeFileSync("public/javascripts/users.json", JSON.stringify(user), "utf-8");
+        // return Promise.resolve({code: 200, body: {result: "OK"}});
     }
 
     // TODO: user Login, check account and password in Database
     login(id, password) {
-        const data = fs.readFileSync("public/javascripts/accs.json", "utf-8");
-        const accs = JSON.parse(data);
-        console.log("Login:: " + id + " :: " + password);
-        if (accs[id] === password)
-            return Promise.resolve({code: 200, body: {result: "OK"}});
-        return Promise.reject({code: 400, body: {error: "invalid username/password."}});
+        return new Promise((fulfill, reject) => {
+            let signIn = "USE `GLHF`; SELECT COUNT(*) FROM Account where id = " + id + " AND password = '" + password +"';";
+            console.log(signIn);
+            db.query(signIn, function (err, result) {
+                if(err) throw err;
+                console.log(result[1][0]['COUNT(*)'] === 1);
+                if(result[1][0]['COUNT(*)'] === 1){
+                    fulfill({code: 200, body: {result: "OK"}});
+                }else{
+                    reject({code: 400, body: {error: "Invalid username/password."}});
+                }
+            });
+        });
+
+        // const data = fs.readFileSync("public/javascripts/accs.json", "utf-8");
+        // const accs = JSON.parse(data);
+        // console.log("Login:: " + id + " :: " + password);
+        // if (accs[id] === password)
+        //     return Promise.resolve({code: 200, body: {result: "OK"}});
+        // return Promise.reject({code: 400, body: {error: "invalid username/password."}});
     }
 
     // TODO: add get username
     getUserInfo(accountID) {
-        const data = fs.readFileSync("public/javascripts/users.json", "utf-8");
-        const users = JSON.parse(data);
-        const user = Object.keys(users).find(key => users[key].includes(accountID));
-        const info = user + ":" + accountID + ":" + this.showOwnChampions(accountID);
-        return Promise.resolve({code: 200, body: {result: info}});
+        // const data = fs.readFileSync("public/javascripts/users.json", "utf-8");
+        // const users = JSON.parse(data);
+        // const user = Object.keys(users).find(key => users[key].includes(accountID));
+        // const info = user + ":" + accountID + ":" + this.showOwnChampions(accountID);
+        // return Promise.resolve({code: 200, body: {result: info}});
+
+        // return new Promise((fulfill, reject) => {
+        //     const a = this.showOwnChampions(accountID);
+        //     fulfill (this.showOwnChampions(accountID));
+        // }).then((data) => {
+        //     let getUser = "USE `GLHF`; SELECT account.id, account.userID, user.name FROM Account JOIN user ON account.userID = user.id where account.id =" + accountID;
+        //     console.log(getUser);
+        //     db.query(getUser, function (err, result) {
+        //         if(err) throw err;
+        //         console.log(result[1][0]);
+        //         //result[1][0].accownchamp = "Cait";
+        //         result[1][0].accownchamp = data;
+        //         console.log(result[1][0]);
+        //         return Promise.resolve({code: 200, body: {result: result[1][0]}})
+        //     });
+        // })
+
+        return new Promise((fulfill, reject) => {
+            let getUser = "USE `GLHF`; SELECT account.id, account.userID, user.name FROM Account JOIN user ON account.userID = user.id where account.id = " + accountID;
+            console.log(getUser);
+            db.query(getUser, function (err, result) {
+                if (err) throw err;
+                console.log(result[1][0]);
+                //result[1][0].accownchamp = "Cait";
+                //result[1][0].accownchamp = data;
+                fulfill(result[1][0]);
+            });
+        }).then((data) => {
+            return this.showOwnChampions(accountID, data);
+            let a = this.showOwnChampions("356846275");
+            console.log(a);
+            console.log(data);
+            return Promise.resolve({code: 200, body: {result: data}});
+        })
+    }
+
+    // TODO: show owned champions
+    showOwnChampions(accountID, info) {
+        return new Promise((resolve, reject) => {
+            let ownChamp = "USE `GLHF`; SELECT champion.id, champion.name FROM accownchamp JOIN champion ON accownchamp.champID = champion.id WHERE accownchamp.accID = " + accountID;
+            console.log(ownChamp);
+            db.query(ownChamp, function (err, result) {
+                if (err) throw err;
+                info.accownchamp = [];
+                if(result[1][0]){
+                    for(let i in result[1]){
+                        info.accownchamp[i] = {};
+                        info.accownchamp[i].champID = result[1][i].id;
+                        info.accownchamp[i].champName = result[1][i].name;
+                    }
+                    resolve({code: 200, body: {result: info}});
+                }
+                else {
+                    resolve({code: 200, body: {result: info}});
+                }
+            });
+        });
+
+
+        // const data = fs.readFileSync("public/javascripts/hasChamp.json", "utf-8");
+        // const accounts = JSON.parse(data);
+        // if (!Object.keys(accounts).includes(accountID))
+        //     return "null";
+        // const champions = accounts[accountID];
+        // if (champions.length === 0)
+        //     return "null";
+        // else {
+        //     let champion = "";
+        //     Object.keys(champions).forEach((index) => {
+        //         let aChampion = champions[index];
+        //         champion += index + "-" + aChampion[0] + "-" + aChampion[3] + "&";
+        //     });
+        //     return champion.slice(0, champion.length - 1);
+        // }
     }
 
     // TODO: delete Account from database
@@ -91,24 +217,6 @@ class GameBuildFacade {
         return Promise.reject(null);
     }
 
-    // TODO: show owned champions
-    showOwnChampions(accountID) {
-        const data = fs.readFileSync("public/javascripts/hasChamp.json", "utf-8");
-        const accounts = JSON.parse(data);
-        if (!Object.keys(accounts).includes(accountID))
-            return "null";
-        const champions = accounts[accountID];
-        if (champions.length === 0)
-            return "null";
-        else {
-            let champion = "";
-            Object.keys(champions).forEach((index) => {
-                let aChampion = champions[index];
-                champion += index + "-" + aChampion[0] + "-" + aChampion[3] + "&";
-            });
-            return champion.slice(0, champion.length - 1);
-        }
-    }
 
     // TODO: add games
     addGame(id, name) {
