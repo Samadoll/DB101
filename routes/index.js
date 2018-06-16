@@ -37,6 +37,14 @@ router.get('/settings/:id/DeleteMyAccount', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/accountcancellation.html'));
 });
 
+router.get('/champions', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/champion_filter.html'));
+});
+
+router.get('/jinx', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/jinx.html'))
+});
+
 router.get('/item', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/singleitem.html'));
 });
@@ -173,6 +181,30 @@ router.get('/update/:game/:kind', (req, res, next) => {
     }
 
 
+});
+
+
+
+// TODO: TEst below
+router.get('/testPage/:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/accountinfoTest.html'));
+});
+
+router.post('/testPageTest', (req, res, next) => {
+    console.log("Server::getAccountInfo(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    const accid = data['accID'];
+    gameFacade.getUserInfo(accid).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
 });
 
 module.exports = router;

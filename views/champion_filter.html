@@ -55,59 +55,52 @@
 }
     
 </style>
-<head><link rel="stylesheet" type="text/css" href="/DB101/public/stylesheets/champion_filter.css"></head>
-<body id="filterBackground" background="/DB101/public/images/counter_bkg.jpg">
+<head><link rel="stylesheet" type="text/css" href="stylesheets/champion_filter.css"></head>
+<body id="filterBackground" background="images/counter_bkg.jpg">
 
-<h2><img src="/DB101/public/images/lol_icon_new.png"></h2>
+<h2><img src="images/lol_icon_new.png" onclick="goBack()"></h2>
 
 <div id="myBtnContainer">
     <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-    <button class="btn" onclick="filterSelection('adc')"> Marksman/ADC</button>
+    <button class="btn" onclick="filterSelection('marksman')"> Marksman/ADC</button>
     <button class="btn" onclick="filterSelection('support')"> Support</button>    
     <button class="btn" onclick="filterSelection('apc')"> APC</button>
     <button class="btn" onclick="filterSelection('jungler')"> Jungler</button>    
     <button class="btn" onclick="filterSelection('tank')"> Tank/Brusier</button>
 </div>
-    
-<div id="myBtnContainer1">
-    <button class="btn1 active" onclick="filterSelection('all')"> Show all</button>
-    <button class="btn1" onclick="filterSelection('top')"> Top Lane</button>
-    <button class="btn1" onclick="filterSelection('mid')"> Mid Lane</button>    
-    <button class="btn1" onclick="filterSelection('bottom')"> Bottom Lane</button>
-    <button class="btn1" onclick="filterSelection('jungle')"> Jungle</button>    
-</div>    
 
-<div class="Container">
-    <div class="filterDiv adc"> 
-        <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" style="width:100px;height:100px;border:none"></a>
-        <a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Ashe </a> </div>
-    <div class="filterDiv adc"> 
-        <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" style="width:100px;height:100px;border:none"></a>
-        <a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Jinx </a> </div>
-    <div class="filterDiv support"> 
-        <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" style="width:100px;height:100px;border:none"></a>
-        <a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Janna </a> </div>
-    <div class="filterDiv support"> 
-        <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>
-        <a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Lulu </a> </div>
-    <div class="filterDiv apc"> 
-        <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>
-        <a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Corki </a> </div>
-    <div class="filterDiv apc">
-        <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>
-        <a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Quinn </a> </div>
-    <div class="filterDiv jungler"> 
-        <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>
-        <a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Camille </a> </div>
-    <div class="filterDiv jungler"> 
-        <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>
-        <a href="https://www.google.ca/" target="_blank" style= "color: white;text-decoration: none"> Elise </a> </div>
-    <div class="filterDiv tank">
-        <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>
-        <a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Zac </a> </div>
-    <div class="filterDiv tank"> 
-        <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>
-        <a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Sion </a> </div>
+
+<div class="Container" id="main">
+    <!--<div class="filterDiv adc"> -->
+        <!--<a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" style="width:100px;height:100px;border:none"></a>-->
+        <!--<a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Ashe </a> </div>-->
+    <!--<div class="filterDiv adc"> -->
+        <!--<a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" style="width:100px;height:100px;border:none"></a>-->
+        <!--<a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Jinx </a> </div>-->
+    <!--<div class="filterDiv support"> -->
+        <!--<a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" style="width:100px;height:100px;border:none"></a>-->
+        <!--<a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Janna </a> </div>-->
+    <!--<div class="filterDiv support"> -->
+        <!--<a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>-->
+        <!--<a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Lulu </a> </div>-->
+    <!--<div class="filterDiv apc"> -->
+        <!--<a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>-->
+        <!--<a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Corki </a> </div>-->
+    <!--<div class="filterDiv apc">-->
+        <!--<a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>-->
+        <!--<a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Quinn </a> </div>-->
+    <!--<div class="filterDiv jungler"> -->
+        <!--<a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>-->
+        <!--<a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Camille </a> </div>-->
+    <!--<div class="filterDiv jungler"> -->
+        <!--<a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>-->
+        <!--<a href="https://www.google.ca/" target="_blank" style= "color: white;text-decoration: none"> Elise </a> </div>-->
+    <!--<div class="filterDiv tank">-->
+        <!--<a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>-->
+        <!--<a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Zac </a> </div>-->
+    <!--<div class="filterDiv tank"> -->
+        <!--<a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>-->
+        <!--<a href="https://www.google.ca/" target="_blank" style= "color: white; text-decoration: none"> Sion </a> </div>-->
 </div>
     
 
@@ -154,6 +147,27 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
+
+</script>
+
+<script type="text/javascript">
+    function goBack() {
+        window.history.back();
+    }
+function addChampion(champion) {
+    const id = champion.split(":")[0];
+    const name = champion.split(":")[1];
+    const type = champion.split(":")[2];
+    const lower = name.toLowerCase();
+    let div = document.createElement("div");
+    div.className = "filterDiv " + type + " show";
+    div.innerHTML =
+        '<a id="' + id + '" href="https://www.google.ca/" target = "_blank" style= "color: white; text-decoration: none">\n' +
+        '<img src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none">' + name + '</a>';
+    document.getElementById("main").appendChild(div);
+}
+let champions = ["1:Ashe:marksman", "2:Jinx:marksman", "3:Janna:support", "4:Lulu:support", "5:Corki:apc", "6:Quinn:apc", "7:Camille:jungler", "8:Elise:jungler", "9:Zac:tank", "10:Sion:tank"];
+champions.forEach(addChampion);
 
 </script>
 
