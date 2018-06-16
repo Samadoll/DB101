@@ -151,7 +151,7 @@ function addChampion(champion) {
         let div = document.createElement("div");
         div.className = "filterDiv " + type;
         div.innerHTML =
-            '<img id="' + name +'" src="../public/images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction(this);">' + '<p>' + name + '</p>';
+            '<img id="' + name +'" src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction(this);">' + '<p>' + name + '</p>';
         document.getElementById("main").appendChild(div);
     }
     let champions = ["1:Ashe:marksman", "2:Jinx:marksman", "3:Janna:support", "4:Lulu:support", "5:Corki:apc", "6:Quinn:apc", "7:Camille:jungler", "8:Elise:jungler", "9:Zac:tank", "10:Sion:tank"];
@@ -166,7 +166,7 @@ function addChampion2(champion) {
         let div = document.createElement("div");
         div.className = "filterDiv2 " + type;
         div.innerHTML =
-            '<img id="' + name +'" src="../public/images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction2(this);">' + '<p>' + name + '</p>';
+            '<img id="' + name +'" src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction2(this);">' + '<p>' + name + '</p>';
         document.getElementById("main-right").appendChild(div);
     }
     champions.forEach(addChampion2);

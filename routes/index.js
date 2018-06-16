@@ -49,6 +49,10 @@ router.get('/item', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/singleitem.html'));
 });
 
+router.get('/counterSelection', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/counter_b.html'));
+});
+
 router.get('/getItemInfo=:id', (req, res, next) => {
     console.log("Server::getItemInfo(..)");
     const itemID = req.params.id;
