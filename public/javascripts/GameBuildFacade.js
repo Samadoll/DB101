@@ -92,11 +92,12 @@ class GameBuildFacade {
 
     // TODO: add get username
     getUserInfo(accountID) {
-        const data = fs.readFileSync("public/javascripts/users.json", "utf-8");
-        const users = JSON.parse(data);
-        const user = Object.keys(users).find(key => users[key].includes(accountID));
-        const info = user + ":" + accountID + ":" + this.showOwnChampions(accountID);
-        return Promise.resolve({code: 200, body: {result: info}});
+        // const data = fs.readFileSync("public/javascripts/users.json", "utf-8");
+        // const users = JSON.parse(data);
+        // const user = Object.keys(users).find(key => users[key].includes(accountID));
+        // const info = user + ":" + accountID + ":" + this.showOwnChampions(accountID);
+        // return Promise.resolve({code: 200, body: {result: info}});
+
         // return new Promise((fulfill, reject) => {
         //     const a = this.showOwnChampions(accountID);
         //     fulfill (this.showOwnChampions(accountID));
@@ -112,6 +113,64 @@ class GameBuildFacade {
         //         return Promise.resolve({code: 200, body: {result: result[1][0]}})
         //     });
         // })
+
+        return new Promise((fulfill, reject) => {
+            let getUser = "USE `GLHF`; SELECT account.id, account.userID, user.name FROM Account JOIN user ON account.userID = user.id where account.id = " + accountID;
+            console.log(getUser);
+            db.query(getUser, function (err, result) {
+                if (err) throw err;
+                console.log(result[1][0]);
+                //result[1][0].accownchamp = "Cait";
+                //result[1][0].accownchamp = data;
+                fulfill(result[1][0]);
+            });
+        }).then((data) => {
+            return this.showOwnChampions(accountID, data);
+            let a = this.showOwnChampions("356846275");
+            console.log(a);
+            console.log(data);
+            return Promise.resolve({code: 200, body: {result: data}});
+        })
+    }
+
+    // TODO: show owned champions
+    showOwnChampions(accountID, info) {
+        return new Promise((resolve, reject) => {
+            let ownChamp = "USE `GLHF`; SELECT champion.id, champion.name FROM accownchamp JOIN champion ON accownchamp.champID = champion.id WHERE accownchamp.accID = " + accountID;
+            console.log(ownChamp);
+            db.query(ownChamp, function (err, result) {
+                if (err) throw err;
+                info.accownchamp = [];
+                if(result[1][0]){
+                    for(let i in result[1]){
+                        info.accownchamp[i] = {};
+                        info.accownchamp[i].champID = result[1][i].id;
+                        info.accownchamp[i].champName = result[1][i].name;
+                    }
+                    resolve({code: 200, body: {result: info}});
+                }
+                else {
+                    resolve({code: 200, body: {result: info}});
+                }
+            });
+        });
+
+
+        // const data = fs.readFileSync("public/javascripts/hasChamp.json", "utf-8");
+        // const accounts = JSON.parse(data);
+        // if (!Object.keys(accounts).includes(accountID))
+        //     return "null";
+        // const champions = accounts[accountID];
+        // if (champions.length === 0)
+        //     return "null";
+        // else {
+        //     let champion = "";
+        //     Object.keys(champions).forEach((index) => {
+        //         let aChampion = champions[index];
+        //         champion += index + "-" + aChampion[0] + "-" + aChampion[3] + "&";
+        //     });
+        //     return champion.slice(0, champion.length - 1);
+        // }
     }
 
     // TODO: delete Account from database
@@ -158,24 +217,6 @@ class GameBuildFacade {
         return Promise.reject(null);
     }
 
-    // TODO: show owned champions
-    showOwnChampions(accountID) {
-        const data = fs.readFileSync("public/javascripts/hasChamp.json", "utf-8");
-        const accounts = JSON.parse(data);
-        if (!Object.keys(accounts).includes(accountID))
-            return "null";
-        const champions = accounts[accountID];
-        if (champions.length === 0)
-            return "null";
-        else {
-            let champion = "";
-            Object.keys(champions).forEach((index) => {
-                let aChampion = champions[index];
-                champion += index + "-" + aChampion[0] + "-" + aChampion[3] + "&";
-            });
-            return champion.slice(0, champion.length - 1);
-        }
-    }
 
     // TODO: add games
     addGame(id, name) {
