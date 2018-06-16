@@ -1,0 +1,176 @@
+
+.yours_sub {
+    font-size: 40px;
+    font-family: Helvetica Neue;
+    color: aliceblue;
+    position: absolute;
+    left: 10%;
+    top: 5%;
+}
+
+.counter_sub {
+    font-size: 40px;
+    font-family: Helvetica Neue;
+    color: aliceblue;
+    position: absolute;
+    right: 10%;
+    top: 5%;
+}
+
+
+.yoursIcon {
+    position: absolute;
+    top: 18%;
+    left: 10%;
+    border: solid;
+    border-style: groove;
+    border-color: rgba(119, 104, 24, 0.55);
+    border-width: 10px;
+}
+
+.counterIcon {
+    position: absolute;
+    top: 18%;
+    right: 10%;
+    border: solid;
+    border-style: groove;
+    border-color: rgba(119, 104, 24, 0.55);
+    border-width: 10px;
+}
+
+.yoursStat {
+    color: aliceblue;
+    position: absolute;
+    font-size: 20px;
+    font-style: italic;
+    top: 35%;
+    left: 10.5%;
+}
+
+.counterStat {
+    color: aliceblue;
+    text-align: right;
+    position: absolute;
+    font-size: 20px;
+    font-style: italic;
+    top: 35%;
+    right: 10.5%;
+}
+
+.dropbtn {
+    background-color:#f1f1f1 ;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #ddd;
+
+}
+
+.dropdown {
+    position: absolute;
+    display: inline-block;
+    top: 65%;
+    left: 10%;
+    
+}
+
+.dropdown-content {
+    display: none;
+    position: relative;
+    min-width: 160px;
+    overflow: auto;
+    z-index: 1;
+    margin-top: 50px;
+    margin-left: 25px;
+    
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: none;}
+
+.show {display: block;}
+
+.dropbtn_counter {
+    background-color:#f1f1f1 ;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+}
+
+.dropbtn_counter:hover, .dropbtn_counter:focus {
+    background-color: #ddd;
+
+}
+
+.dropdown_counter {
+    position: absolute;
+    display: inline-block;
+    top: 65%;
+    right: 21%;
+}
+
+.dropdown-content-counter {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    overflow: auto;
+    z-index: 1;
+    top: 50px;
+    left: 5px;
+    
+}
+
+.dropdown-content-counter a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown_counter a:hover {background-color: none;}
+
+.show {display: block;}
+
+
+.main-text {
+    color: aliceblue;
+    font-family: Helvetica Neue;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.strategy {
+    font-size: 30px;
+    color: aliceblue;
+    text-align: center;
+}
+
+.text {
+    position: absolute;
+    left: 35%;
+    right: 35%;
+    top: 20%;
+    
+}
+
+.lol_logo img{
+    width: 30%;
+    position: relative;
+    margin-left: 575px;
+    margin-top: 10px
+}
