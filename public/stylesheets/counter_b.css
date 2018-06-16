@@ -1,0 +1,144 @@
+.navbar {
+    overflow: hidden;
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn{
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    width: 105px;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: black;
+}
+
+.champimg{
+    position: relative;
+    width:120px;
+    height: 120px;
+}
+
+
+
+#yours{width: 50%;}
+
+#against{
+    position: absolute;
+    right: 10px;
+    text-align: right;
+    float: right;
+    width: 50%;
+    top: 60px;
+}
+
+.nav-right{
+    float: right; 
+    background-color: blue;
+}
+
+.nav-left{
+    float: left;
+    background-color: red;
+}
+
+    nav{
+        font-family: "impact";
+        font-size: 20px;
+        word-spacing: 20px;
+        position: absolute;
+        float: right;
+        right: 20px;
+        top:20px;
+}
+
+.nav{
+        text-decoration: none;
+        position:relative;
+        color:blueviolet;
+        
+}
+
+    .nav:after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        border-bottom: 1px solid black;
+        transition: 0.4s;
+    
+}
+
+    .nav:hover:after{
+        width:110%;
+    
+}
+
+#main{
+    width: 49.7%;
+}
+
+#main-right{
+    float: right;
+    width:49.7%;
+    position: absolute;
+    right: -3px;
+    
+}
+
+
+.filterDiv {
+    float: left;
+    color: black;
+    text-align: left;
+    display: none;
+    padding-top: 50px;
+    padding-right: 4px;
+}
+
+.filterDiv2 {
+    float: left;
+    color: black;
+    text-align: left;
+    display: none;
+    padding-top: 50px;
+    padding-right: 4px;
+}
+
+.show{
+    display: block;
+}
+
+
+
+img{
+    text-align: center;
+}
+
+#confirm{
+    position: relative;
+    left: 46.5%;
+    top: -50px;
+    border: none;
+    background-color: red;
+    padding: 14px 14px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+    
