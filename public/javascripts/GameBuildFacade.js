@@ -97,6 +97,21 @@ class GameBuildFacade {
         const user = Object.keys(users).find(key => users[key].includes(accountID));
         const info = user + ":" + accountID + ":" + this.showOwnChampions(accountID);
         return Promise.resolve({code: 200, body: {result: info}});
+        // return new Promise((fulfill, reject) => {
+        //     const a = this.showOwnChampions(accountID);
+        //     fulfill (this.showOwnChampions(accountID));
+        // }).then((data) => {
+        //     let getUser = "USE `GLHF`; SELECT account.id, account.userID, user.name FROM Account JOIN user ON account.userID = user.id where account.id =" + accountID;
+        //     console.log(getUser);
+        //     db.query(getUser, function (err, result) {
+        //         if(err) throw err;
+        //         console.log(result[1][0]);
+        //         //result[1][0].accownchamp = "Cait";
+        //         result[1][0].accownchamp = data;
+        //         console.log(result[1][0]);
+        //         return Promise.resolve({code: 200, body: {result: result[1][0]}})
+        //     });
+        // })
     }
 
     // TODO: delete Account from database
