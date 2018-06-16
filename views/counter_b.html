@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="stylesheets/counter_b.css">
+
+</head>
+<body>
+<h1>Counters</h1>
+    
+<nav>
+    <a class="nav" onclick="goBack();">Back</a>
+</nav>
+
+<div>
+
+<div class="selectedchampion" id="yours">
+    <h2>Yours Champion</h2>
+    <img class="champimg" id="selectedimg1" src="images/unknown.png">
+    <p id="championname1">Not selected yet.</p>
+</div>
+    
+<button id="confirm">Confirm</button>
+
+
+<div class="selectedchampion" id="against">
+    <h2>Against Champion</h2>
+    <img class="champimg" id="selectedimg2" src="images/unknown.png">
+    <p id="championname2">Not selected yet.</p>
+</div>
+</div>
+    
+    
+<div class="navbar">
+    <div class="nav-left">
+    <div class="dropdown">
+        <button class="dropbtn" onclick="filterSelection('all')"> Show all</button></div>
+    
+    <div class="dropdown">
+        <button class="dropbtn" onclick="filterSelection('tank')"> Tank
+        <i class="fa fa-caret-down"></i>
+        </button>
+
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn" onclick="filterSelection('jungler')"> Jungler
+        <i class="fa fa-caret-down"></i>
+        </button>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn" onclick="filterSelection('apc')"> APC
+        <i class="fa fa-caret-down"></i>
+        </button>
+    </div>    
+    <div class="dropdown"><button class="dropbtn" onclick="filterSelection('marksman')"> Marksman</button></div>    
+    <div class="dropdown"><button class="dropbtn" onclick="filterSelection('support')"> Support</button></div>
+        
+    </div>
+    
+    <div class="nav-right">
+    
+    <div class="dropdown">
+        <button class="dropbtn" onclick="filterSelection2('all')"> Show all</button></div>
+    
+    <div class="dropdown">
+        <button class="dropbtn" onclick="filterSelection2('tank')"> Tank
+        <i class="fa fa-caret-down"></i>
+        </button>
+
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn" onclick="filterSelection2('jungler')"> Jungler
+        <i class="fa fa-caret-down"></i>
+        </button>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn" onclick="filterSelection2('apc')"> APC
+        <i class="fa fa-caret-down"></i>
+        </button>
+    </div>    
+    <div class="dropdown"><button class="dropbtn" onclick="filterSelection2('marksman')"> Marksman</button></div>    
+    <div class="dropdown"><button class="dropbtn" onclick="filterSelection2('support')"> Support</button></div>
+    
+    </div>
+</div>
+
+
+<div id="main">
+    
+</div>
+    
+<div id="main-right">
+    
+</div>
+
+    
+
+
+ <script type="text/javascript">
+
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    removeClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+  }
+  confirm();
+}
+
+function filterSelection2(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv2");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    removeClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+  }
+  confirm();
+}
+
+function addClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function removeClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+     
+
+function goBack() {
+    window.history.back();
+}
+function addChampion(champion) {
+        const id = champion.split(":")[0];
+        const name = champion.split(":")[1];
+        const type = champion.split(":")[2];
+        const lower = name.toLowerCase();
+        let div = document.createElement("div");
+        div.className = "filterDiv " + type;
+        div.innerHTML =
+            '<img id="' + name +'" src="../public/images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction(this);">' + '<p>' + name + '</p>';
+        document.getElementById("main").appendChild(div);
+    }
+    let champions = ["1:Ashe:marksman", "2:Jinx:marksman", "3:Janna:support", "4:Lulu:support", "5:Corki:apc", "6:Quinn:apc", "7:Camille:jungler", "8:Elise:jungler", "9:Zac:tank", "10:Sion:tank"];
+    champions.forEach(addChampion);
+     
+     
+function addChampion2(champion) {
+        const id = champion.split(":")[0];
+        const name = champion.split(":")[1];
+        const type = champion.split(":")[2];
+        const lower = name.toLowerCase();
+        let div = document.createElement("div");
+        div.className = "filterDiv2 " + type;
+        div.innerHTML =
+            '<img id="' + name +'" src="../public/images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction2(this);">' + '<p>' + name + '</p>';
+        document.getElementById("main-right").appendChild(div);
+    }
+    champions.forEach(addChampion2);
+     
+function myFunction(imgs) {
+    var champImg = document.getElementById("selectedimg1");
+    var imgText = document.getElementById("championname1");
+    champImg.src = imgs.src;
+    imgText.innerHTML = imgs.id;
+}
+     
+function myFunction2(imgs) {
+    var champImg = document.getElementById("selectedimg2");
+    var imgText = document.getElementById("championname2");
+    champImg.src = imgs.src;
+    imgText.innerHTML = imgs.id;
+}
+     
+     
+function confirm(){
+    var yours = document.getElementById("yours");
+    var against = document.getElementById("against");
+    var confirm = document.getElementById("confirm");
+    if (yours.style.display == "block"){
+        if (against.style.display == "block") 
+            confirm.style.display = "block";
+    }
+}
+
+</script>
+
+</body>
+    
+    
+</html>
