@@ -43,17 +43,18 @@
 
     </div>
     <div class="dropdown">
-        <button class="dropbtn" onclick="filterSelection('jungler')"> Jungler
+        <button class="dropbtn" onclick="filterSelection('assassin')"> Assassin
         <i class="fa fa-caret-down"></i>
         </button>
     </div>
     <div class="dropdown">
-        <button class="dropbtn" onclick="filterSelection('apc')"> APC
+        <button class="dropbtn" onclick="filterSelection('mage')"> Mage
         <i class="fa fa-caret-down"></i>
         </button>
     </div>    
     <div class="dropdown"><button class="dropbtn" onclick="filterSelection('marksman')"> Marksman</button></div>    
     <div class="dropdown"><button class="dropbtn" onclick="filterSelection('support')"> Support</button></div>
+        <div class="dropdown"><button class="dropbtn" onclick="filterSelection('fighter')"> Fighter</button></div>
         
     </div>
     
@@ -69,17 +70,18 @@
 
     </div>
     <div class="dropdown">
-        <button class="dropbtn" onclick="filterSelection2('jungler')"> Jungler
+        <button class="dropbtn" onclick="filterSelection2('assassin')"> Assassin
         <i class="fa fa-caret-down"></i>
         </button>
     </div>
     <div class="dropdown">
-        <button class="dropbtn" onclick="filterSelection2('apc')"> APC
+        <button class="dropbtn" onclick="filterSelection2('mage')"> mage
         <i class="fa fa-caret-down"></i>
         </button>
     </div>    
     <div class="dropdown"><button class="dropbtn" onclick="filterSelection2('marksman')"> Marksman</button></div>    
     <div class="dropdown"><button class="dropbtn" onclick="filterSelection2('support')"> Support</button></div>
+        <div class="dropdown"><button class="dropbtn" onclick="filterSelection('fighter')"> Fighter</button></div>
     
     </div>
 </div>
@@ -154,7 +156,7 @@ function addChampion(champion) {
             '<img id="' + name +'" src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction(this);">' + '<p>' + name + '</p>';
         document.getElementById("main").appendChild(div);
     }
-    let champions = ["1:Ashe:marksman", "2:Jinx:marksman", "3:Janna:support", "4:Lulu:support", "5:Corki:apc", "6:Quinn:apc", "7:Camille:jungler", "8:Elise:jungler", "9:Zac:tank", "10:Sion:tank"];
+    let champions = ["1:Ashe:marksman", "2:Jinx:marksman", "3:Janna:support", "4:Lulu:support", "5:Corki:mage", "6:Quinn:assassin", "7:Camille:fighter", "8:Elise:mage", "9:Zac:tank", "10:Sion:tank"];
     champions.forEach(addChampion);
      
      
