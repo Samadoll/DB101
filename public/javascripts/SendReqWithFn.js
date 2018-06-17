@@ -12,7 +12,7 @@ function sendReqWithFn(action, site, fn, json) {
 
                 if (fn !== null) {
                     const result = JSON.parse(this.response);
-                    console.log(result);
+                    console.log(result.result);
                     fn(result);
                 }
             } else {

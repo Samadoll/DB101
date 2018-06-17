@@ -9,7 +9,7 @@ function addChampion(aChampion) {
     newDiv.id = champID;
     newDiv.innerHTML =
         '<a href=' + lowercaseChamp + '.html>\n' +
-        '<img class="champimg" alt="' + champName + '" src="../images/' + lowercaseChamp + '.png">\n' +
+        '<img class="champimg" alt="' + champName + '" src="../images/' + lowercaseChamp + '_icon.png">\n' +
         '<p class="champname">' + champName + '</p>\n' +
         '</a>';
     document.getElementById("allChampions").appendChild(newDiv);

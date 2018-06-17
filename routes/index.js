@@ -190,11 +190,11 @@ router.get('/update/:game/:kind', (req, res, next) => {
 
 
 // TODO: TEst below
-router.get('/testPage/:id', (req, res, next) => {
+router.get('/testSettings/:id', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/accountinfoTest.html'));
 });
 
-router.post('/testPageTest', (req, res, next) => {
+router.post('/testSettingsPage', (req, res, next) => {
     console.log("Server::getAccountInfo(..)");
     const raw = req.body;
     const data = JSON.parse(Object.keys(raw)[0]);

@@ -11,9 +11,9 @@ if (current.indexOf("=") !== -1) {
         const accID = {};
         accID['accID'] = account;
         let json = JSON.stringify(accID);
-        sendReq("POST", "/getAccountInfo", "settings", json);
-        // const testPage = "/testPage/" +  account;
-        // sendReq("GET", testPage, testPage, json);
+        // sendReq("POST", "/getAccountInfo", "settings", json);
+        const testPage = "/testSettings/" +  account;
+        sendReq("GET", testPage, testPage, json);
     });
     sign.href = "toolbox";
 }
