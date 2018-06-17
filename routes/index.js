@@ -189,7 +189,8 @@ router.get('/update/:game/:kind', (req, res, next) => {
 
 
 
-// TODO: Test below
+
+// TODO: Test below using new Logic
 router.get('/testSettings/:id', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/accountinfoTest.html'));
 });
@@ -210,5 +211,52 @@ router.post('/testSettingsPage', (req, res, next) => {
         console.log(err.code);
     });
 });
+
+// TODO: Test Passed above
+router.get('/testSingleItem/:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/itemTest.html'));
+});
+
+router.post('/testSingleItemPage', (req, res, next) => {
+    console.log("Server::getItemInfo(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    const iid = data['itemID'];
+    gameFacade.showItemInfo(iid).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
+});
+
+// TODO: Finished Implementing above.
+router.get('/getChampionInfo/:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/counter.html'));
+});
+
+router.post('/getChampionInfo', (req, res, next) => {
+    console.log("Server::getChampionInfo(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    const cid = data['champID'];
+    gameFacade.showChampionInfo(iid).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
+});
+
+// TODO: counter below
+
 
 module.exports = router;

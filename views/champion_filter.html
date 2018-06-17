@@ -155,22 +155,26 @@ for (var i = 0; i < btns.length; i++) {
     function goBack() {
         window.history.back();
     }
-function addChampion(champion) {
-    const id = champion.split(":")[0];
-    const name = champion.split(":")[1];
-    const type = champion.split(":")[2];
-    const lower = name.toLowerCase();
-    let div = document.createElement("div");
-    div.className = "filterDiv " + type + " show";
-    div.innerHTML =
-        '<a id="' + id + '" href="https://www.google.ca/" target = "_blank" style= "color: white; text-decoration: none">\n' +
-        '<img src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none">' + name + '</a>';
-    document.getElementById("main").appendChild(div);
-}
-let champions = ["1:Ashe:marksman", "2:Jinx:marksman", "3:Janna:support", "4:Lulu:support", "5:Corki:mage", "6:Quinn:assassin", "7:Camille:fighter", "8:Elise:mage", "9:Zac:tank", "10:Sion:tank"];
-champions.forEach(addChampion);
+    function getLinkWithID(id) {
+
+    }
+    function addChampion(champion) {
+        const id = champion.split(":")[0];
+        const name = champion.split(":")[1];
+        const type = champion.split(":")[2];
+        const lower = name.toLowerCase();
+        let div = document.createElement("div");
+        div.className = "filterDiv " + type + " show";
+        div.innerHTML =
+            '<a id="' + id + '" onclick="getLinkWithID(this.id)" target = "_blank" style= "color: white; text-decoration: none">\n' +
+            '<img src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none">' + name + '</a>';
+        document.getElementById("main").appendChild(div);
+    }
+    let champions = ["1:Ashe:marksman", "2:Jinx:marksman", "3:Janna:support", "4:Lulu:support", "5:Corki:mage", "6:Quinn:assassin", "7:Camille:fighter", "8:Elise:mage", "9:Zac:tank", "10:Sion:tank"];
+    champions.forEach(addChampion);
 
 </script>
+<script type="text/javascript" src=""
 
 </body>
 </html>
