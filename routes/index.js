@@ -189,6 +189,7 @@ router.get('/update/:game/:kind', (req, res, next) => {
 
 
 
+
 // TODO: Test below using new Logic
 router.get('/testSettings/:id', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/accountinfoTest.html'));
@@ -210,6 +211,7 @@ router.post('/testSettingsPage', (req, res, next) => {
         console.log(err.code);
     });
 });
+
 // TODO: Test Passed above
 router.get('/testSingleItem/:id', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/itemTest.html'));
@@ -255,7 +257,6 @@ router.post('/getChampionInfo', (req, res, next) => {
 });
 
 // TODO: counter below
-
 
 
 module.exports = router;
