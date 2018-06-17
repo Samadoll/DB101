@@ -7,6 +7,7 @@
 </head>
 <body>
 
+    
 <div class="header">
   <a href="toolbox.html" class="logo">LOL TOOLBOX</a>
   <div class="header-right">
@@ -32,6 +33,9 @@
             <a href="resetpwd.html">Password Reset</a>
             <a href="toolbox.html" id="logout">Log Out</a>
         </div>
+    </div>
+    <div class="dropdown">
+        <a class="nav" onclick="goBack();">Back</a>
     </div>
   </div>
 </div>
@@ -101,7 +105,10 @@ function removeClass(element, name) {
   }
   element.className = arr1.join(" ");
 }  
-    
+
+function goBack() {
+    window.history.back();
+}
 </script>
 </body>
 </html>
