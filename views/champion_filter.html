@@ -62,11 +62,12 @@
 
 <div id="myBtnContainer">
     <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-    <button class="btn" onclick="filterSelection('marksman')"> Marksman/ADC</button>
+    <button class="btn" onclick="filterSelection('marksman')"> Marksman</button>
     <button class="btn" onclick="filterSelection('support')"> Support</button>    
-    <button class="btn" onclick="filterSelection('apc')"> APC</button>
-    <button class="btn" onclick="filterSelection('jungler')"> Jungler</button>    
-    <button class="btn" onclick="filterSelection('tank')"> Tank/Brusier</button>
+    <button class="btn" onclick="filterSelection('mage')"> Mage</button>
+    <button class="btn" onclick="filterSelection('fighter')"> Fighter</button>
+    <button class="btn" onclick="filterSelection('tank')"> Tank</button>
+    <button class="btn" onclick="filterSelection('assassin')">Assassin</button>
 </div>
 
 
@@ -166,7 +167,7 @@ function addChampion(champion) {
         '<img src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none">' + name + '</a>';
     document.getElementById("main").appendChild(div);
 }
-let champions = ["1:Ashe:marksman", "2:Jinx:marksman", "3:Janna:support", "4:Lulu:support", "5:Corki:apc", "6:Quinn:apc", "7:Camille:jungler", "8:Elise:jungler", "9:Zac:tank", "10:Sion:tank"];
+let champions = ["1:Ashe:marksman", "2:Jinx:marksman", "3:Janna:support", "4:Lulu:support", "5:Corki:mage", "6:Quinn:assassin", "7:Camille:fighter", "8:Elise:mage", "9:Zac:tank", "10:Sion:tank"];
 champions.forEach(addChampion);
 
 </script>
