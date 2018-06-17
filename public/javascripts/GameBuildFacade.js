@@ -87,7 +87,6 @@ class GameBuildFacade {
         // return Promise.reject({code: 400, body: {error: "invalid username/password."}});
     }
 
-    // TODO: add get username
     getUserInfo(accountID) {
         // const data = fs.readFileSync("public/javascripts/users.json", "utf-8");
         // const users = JSON.parse(data);
@@ -95,21 +94,6 @@ class GameBuildFacade {
         // const info = user + ":" + accountID + ":" + this.showOwnChampions(accountID);
         // return Promise.resolve({code: 200, body: {result: info}});
 
-        // return new Promise((fulfill, reject) => {
-        //     const a = this.showOwnChampions(accountID);
-        //     fulfill (this.showOwnChampions(accountID));
-        // }).then((data) => {
-        //     let getUser = "USE `GLHF`; SELECT account.id, account.userID, user.name FROM Account JOIN user ON account.userID = user.id where account.id =" + accountID;
-        //     console.log(getUser);
-        //     db.query(getUser, function (err, result) {
-        //         if(err) throw err;
-        //         console.log(result[1][0]);
-        //         //result[1][0].accownchamp = "Cait";
-        //         result[1][0].accownchamp = data;
-        //         console.log(result[1][0]);
-        //         return Promise.resolve({code: 200, body: {result: result[1][0]}})
-        //     });
-        // })
 
         return new Promise((fulfill, reject) => {
             let getUser = "USE `GLHF`; SELECT account.id, account.userID, user.name FROM Account JOIN user ON account.userID = user.id where account.id = " + accountID;
@@ -163,51 +147,62 @@ class GameBuildFacade {
         // }
     }
 
-    // TODO: delete Account from database
     deleteAccount(userID, accID, password) {
-        console.log("Delete:: " + userID + " :: " + accID + " :: " + password);
-        const data1 = fs.readFileSync("public/javascripts/accs.json", "utf-8");
-        const accs = JSON.parse(data1);
-        const data2 = fs.readFileSync("public/javascripts/users.json", "utf-8");
-        const user = JSON.parse(data2);
-        if (user[userID].includes(accID) && accs[accID] === password) {
-            delete accs[accID];
-            user[userID].splice(user[userID].indexOf(accID), 1);
-            fs.writeFileSync("public/javascripts/accs.json", JSON.stringify(accs), "utf-8");
-            fs.writeFileSync("public/javascripts/users.json", JSON.stringify(user), "utf-8");
-            return Promise.resolve({code: 200, body: {result: "Succeeded."}});
-        } else {
-            return Promise.reject({code: 400, body: {error: "Fail to reset."}});
-        }
+        return new Promise((resolve, reject) => {
+            let delAcc = "USE `GLHF`; DELETE FROM account WHERE id = " + accID + " AND password = '" + password + "' AND userID = " + userID;
+            console.log(delAcc);
+            db.query(delAcc, function (err, result) {
+                if(err) throw err;
+                if(result[1].affectedRows === 0){
+                    reject({code: 400, body: {error: "Invalid userID/username/password."}});
+                }else{
+                    resolve({code: 200, body: {result: "Succeeded."}});
+                }
+            });
+        });
+
+    //     console.log("Delete:: " + userID + " :: " + accID + " :: " + password);
+    //     const data1 = fs.readFileSync("public/javascripts/accs.json", "utf-8");
+    //     const accs = JSON.parse(data1);
+    //     const data2 = fs.readFileSync("public/javascripts/users.json", "utf-8");
+    //     const user = JSON.parse(data2);
+    //     if (user[userID].includes(accID) && accs[accID] === password) {
+    //         delete accs[accID];
+    //         user[userID].splice(user[userID].indexOf(accID), 1);
+    //         fs.writeFileSync("public/javascripts/accs.json", JSON.stringify(accs), "utf-8");
+    //         fs.writeFileSync("public/javascripts/users.json", JSON.stringify(user), "utf-8");
+    //         return Promise.resolve({code: 200, body: {result: "Succeeded."}});
+    //     } else {
+    //         return Promise.reject({code: 400, body: {error: "Fail to reset."}});
+    //     }
     }
 
-    // TODO: reset password in database
     resetPassword(userID, accID, old, newPWD) {
-        // return new Promise((resolve, reject) => {
-        //     let delAcc = "USE `GLHF`; DELETE FROM account WHERE id = " + accID + " AND password = '" + password +"'";
-        //     console.log(delAcc);
-        //     db.query(delAcc, function (err, result) {
-        //         if(err) throw err;
-        //         console.log(result);
-        //         if(result[1][0]['COUNT(*)'] === 1){
-        //             resolve({code: 200, body: {result: "OK"}});
-        //         }else{
-        //             reject({code: 400, body: {error: "Invalid username/password."}});
-        //         }
-        //     });
-        // });
-        console.log("ResetPassword:: " + userID + " :: " + accID + " :: " + newPWD);
-        const data1 = fs.readFileSync("public/javascripts/accs.json", "utf-8");
-        const accs = JSON.parse(data1);
-        const data2 = fs.readFileSync("public/javascripts/users.json", "utf-8");
-        const user = JSON.parse(data2);
-        if (user[userID].includes(accID) && accs[accID] === old) {
-            accs[accID] = newPWD;
-            fs.writeFileSync("public/javascripts/accs.json", JSON.stringify(accs), "utf-8");
-            return Promise.resolve({code: 200, body: {result: "Succeeded."}});
-        } else {
-            return Promise.reject({code: 400, body: {error: "Fail to reset."}});
-        }
+        return new Promise((resolve, reject) => {
+            let reset = "USE `GLHF`; UPDATE account SET password = '" + newPWD + "' WHERE id = " + accID + " AND password = '" + old + "' AND userID = " + userID;
+            console.log(reset);
+            db.query(reset, function (err, result) {
+                if(err) throw err;
+                if(result[1].affectedRows === 0){
+                    reject({code: 400, body: {error: "Invalid userID/username/password."}});
+                }else{
+                    resolve({code: 200, body: {result: "Succeeded."}});
+                }
+            });
+        });
+
+    //     console.log("ResetPassword:: " + userID + " :: " + accID + " :: " + newPWD);
+    //     const data1 = fs.readFileSync("public/javascripts/accs.json", "utf-8");
+    //     const accs = JSON.parse(data1);
+    //     const data2 = fs.readFileSync("public/javascripts/users.json", "utf-8");
+    //     const user = JSON.parse(data2);
+    //     if (user[userID].includes(accID) && accs[accID] === old) {
+    //         accs[accID] = newPWD;
+    //         fs.writeFileSync("public/javascripts/accs.json", JSON.stringify(accs), "utf-8");
+    //         return Promise.resolve({code: 200, body: {result: "Succeeded."}});
+    //     } else {
+    //         return Promise.reject({code: 400, body: {error: "Fail to reset."}});
+    //     }
     }
 
     // TODO: saved the table "account plays games"
