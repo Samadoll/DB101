@@ -12,8 +12,8 @@ function sendReqWithFn(action, site, fn, json) {
 
                 if (fn !== null) {
                     const result = JSON.parse(this.response);
-                    console.log(result.result);
-                    fn(result);
+                    console.log(result);
+                    fn(result.result);
                 }
             } else {
                 reject(this.response);

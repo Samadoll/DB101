@@ -17,9 +17,15 @@ db.connect(function (err) {
     console.log('Database connected');
 });
 
+//SetUp
+let sql = fs.readFileSync('glhf.sql').toString();
+db.query(sql, function (err, result) {
+    if(err) throw err;
+    console.log('Database setup done');
+});
+
 router.get('/', function (req, res, next) {
     let sql = fs.readFileSync('glhf.sql').toString();
-    let sqll = "DROP TABLE IF EXISTS `Play`";
     db.query(sql, function (err, result) {
         if(err) {
             console.log(err);

@@ -50,4 +50,4 @@ function buildUserSettingHTML(data) {
 const accID = {};
 accID['accID'] = accountID;
 let json = JSON.stringify(accID);
-sendReqWithFn("POST", "/testPageTest", buildUserSettingHTML, json);
+sendReqWithFn("POST", "/testSettingsPage", buildUserSettingHTML, json);

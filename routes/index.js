@@ -189,7 +189,7 @@ router.get('/update/:game/:kind', (req, res, next) => {
 
 
 
-// TODO: TEst below
+// TODO: Test below
 router.get('/testSettings/:id', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/accountinfoTest.html'));
 });
