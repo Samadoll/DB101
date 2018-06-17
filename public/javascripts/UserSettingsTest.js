@@ -9,7 +9,7 @@ function addChampion(aChampion) {
     newDiv.id = champID;
     newDiv.innerHTML =
         '<a href=' + lowercaseChamp + '.html>\n' +
-        '<img class="champimg" alt="' + champName + '" src="../images/' + lowercaseChamp + '.png">\n' +
+        '<img class="champimg" alt="' + champName + '" src="../images/' + lowercaseChamp + '_icon.png">\n' +
         '<p class="champname">' + champName + '</p>\n' +
         '</a>';
     document.getElementById("allChampions").appendChild(newDiv);
@@ -50,4 +50,4 @@ function buildUserSettingHTML(data) {
 const accID = {};
 accID['accID'] = accountID;
 let json = JSON.stringify(accID);
-sendReqWithFn("POST", "/testPageTest", buildUserSettingHTML, json);
+sendReqWithFn("POST", "/testSettingsPage", buildUserSettingHTML, json);

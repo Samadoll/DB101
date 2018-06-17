@@ -12,7 +12,7 @@ if (current.indexOf("=") !== -1) {
         accID['accID'] = account;
         let json = JSON.stringify(accID);
         sendReq("POST", "/getAccountInfo", "settings", json);
-        // const testPage = "/testPage/" +  account;
+        // const testPage = "/testSettings/" +  account;
         // sendReq("GET", testPage, testPage, json);
     });
     sign.href = "toolbox";
