@@ -56,6 +56,8 @@ router.get('/counterSelection', (req, res, next) => {
 router.get('/getItemInfo=:id', (req, res, next) => {
     console.log("Server::getItemInfo(..)");
     const itemID = req.params.id;
+    //Test
+    //gameFacade.saveChampion(1234, 154).then((response) => {
     gameFacade.showItemInfo(itemID).then((response) => {
         res.status(response.code);
         res.json(response.body);

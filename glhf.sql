@@ -55,7 +55,7 @@ CREATE TABLE `Item` (
   id INT PRIMARY KEY,
   name CHAR(40),
   stat CHAR(255),
-  extra_info CHAR(255),
+  extraInfo CHAR(255),
   gameID INT,
   FOREIGN KEY (gameID) REFERENCES LOL(id)
 );
@@ -72,7 +72,7 @@ CREATE TABLE `Suggest` (
 CREATE TABLE `Against` (
   champ0ID INT,
   champ1ID INT,
-  Strategy CHAR(255),
+  Strategy TEXT,
   PRIMARY KEY (champ0ID, champ1ID),
   FOREIGN KEY (champ0ID) REFERENCES Champion(id),
   FOREIGN KEY (champ1ID) REFERENCES Champion(id)
@@ -111,6 +111,7 @@ INSERT INTO `Game` VALUES (1, 'League of Legends');
 INSERT INTO `LOL` VALUES (1);
 
 INSERT INTO `Champion` VALUES (13, 'Ryze', 'the Rune Mage', 'mid top', 'Mage Fighter', 'difficulty: 7, attack: 2, defense: 2, magic: 10', null, 1);
+INSERT INTO `Champion` VALUES (14, 'Sion', 'The Undead Juggernaut', 'mid top support', 'Tank Fighter', 'difficulty: 5, attack: 5, defense: 9, magic: 3', null, 1);
 INSERT INTO `Champion` VALUES (22, 'Ashe', 'the Frost Archer', 'adc', 'Marksman', 'difficulty: 4, attack: 7, defense: 3, magic: 2', null, 1);
 INSERT INTO `Champion` VALUES (40, 'Janna', "the Storm's Fury", 'support', 'Support Mage', 'difficulty: 7, attack: 3, defense: 5, magic: 7', null, 1);
 INSERT INTO `Champion` VALUES (42, 'Corki', 'the Daring Bombardier', 'mid', 'Marksman', 'difficulty: 6, attack: 8, defense: 3, magic: 6', null, 1);
@@ -120,6 +121,7 @@ INSERT INTO `Champion` VALUES (60, 'Elise', 'the Spider Queen', 'jungle', 'Mage 
 INSERT INTO `Champion` VALUES (69, 'Cassiopeia', "the Serpent's Embrace", 'mid', 'Mage', 'difficulty: 10, attack: 3, defense: 2, magic: 9', null, 1);
 INSERT INTO `Champion` VALUES (86, 'Garen', 'The Might of Demacia', 'top sup', 'Fighter Tank', 'difficulty: 5,attack: 7, defense: 7, magic: 1', null, 1);
 INSERT INTO `Champion` VALUES (89, 'Leona', 'the Radiant Dawn', 'support', 'Tank Support', 'difficulty: 4, attack: 4, defense: 8, magic: 3', null, 1);
+INSERT INTO `Champion` VALUES (117, 'Lulu', 'the Fae Sorceress', 'support', 'Support Mage', 'difficulty: 5, attack: 4, defense: 5, magic: 7', null, 1);
 INSERT INTO `Champion` VALUES (122, 'Darius', 'the Hand of Noxus', 'top', 'Fighter Tank', 'difficulty: 2, attack: 9, defense: 5, magic: 1', null, 1);
 INSERT INTO `Champion` VALUES (133, 'Quinn', "Demacia's Wings", 'top adc', 'Marksman Fighter', 'difficulty: 5, attack: 9, defense: 4, magic: 2', null, 1);
 INSERT INTO `Champion` VALUES (154, 'Zac', 'the Secret Weapon', 'jungle', 'Fighter Tank', 'difficulty: 8, attack: 3, defense: 7, magic: 7', null, 1);
@@ -148,22 +150,50 @@ INSERT INTO `Item` VALUES (1042, "Dagger", '+12% Attack Speed', 'None', 1);
 INSERT INTO `Item` VALUES (3086, "Zeal", '+15% Attack Speed, +15% Critical Strike Chance, UNIQUE Passive: +5% Movement Speed', 'None', 1);
 INSERT INTO `Item` VALUES (2015, "Kircheis Shard", '+15% Attack Speed, +35% Armor Penetration', 'Passive: Moving and attacking will make an attack Energized. UNIQUE Passive - Energized Strike: Your Energized attacks deal 50 bonus magic damage on hit', 1);
 
-
+INSERT INTO `Suggest` VALUES (14, 1054);
+INSERT INTO `Suggest` VALUES (14, 3001);
+INSERT INTO `Suggest` VALUES (22, 1038);
+INSERT INTO `Suggest` VALUES (22, 3144);
+INSERT INTO `Suggest` VALUES (40, 2055);
+INSERT INTO `Suggest` VALUES (40, 3158);
+INSERT INTO `Suggest` VALUES (42, 1038);
+INSERT INTO `Suggest` VALUES (42, 3086);
 INSERT INTO `Suggest` VALUES (51, 3006);
 INSERT INTO `Suggest` VALUES (51, 3072);
 INSERT INTO `Suggest` VALUES (51, 3087);
 INSERT INTO `Suggest` VALUES (51, 3031);
 INSERT INTO `Suggest` VALUES (51, 3036);
 INSERT INTO `Suggest` VALUES (51, 3094);
+INSERT INTO `Suggest` VALUES (60, 3001);
+INSERT INTO `Suggest` VALUES (60, 3802);
+INSERT INTO `Suggest` VALUES (117, 2055);
+INSERT INTO `Suggest` VALUES (117, 3802);
+INSERT INTO `Suggest` VALUES (133, 1038);
+INSERT INTO `Suggest` VALUES (133, 3087);
+INSERT INTO `Suggest` VALUES (154, 3158);
+INSERT INTO `Suggest` VALUES (154, 3001);
+INSERT INTO `Suggest` VALUES (164, 1054);
+INSERT INTO `Suggest` VALUES (164, 1042);
+INSERT INTO `Suggest` VALUES (222, 3087);
+INSERT INTO `Suggest` VALUES (222, 1051);
 
-INSERT INTO `Against` VALUES (51, 22, "Keep behind allied minions if Caitlyn is harassing you with Piltover Peacemaker (it deals less damage with each subsequent target). You can intercept Ace in the Hole's missile from hitting an ally if you stand in its path.");
+INSERT INTO `Against` VALUES (22, 51, "Keep behind allied minions if Caitlyn is harassing you with Piltover Peacemaker (it deals less damage with each subsequent target). You can intercept Ace in the Hole's missile from hitting an ally if you stand in its path.");
+INSERT INTO `Against` VALUES (40, 154, "Zac heals from the goo that separates from him. You can crush the goo pieces by stepping on them. Kill all of Zac's bloblets when he splits apart to stop him from reforming. Silences, stuns, roots and knockups will all interrupt Zac when he is charging Elastic Slingshot.");
+INSERT INTO `Against` VALUES (117, 164, "Camille's shield only works against one damage type, so hit her when she's vulnerable to your damage. The Hextech Ultimatum has a very short range to cast, so try to flash away from her before she gets close.");
+INSERT INTO `Against` VALUES (133, 14, "Even if Sion still hits a Decimating Smash, making him release the charge earlier reduces its impact. Use the time after Sion has died to reposition and prepare for his return.");
 
-INSERT INTO `AgainstSuggest` VALUES (51, 22, 3006);
-INSERT INTO `AgainstSuggest` VALUES (51, 22, 3085);
-INSERT INTO `AgainstSuggest` VALUES (51, 22, 3087);
-INSERT INTO `AgainstSuggest` VALUES (51, 22, 3031);
-INSERT INTO `AgainstSuggest` VALUES (51, 22, 3095);
-INSERT INTO `AgainstSuggest` VALUES (51, 22, 3072);
+INSERT INTO `AgainstSuggest` VALUES (22, 51, 3006);
+INSERT INTO `AgainstSuggest` VALUES (22, 51, 3085);
+INSERT INTO `AgainstSuggest` VALUES (22, 51, 3087);
+INSERT INTO `AgainstSuggest` VALUES (22, 51, 3031);
+INSERT INTO `AgainstSuggest` VALUES (22, 51, 3095);
+INSERT INTO `AgainstSuggest` VALUES (22, 51, 3072);
+INSERT INTO `AgainstSuggest` VALUES (40, 154, 2055);
+INSERT INTO `AgainstSuggest` VALUES (40, 154, 3158);
+INSERT INTO `AgainstSuggest` VALUES (117, 164, 2055);
+INSERT INTO `AgainstSuggest` VALUES (117, 164, 3802);
+INSERT INTO `AgainstSuggest` VALUES (133, 14, 1038);
+INSERT INTO `AgainstSuggest` VALUES (133, 14, 3087);
 
 INSERT INTO `User` VALUES (0, 'Billy');
 INSERT INTO `User` VALUES (1, 'Gary');
