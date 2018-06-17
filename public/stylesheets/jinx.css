@@ -4,41 +4,20 @@ body, html {
 }
 
 
-.filterDiv {
-      float: left;
-      color: #ffffff;
-      width: 100px;
-      line-height: 20px;
-      text-align: center;
-      margin: 5px;
-      display: none;
+.item_list {
+    float: right;
+    font-size: 20px;
+    margin-right: 210px;
+    
 }
 
-.show {
-  display: block;
-}
-
-.champion_list {
-  margin-top: 10px;
-  overflow: hidden;
-}
-
-/* Style the buttons */
-.btn {
-  border: none;
-  outline: none;
-  padding: 12px 16px;
-  background-color: #f1f1f1;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #ddd;
-}
-
-.btn.active {
-  background-color: #666;
-  color: white;
+.itemname{
+    font-family: sans-serif;
+    font-size: 10pt;
+    text-decoration:none;
+    color:white;
+    line-height: 0px;
+    text-align: center;
 }
 
 .profile {
@@ -74,35 +53,10 @@ body, html {
     margin-top: 50px
 }
 
-.profile_part img {
-    border: solid;
-    border-color: rgba(255, 215, 0, 0.46);
-    
+
+.item_list a {
+    text-decoration: none;
 }
-
-.champion_list img {
-    border-radius: 100%;
-    border-color: ghostwhite;
-    border: solid;
-}
-
-#myBtnContainer {
-    margin-left: 69%;
-}
-
-.champion_list {
-    margin-top: 5px;
-    margin-left: 1155px;
-    margin-right: 185px;
-    font-size: 20px;
-}
-
-
-.filter {
-    margin-top: 0px;
-}
-
-
 
 .info {
     color: aliceblue;
@@ -117,21 +71,6 @@ body, html {
     
 }
 
-.vid {
-    position: absolute;
-    left:  575px;
-    top: 499px;
-    border: solid;
-    border-style: groove;
-    
-
-}
-
-.account {
-    position: absolute;
-    top: 150px;
-    right: 205px;
-}
 
 
 /* Full-width input fields */
@@ -241,61 +180,36 @@ span.psw {
     }
 }
 
-.login_button {
+.btn{
     position: absolute;
+    right: 210px;
+    background-color: aliceblue;
+    color: grey;
+    border: none;
+    cursor: pointer;
+    width: 9%;
+    transition-duration:1s;
+    opacity: .5;
+}
+
+.btn:hover {
+    border-radius: 15px;
+    transition-duration:1s;
+    opacity: 1;
+    color:black;
+}
+
+#login_button {
     top: 150px;
-    right: 210px;
-    background-color: aliceblue;
-    color: black;
     padding: 14px 20px;
-    border: none;
-    cursor: pointer;
-    width: 10%;
-    
 }
 
-.inner_login_button {
-    background-color: rgba(232, 201, 36, 0.75);
-    color: black;
-    padding: 14px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-.sign_up {
-    position: absolute;
+#saveButton {
     top: 200px;
-    right: 210px;
-    background-color: aliceblue;
-    color: black;
-    padding: 14px 18.5px;
-    border: none;
-    cursor: pointer;
-    width: 10%;
+    padding: 8px 20px;
 }
 
-
-.saveButton {
-    position: absolute;
-    top: 210px;
-    left: 205px;
-    background-color: aliceblue;
-    color: black;
-    padding: 10px 8px;
-    border: none;
-    cursor: pointer;
-    width: 125px;
-}
-
-.backButton {
-    position: absolute;
+#backButton {
     top: 250px;
-    right: 210px;
-    background-color: aliceblue;
-    color: black;
-    padding: 15px;
-    border: none;
-    cursor: pointer;
-    width: 10%;
+    padding: 14px 20px;
 }
