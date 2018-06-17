@@ -140,106 +140,6 @@
     
     </div>
     
-<!--
-    <div id="Statikk Shiv" class="containerTab" style="display:none;">
-        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-        <h2>Statikk Shiv</h2>
-        <img class="itemimg" alt="Statikk Shiv" src="images/statikkshiv.png">
-        <div class="composite">
-        <p>Composite:</p>
-            <div onclick="openTab('Zeal');">
-                <p>Zeal</p>
-                <img class="itemimg" alt="Zeal" src="images/zeal.png">
-            </div>
-            <div onclick="openTab('KircheisShard')">
-                <p>Kircheis Shard</p>
-                <img class="itemimg" alt="Kircheis Shard" src="images/kircheisshard.png">
-            </div>
-        </div>
-
-        <p id="stat">
-            <li>Cost:2900</li>
-            <li>+35% Attack Speed</li>
-            <li>+30% Critical Strike Chance</li>
-            <li>+5% Movement Speed</li>
-        </p>
-        <p id="extrainfo">
-            <li>Passive: Moving and attacking will make an attack Energized.</li>
-
-           <li> UNIQUE Passive - Shiv Lightning: Your Energized attacks deal 60~140 bonus magic damage (based on level) to up to 5 targets on hit. This effect can critically strike.</li>
-        </p>
-    </div>
-
-    <div id="Zeal" class="containerTab" style="display: none;">
-        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-        <h2>Zeal</h2>
-        <img class="itemimg" alt="Zeal" src="images/zeal.png">
-        <div class="composite">
-        <p>Composite:</p>
-            <div onclick="openTab('BrawlersGloves');">
-                <p>Brawler's Gloves</p>
-                <img class="itemimg" alt="Brawler's Gloves" src="images/brawlersgloves.png">
-            </div>
-            <div onclick="openTab('Dagger');">
-                <p>Dagger</p>
-                <img class="itemimg" alt="Dagger" src="images/dagger.png">
-            </div>
-        </div>
-
-        <p id="stat">
-            <li>Cost:1300</li>
-            <li>+15% Attack Speed</li>
-            <li>+15% Critical Strike Chance</li>
-        </p>
-        <p id="extrainfo">
-            <li>UNIQUE Passive: +5% Movement Speed</li>
-        </p>
-    </div>
-
-    <div id="Kircheis Shard" class="containerTab" style="display: none;">
-        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-        <h2>Kircheis Shard</h2>
-        <img class="itemimg" alt="Kircheis Shard" src="images/kircheisshard.png">
-        <div class="composite">
-            <p>Composite:</p>
-            <div onclick="openTab('Dagger');">
-                <p>Dagger</p>
-                <img class="itemimg" alt="Dagger" src="images/dagger.png">
-            </div>
-        </div>
-        <p id="stat">
-            <li>Cost:800</li>
-            <li>+15% Attack Speed</li>
-        </p>
-        <p id="extrainfo">
-            <li>Passive: Moving and attacking will make an attack Energized.</li>
-
-            <li>UNIQUE Passive - Energized Strike: Your Energized attacks deal 50 bonus magic damage on hit.</li>
-        </p>
-    </div>
-
-    <div id="Dagger" class="containerTab" style="display: none;">
-        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-        <h2>Dagger</h2>
-        <img class="itemimg" alt="Dagger" src="images/dagger.png">
-        <p id="stat">
-            <li>Cost:300</li>
-            <li>+12% Attack Speed</li>
-        </p>
-    </div>
-
-    <div id="BrawlersGloves" class="containerTab" style="display: none;">
-        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-        <h2>Brawler's Gloves</h2>
-        <img class="itemimg" alt="Brawler's Gloves" src="images/brawlersgloves.png">
-        <p id="stat">
-        </p>
-        <p id="extrainfo">
-            <li>UNIQUE Passive: +10% Critical Strike Chance</li>
-        </p>
-    </div>
--->
-    
     <script>
 filterSelection('all')
 function filterSelection(c) {
@@ -300,7 +200,7 @@ for (var i = 0; i < btns.length; i++) {
         window.history.back();
     });
     function getLinkWithID(id) {
-        sendReq("GET", "/getItemInfo=" + id, "getItem", "");
+        sendReq("GET", "/testSingleItem/" + id, "/testSingleItem/" + id, "");
     }
 
     function buildItemsHTML(item) {
@@ -321,18 +221,18 @@ for (var i = 0; i < btns.length; i++) {
             '</a>';
         document.getElementById("main").appendChild(div);
     }
-    let allItems = ["3036:Abyssal Mask:magic defense mr health mana cdr"
-                ,"3087:B.F. Sword:attack ad"
-                ,"3087:Control Ward:consume"
+    let allItems = ["3001:Abyssal Mask:magic defense mr health mana cdr"
+                ,"1038:B.F. Sword:attack ad"
+                ,"2055:Control Ward:consume"
                 ,"3087:Statikk Shiv:attack as cs movement"
-                ,"3087:Bilgewater Cutlass:attack ad ls"
-                ,"3087:Doran's Shield:defense health hr"
-                ,"3087:Lost Chapter:magic ap mana cdr"
-                ,"3087:Ionian Boots of Lucidity:movement"
-                ,"3087:Brawler's Gloves:cs"
-                ,"3087:Dagger:as"
-                ,"3087:Zeal:as cs movement"
-                ,"3087:Kircheis Shard:as"];
+                ,"3144:Bilgewater Cutlass:attack ad ls"
+                ,"1054:Doran's Shield:defense health hr"
+                ,"3802:Lost Chapter:magic ap mana cdr"
+                ,"3158:Ionian Boots of Lucidity:movement"
+                ,"1051:Brawler's Gloves:cs"
+                ,"1042:Dagger:as"
+                ,"3086:Zeal:as cs movement"
+                ,"2015:Kircheis Shard:as"];
     allItems.forEach(buildItemsHTML);
 </script>
 <script type="text/javascript" src="javascripts/SendReq.js"></script>
