@@ -81,7 +81,6 @@
 }
 
 .dropdown-content {
-    display: none;
     position: relative;
     min-width: 160px;
     overflow: auto;
@@ -125,7 +124,6 @@
 }
 
 .dropdown-content-counter {
-    display: none;
     position: absolute;
     min-width: 160px;
     overflow: auto;
