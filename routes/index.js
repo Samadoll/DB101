@@ -302,9 +302,6 @@ router.post('/saveMyChampion', (req, res, next) => {
         console.log(err.code);
     });
 });
-// TODO: Test Passed above
-// TODO: Finished Implementing above.
-// TODO: counter below
 
 router.get("/counterPage&aid=:aid&bid=:bid", (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/counter.html'));

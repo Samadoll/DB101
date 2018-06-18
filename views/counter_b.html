@@ -199,12 +199,31 @@ function confirm(){
         confirm.style.backgroundColor = "#4CAF50";
         let current = window.location.href;
         let des = "counterPage";
-        if (current.includes("="))
-            des += "=" + current.slice(current.indexOf("=") + 1).split("/")[0];
+        if (current.includes("=")) {
+            if (current.includes("&") && current.indexOf("=") < current.indexOf("&"))
+                des += "=" + current.slice(current.indexOf("=") + 1).split("&")[0];
+            else if (!current.includes("&"))
+                des += "=" + current.slice(current.indexOf("=") + 1).split("/")[0];
+        }
         des += "&aid=" + yours.innerHTML.split("(")[1].split(")")[0]
             + "&bid=" + against.innerText.split("(")[1].split(")")[0];
         confirm.href = des;
     }
+}
+
+let curr = window.location.href;
+if (curr.includes("&")) {
+
+    const cid = curr.split("&")[curr.split("&").length - 1];
+    const id = cid.slice(cid.indexOf("=") + 1);
+    champions.forEach((item) => {
+        if (item.includes(id)) {
+            const name = item.split(":")[1];
+            const imgName = name.toLowerCase().split(" ").join("");
+            document.getElementById("selectedimg1").src = "images/" + imgName + "_icon.png";
+            document.getElementById("championname1").innerHTML = name + "(" + id + ")";
+        }
+    });
 }
 
 </script>

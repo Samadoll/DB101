@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <head><link rel="stylesheet" type="text/css" href="../public/stylesheets/counter.css"></head>
-    <body id="counterBackground" background="../public/images/counter_bkg.jpg">
+    <head><link rel="stylesheet" type="text/css" href="stylesheets/counter.css"></head>
+    <body id="counterBackground" background="images/counter_bkg.jpg">
 
         <div class="yours">
             <div class="yours_sub">
@@ -11,19 +11,13 @@
             </div>
             <div class="yoursIcon">
 
-                <a href="http://127.0.0.1:63737/champion_filter.html" target = "_blank"> <img id="yoursIcon" src="../images/ashe_icon.png"></a>
+                <a id="yoursHref" href="" target = "_blank"> <img id="yoursIcon" src=""></a>
 
             </div>
             <div class="yoursStat" id="yoursStat">
-                ID: &nbsp;1000<br><br>
-                Name: &nbsp; Ashe<br><br>
-                Position:  &nbsp;Bottom Lane<br><br>
-                Health: &nbsp; 531 &nbsp;
-                Health Regen: &nbsp; 531<br><br>
-                Attack Damage: &nbsp; 531&nbsp;
-                Attack Speed: &nbsp; 531<br><br>
-                Armor: &nbsp; 531&nbsp;
-                Magic Resist: &nbsp; 531
+                <p id="yoursAllInfo">
+
+                </p>
             </div>
 
             
@@ -35,18 +29,12 @@
                 </p>
             </div>
             <div class="counterIcon">
-                <a href="http://127.0.0.1:63737/champion_filter.html" target = "_blank"> <img id="counterIcon" src="../images/jinx_icon.png"></a>
+                <a id="counterHref" href="" target = "_blank"> <img id="counterIcon" src=""></a>
             </div>
             <div class="counterStat" id="counterStat">
-                ID: &nbsp;1000<br><br>
-                Name: &nbsp; Ashe<br><br>
-                Position:  &nbsp;Bottom Lane<br><br>
-                Health: &nbsp; 531 &nbsp;
-                Health Regen: &nbsp; 531<br><br>
-                Attack Damage: &nbsp; 531&nbsp;
-                Attack Speed: &nbsp; 531<br><br>
-                Armor: &nbsp; 531&nbsp;
-                Magic Resist: &nbsp; 531
+                <p id="counterAllInfo">
+
+                </p>
             </div>
 
         </div>
@@ -56,29 +44,30 @@
                 <em>Strategy</em>
             </p>
             <p class="main-text" id = "strategy">
-                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoomnifoodncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
+                Sorry. You have no ways to beat your counter.
             </p>
         </div>
 
 
         <div class="lol_logo">
-        <a href="http://127.0.0.1:63737/champion_filter.html" target = "_blank"> <img src="../images/lol_icon_new.png"></a>
+        <a id="logo" href="" target = "_blank"> <img src="../images/lol_icon_new.png"></a>
 
         </div>
         
         <div class="dropdown">
                 <div id="myDropdown" class="dropdown-content">
-                    <a href="https://www.google.ca/" target = "_blank"> 
-                          <img id="yours-item1" src="../images/demo.png" style="width:100px;height:100px;border:none;">
-                          <p id="item1name" class="itemname">Infinity Edge</p>
-                    </a>
-                    <a href="https://www.google.ca/" target = "_blank"> 
-                          <img id="yours-item2" src="../images/demo.png" style="width:100px;height:100px;border:none">
-                          <p id="item2name" class="itemname">Boots</p>
-                    </a>
+                    <!--<a href="https://www.google.ca/" target = "_blank"> -->
+                          <!--<img id="yours-item1" src="../images/demo.png" style="width:100px;height:100px;border:none;">-->
+                          <!--<p id="item1name" class="itemname">Infinity Edge</p>-->
+                    <!--</a>-->
+                    <!--<a href="https://www.google.ca/" target = "_blank"> -->
+                          <!--<img id="yours-item2" src="../images/demo.png" style="width:100px;height:100px;border:none">-->
+                          <!--<p id="item2name" class="itemname">Boots</p>-->
+                    <!--</a>-->
                 </div>
         </div>
-        
+        <script type="text/javascript" src="javascripts/SendReqWithFn.js"></script>
+        <script type="text/javascript" src="javascripts/counterHelper.js"></script>
         <script>
         
 
