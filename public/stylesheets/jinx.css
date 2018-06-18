@@ -83,8 +83,6 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
-
 
 /* Extra styles for the cancel button */
 .cancelbtn {
@@ -180,23 +178,38 @@ span.psw {
     }
 }
 
+.inner_login_button {
+    background-color: #4CAF50;
+    color: black;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.8;
+}
+
+.inner_login_button:hover{
+    opacity: 1;
+}
+
 .btn{
     position: absolute;
     right: 210px;
-    background-color: aliceblue;
-    color: grey;
+    background-color: white;
+    color: black;
     border: none;
     cursor: pointer;
     width: 9%;
     transition-duration:1s;
-    opacity: .5;
+    opacity: 1;
 }
 
 .btn:hover {
     border-radius: 15px;
     transition-duration:1s;
-    opacity: 1;
-    color:black;
+    
+    color:white;
+    background-color: #4CAF50;
 }
 
 #login_button {
@@ -210,6 +223,16 @@ span.psw {
 }
 
 #backButton {
-    top: 250px;
+    top: 300px;
     padding: 14px 20px;
 }
+
+#against{
+    top:250px;
+    padding: 14px 20px;
+}
+
+#backButton:hover{
+    background-color: red;
+}
+
