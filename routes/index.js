@@ -329,5 +329,21 @@ router.post('/counterPage', (req, res, next) => {
     });
 });
 
+router.post('/manageChamp', (req, res, next) => {
+    console.log("Server::counter(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    gameFacade.manageChamp(data).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
+});
+
 
 module.exports = router;
