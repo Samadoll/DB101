@@ -75,18 +75,14 @@
 .dropdown {
     position: absolute;
     display: inline-block;
-    top: 65%;
-    left: 10%;
-    
+    top: 95%;
+    left: 40%;
 }
 
 .dropdown-content {
     position: relative;
-    min-width: 160px;
     overflow: auto;
     z-index: 1;
-    margin-top: 50px;
-    margin-left: 25px;
     
 }
 
@@ -95,6 +91,7 @@
     padding: 8px 16px;
     text-decoration: none;
     display: block;
+    float: left;
 }
 
 .dropdown a:hover {background-color: none;}
@@ -177,4 +174,13 @@
     position: relative;
     margin-left: 35%;
     margin-top: 10px
+}
+
+.itemname{
+    font-family: sans-serif;
+    font-size: 10pt;
+    text-decoration:none;
+    color:white;
+    line-height: 0px;
+    text-align: center;
 }
