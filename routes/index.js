@@ -252,7 +252,7 @@ router.post('/getChampionInfo', (req, res, next) => {
     const raw = req.body;
     const data = JSON.parse(Object.keys(raw)[0]);
     const cid = data['champID'];
-    gameFacade.showChampionInfo(iid).then((response) => {
+    gameFacade.showChampionInfo(cid).then((response) => {
         res.status(response.code);
         res.json(response.body);
         console.log(response.code);

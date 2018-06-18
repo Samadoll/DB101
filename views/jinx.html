@@ -2,70 +2,62 @@
 <html>
 <head>
 
-<head><link rel="stylesheet" type="text/css" href="stylesheets/jinx.css"></head>
+<head><link rel="stylesheet" type="text/css" href="../stylesheets/jinx.css"></head>
 </head>
-<body id="background" background="images/jinx_bkg.jpg">
+<body id="background" background="../images/jinx_bkg.jpg">
 
-<div class="bg" id="championbackground">
-    <div class="lol_logo">
-        <a href="http://127.0.0.1:63737/champion_filter.html" target = "_blank"> <img src="images/lol_icon_new.png"></a>
-    </div>
-    <div class ="profile_part">
-        <img src="images/jinx_icon.png" class="profile" id = championicon>
-        <div class="name" id="championname">
-           <h2>Jinx &nbsp;</h2>
-        </div>
-        <div class="info" id="championinfo">
-            <p>    
-                ID: &nbsp;1000<br><br>
-                Name: &nbsp; Jinx<br><br>
-                Position:  &nbsp;Bottom Lane &nbsp;<br><br>
-                Health: &nbsp; 531 &nbsp;
-                Health Regen: &nbsp; 531<br><br>
-                Attack Damage: &nbsp; 531&nbsp;
-                Attack Speed: &nbsp; 531<br><br>
-                Armor: &nbsp; 531&nbsp;
-                Magic Resist: &nbsp; 531
-            </p>
-        </div>
-        <div class="item_list">
-                <div class="item" id="item_guardian_angel"> 
-                    <a href="singleitem.html"> 
-                        <img src="images/demo.png" style="width:100px;height:100px;border:none">
-                        <p class="itemname">Guardian Angel</p>
-                        
-                    </a>
-                </div>
-                <div class="item" id="item_infinite_edge"> 
-                    <a href="singleitem.html"> 
-                        <img src="images/demo.png" style="width:100px;height:100px;border:none">
-                        <p class="itemname">Infinite Edge</p>
-                    </a>
-                </div>
-        </div>
-    </div>
+<div class="bg" id="championBackground">
+    <!--<div class="lol_logo">-->
+        <!--<a target = "_blank"> <img src="../images/lol_icon_new.png"></a>-->
+    <!--</div>-->
+    <!--<div id="champProfile" class ="profile_part">-->
+        <!--<img src="../images/jinx_icon.png" class="profile" id = championicon>-->
+        <!--<div class="name" id="championname">-->
+           <!--<h2>Jinx &nbsp;</h2>-->
+        <!--</div>-->
+        <!--<div class="info" id="championinfo">-->
+            <!--<p>    -->
+                <!--ID: &nbsp;1000<br><br>-->
+                <!--Name: &nbsp; Jinx<br><br>-->
+                <!--Position:  &nbsp;Bottom Lane &nbsp;<br><br>-->
+                <!--Health: &nbsp; 531 &nbsp;-->
+                <!--Health Regen: &nbsp; 531<br><br>-->
+                <!--Attack Damage: &nbsp; 531&nbsp;-->
+                <!--Attack Speed: &nbsp; 531<br><br>-->
+                <!--Armor: &nbsp; 531&nbsp;-->
+                <!--Magic Resist: &nbsp; 531-->
+            <!--</p>-->
+        <!--</div>-->
+        <!--<div class="item_list">-->
+                <!--<div class="item" id="item_guardian_angel"> -->
+                    <!--<a href="singleitem.html"> -->
+                        <!--<img src="../images/demo.png" style="width:100px;height:100px;border:none">-->
+                        <!--<p class="itemname">Guardian Angel</p>-->
+                        <!---->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="item" id="item_infinite_edge"> -->
+                    <!--<a href="singleitem.html"> -->
+                        <!--<img src="../images/demo.png" style="width:100px;height:100px;border:none">-->
+                        <!--<p class="itemname">Infinite Edge</p>-->
+                    <!--</a>-->
+                <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
 </div>
 
     
 <div class="btns">
-    <button class="btn" id="saveButton" onclick="myFunction4()">Save This Champion</button> 
+    <button class="btn" id="saveButton" onclick="saveMyChamp()">Save This Champion</button>
     <p id="saved"></p>    
     <button class="btn" id="login_button" onclick="document.getElementById('id01').style.display='block'">Login</button>
     <button class="btn" id="backButton" onclick="goBack();">Go Back</button>
 </div>
-    
 
+<script type="text/javascript" src="../javascripts/SendReqWithFn.js"></script>
+<script type="text/javascript" src="../javascripts/singleChampion.js"></script>
 <script>
-}
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}   
 
 var modal = document.getElementById('id01');
 
@@ -74,11 +66,16 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
+};
 
-function myFunction4() {
-  document.getElementById("saved").innerHTML = "Champion Saved Successfully";
-}
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
 
 function goBack() {
     window.history.back();
