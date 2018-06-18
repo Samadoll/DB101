@@ -57,27 +57,27 @@ router.get('/counterSelection&cid=:id', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/counter_b.html'));
 });
 
-router.get('/getItemInfo=:id', (req, res, next) => {
-    console.log("Server::getItemInfo(..)");
-    const itemID = req.params.id;
-    //Test
-    //gameFacade.saveChampion(1234, 154).then((response) => {
-    gameFacade.showItemInfo(itemID).then((response) => {
-        res.status(response.code);
-        res.json(response.body);
-        console.log(response.code);
-        console.log(response.body.result);
-    }).catch((err) => {
-        res.status(err.code);
-        res.json(err.body);
-        console.log(err.code);
-    });
-});
+// router.get('/getItemInfo=:id', (req, res, next) => {
+//     console.log("Server::getItemInfo(..)");
+//     const itemID = req.params.id;
+//     //Test
+//     //gameFacade.saveChampion(1234, 154).then((response) => {
+//     gameFacade.showItemInfo(itemID).then((response) => {
+//         res.status(response.code);
+//         res.json(response.body);
+//         console.log(response.code);
+//         console.log(response.body.result);
+//     }).catch((err) => {
+//         res.status(err.code);
+//         res.json(err.body);
+//         console.log(err.code);
+//     });
+// });
 
-// TODO: change the ids in items2.html
-router.get('/itemInfo/:id/:name/:stat/:extra', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../views/item.html'));
-});
+
+// router.get('/itemInfo/:id/:name/:stat/:extra', (req, res, next) => {
+//     res.sendFile(path.join(__dirname, '../views/item(omitted).html'));
+// });
 
 router.post('/cancelAccount', (req, res, next) => {
     console.log("Server::DeleteAccount(..)");
@@ -189,11 +189,7 @@ router.get('/update/:game/:kind', (req, res, next) => {
         gameFacade.updateItems(url, gameID);
         console.log("Server::updateItems() - " + gameID);
     }
-
-
 });
-
-
 
 
 // TODO: Test below using new Logic
@@ -218,12 +214,11 @@ router.post('/SettingsPage', (req, res, next) => {
     });
 });
 
-// TODO: Test Passed above
-router.get('/testSingleItem/:id', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../views/itemTest.html'));
+router.get('/getItemInfo/:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/item.html'));
 });
 
-router.post('/testSingleItemPage', (req, res, next) => {
+router.post('/getItemInfo', (req, res, next) => {
     console.log("Server::getItemInfo(..)");
     const raw = req.body;
     const data = JSON.parse(Object.keys(raw)[0]);
@@ -240,6 +235,7 @@ router.post('/testSingleItemPage', (req, res, next) => {
     });
 });
 
+// TODO: Test Passed above
 // TODO: Finished Implementing above.
 router.get('/getChampionInfo/:id', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/jinx.html'));
@@ -255,6 +251,41 @@ router.post('/getChampionInfo', (req, res, next) => {
     const data = JSON.parse(Object.keys(raw)[0]);
     const cid = data['champID'];
     gameFacade.showChampionInfo(cid).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
+});
+
+router.post('/getSuggestItems', (req, res, next) => {
+    console.log("Server::getSuggestItems(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    const cid = data['champID'];
+    gameFacade.suggestCI(cid).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
+});
+
+router.post('/saveMyChampion', (req, res, next) => {
+    console.log("Server::saveMyChampion(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    const cid = data['cid'];
+    const aid = data['aid'];
+    gameFacade.saveChampion(aid, cid).then((response) => {
         res.status(response.code);
         res.json(response.body);
         console.log(response.code);

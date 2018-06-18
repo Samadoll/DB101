@@ -1,3 +1,6 @@
+let current = window.location.href;
+let splitUrl = current.split("/");
+const accountID = splitUrl[splitUrl.length - 1];
 function addChampion(aChampion) {
 
     const champID = aChampion["champID"];
@@ -8,15 +11,12 @@ function addChampion(aChampion) {
     newDiv.className = "filterDiv " + type + " show";
     newDiv.id = champID;
     newDiv.innerHTML =
-        '<a href=' + lowercaseChamp + '.html>\n' +
+        '<a href=../getChampionInfo=' + accountID + "/" + champID + '>\n' +
         '<img class="champimg" alt="' + champName + '" src="../images/' + lowercaseChamp + '_icon.png">\n' +
         '<p class="champname">' + champName + '</p>\n' +
         '</a>';
     document.getElementById("allChampions").appendChild(newDiv);
 }
-let current = window.location.href;
-let splitUrl = current.split("/");
-const accountID = splitUrl[splitUrl.length - 1];
 function buildUserSettingHTML(data) {
     const id = data["id"];
     const userID = data["userID"];

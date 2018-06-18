@@ -200,7 +200,7 @@ for (var i = 0; i < btns.length; i++) {
         window.history.back();
     });
     function getLinkWithID(id) {
-        sendReq("GET", "/testSingleItem/" + id, "/testSingleItem/" + id, "");
+        sendReq("GET", "/getItemInfo/" + id, "/getItemInfo/" + id, "");
     }
 
     function buildItemsHTML(item) {
