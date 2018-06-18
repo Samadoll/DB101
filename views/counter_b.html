@@ -152,9 +152,9 @@ function addChampion(champion) {
         const type = champion.split(":")[2];
         const lower = name.toLowerCase();
         let div = document.createElement("div");
-        div.className = "filterDiv " + type;
+        div.className = "filterDiv " + type + " show";
         div.innerHTML =
-            '<img id="' + id +'" src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction(this);">' + '<p>' + name + '</p>';
+            '<img id="' + name + '(' + id + ')' +'" src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction(this);">' + '<p>' + name + '</p>';
         document.getElementById("main").appendChild(div);
     }
     let champions = ["22:Ashe:marksman", "222:Jinx:marksman", "40:Janna:support mage", "117:Lulu:support", "42:Corki:marksman", "133:Quinn:assassin", "164:Camille:fighter tank", "60:Elise:mage fighter", "154:Zac:fighter tank", "14:Sion:tank"];
@@ -167,9 +167,9 @@ function addChampion2(champion) {
         const type = champion.split(":")[2];
         const lower = name.toLowerCase();
         let div = document.createElement("div");
-        div.className = "filterDiv2 " + type;
+        div.className = "filterDiv2 " + type + " show";
         div.innerHTML =
-            '<img id="' + id +'" src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction2(this);">' + '<p>' + name + '</p>';
+            '<img id="' + name + '(' + id + ')' +'" src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction2(this);">' + '<p>' + name + '</p>';
         document.getElementById("main-right").appendChild(div);
     }
     champions.forEach(addChampion2);
@@ -201,7 +201,8 @@ function confirm(){
         let des = "counterPage";
         if (current.includes("="))
             des += "=" + current.slice(current.indexOf("=") + 1).split("/")[0];
-        des += "&aid=" + yours.innerHTML + "&bid=" + against.innerText;
+        des += "&aid=" + yours.innerHTML.split("(")[1].split(")")[0]
+            + "&bid=" + against.innerText.split("(")[1].split(")")[0];
         confirm.href = des;
     }
 }
