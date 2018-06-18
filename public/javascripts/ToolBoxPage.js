@@ -11,9 +11,10 @@ if (current.indexOf("=") !== -1) {
         const accID = {};
         accID['accID'] = account;
         let json = JSON.stringify(accID);
-        // sendReq("POST", "/getAccountInfo", "settings", json);
-        const testPage = "/testSettings/" +  account;
+        const testPage = "/Settings/" +  account;
         sendReq("GET", testPage, testPage, json);
     });
     sign.href = "toolbox";
+    document.getElementById("championInside").href = "champions=" + account;
+    document.getElementById("counterInside").href = "counterSelection=" + account;
 }

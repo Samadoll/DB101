@@ -6,7 +6,7 @@ function sendReq(action, site, des, json) {
         xmlReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xmlReq.onload = function () {
             if (this.status === 200) {
-                alert("Succeeded!");
+                // alert("Succeeded!");
                 fulfill(this.response);
                 console.log("final");
                 if (des === "settings") {

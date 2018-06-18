@@ -29,9 +29,9 @@ router.get('/items', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/items2.html'));
 });
 
-router.get('/settings/:uid/champion=:champ', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../views/accountinfo.html'));
-});
+// router.get('/settings/:uid/champion=:champ', (req, res, next) => {
+//     res.sendFile(path.join(__dirname, '../views/accountinfo.html'));
+// });
 
 router.get('/settings/:id/DeleteMyAccount', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/accountcancellation.html'));
@@ -41,8 +41,8 @@ router.get('/champions', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/champion_filter.html'));
 });
 
-router.get('/jinx', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../views/jinx.html'))
+router.get('/champions=:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/champion_filter.html'));
 });
 
 router.get('/item', (req, res, next) => {
@@ -53,27 +53,39 @@ router.get('/counterSelection', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/counter_b.html'));
 });
 
-router.get('/getItemInfo=:id', (req, res, next) => {
-    console.log("Server::getItemInfo(..)");
-    const itemID = req.params.id;
-    //Test
-    //gameFacade.saveChampion(1234, 154).then((response) => {
-    gameFacade.showItemInfo(itemID).then((response) => {
-        res.status(response.code);
-        res.json(response.body);
-        console.log(response.code);
-        console.log(response.body.result);
-    }).catch((err) => {
-        res.status(err.code);
-        res.json(err.body);
-        console.log(err.code);
-    });
+router.get('/counterSelection&cid=:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/counter_b.html'));
 });
 
-// TODO: change the ids in items2.html
-router.get('/itemInfo/:id/:name/:stat/:extra', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../views/item.html'));
+router.get('/counterSelection=:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/counter_b.html'));
 });
+
+router.get('/counterSelection=id&cid=:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/counter_b.html'));
+});
+
+// router.get('/getItemInfo=:id', (req, res, next) => {
+//     console.log("Server::getItemInfo(..)");
+//     const itemID = req.params.id;
+//     //Test
+//     //gameFacade.saveChampion(1234, 154).then((response) => {
+//     gameFacade.showItemInfo(itemID).then((response) => {
+//         res.status(response.code);
+//         res.json(response.body);
+//         console.log(response.code);
+//         console.log(response.body.result);
+//     }).catch((err) => {
+//         res.status(err.code);
+//         res.json(err.body);
+//         console.log(err.code);
+//     });
+// });
+
+
+// router.get('/itemInfo/:id/:name/:stat/:extra', (req, res, next) => {
+//     res.sendFile(path.join(__dirname, '../views/item(omitted).html'));
+// });
 
 router.post('/cancelAccount', (req, res, next) => {
     console.log("Server::DeleteAccount(..)");
@@ -116,22 +128,22 @@ router.get('/settings/:id/ResetPassword', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/resetpwd.html'));
 });
 
-router.post('/getAccountInfo', (req, res, next) => {
-    console.log("Server::getAccountInfo(..)");
-    const raw = req.body;
-    const data = JSON.parse(Object.keys(raw)[0]);
-    const accid = data['accID'];
-    gameFacade.getUserInfo(accid).then((response) => {
-        res.status(response.code);
-        res.json(response.body);
-        console.log(response.code);
-        console.log(response.body.result);
-    }).catch((err) => {
-        res.status(err.code);
-        res.json(err.body);
-        console.log(err.code);
-    });
-});
+// router.post('/getAccountInfo', (req, res, next) => {
+//     console.log("Server::getAccountInfo(..)");
+//     const raw = req.body;
+//     const data = JSON.parse(Object.keys(raw)[0]);
+//     const accid = data['accID'];
+//     gameFacade.getUserInfo(accid).then((response) => {
+//         res.status(response.code);
+//         res.json(response.body);
+//         console.log(response.code);
+//         console.log(response.body.result);
+//     }).catch((err) => {
+//         res.status(err.code);
+//         res.json(err.body);
+//         console.log(err.code);
+//     });
+// });
 
 router.post('/signup', (req, res, next) => {
     console.log("Server::SignUp(..)");
@@ -185,18 +197,15 @@ router.get('/update/:game/:kind', (req, res, next) => {
         gameFacade.updateItems(url, gameID);
         console.log("Server::updateItems() - " + gameID);
     }
-
-
 });
 
 
-
-// TODO: Test below
-router.get('/testSettings/:id', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../views/accountinfoTest.html'));
+// TODO: Test below using new Logic
+router.get('/Settings/:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/accountinfo.html'));
 });
 
-router.post('/testSettingsPage', (req, res, next) => {
+router.post('/SettingsPage', (req, res, next) => {
     console.log("Server::getAccountInfo(..)");
     const raw = req.body;
     const data = JSON.parse(Object.keys(raw)[0]);
@@ -212,5 +221,113 @@ router.post('/testSettingsPage', (req, res, next) => {
         console.log(err.code);
     });
 });
+
+router.get('/getItemInfo/:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/item.html'));
+});
+
+router.post('/getItemInfo', (req, res, next) => {
+    console.log("Server::getItemInfo(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    const iid = data['itemID'];
+    gameFacade.showItemInfo(iid).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
+});
+
+router.get('/getChampionInfo/:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/jinx.html'));
+});
+
+router.get('/getChampionInfo=:aid/:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/jinx.html'));
+});
+
+router.post('/getChampionInfo', (req, res, next) => {
+    console.log("Server::getChampionInfo(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    const cid = data['champID'];
+    gameFacade.showChampionInfo(cid).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
+});
+
+router.post('/getSuggestItems', (req, res, next) => {
+    console.log("Server::getSuggestItems(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    const cid = data['champID'];
+    gameFacade.suggestCI(cid).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
+});
+
+router.post('/saveMyChampion', (req, res, next) => {
+    console.log("Server::saveMyChampion(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    const cid = data['cid'];
+    const aid = data['aid'];
+    gameFacade.saveChampion(aid, cid).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
+});
+
+router.get("/counterPage&aid=:aid&bid=:bid", (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/counter.html'));
+});
+
+router.get("/counterPage=:id&aid=:aid&bid=:bid", (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/counter.html'));
+});
+
+router.post('/counterPage', (req, res, next) => {
+    console.log("Server::counter(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    const champA = data['champA'];
+    const champB = data['champB'];
+    gameFacade.suggestAgainst(champA, champB).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
+});
+
 
 module.exports = router;

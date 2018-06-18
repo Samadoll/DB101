@@ -17,6 +17,7 @@ db.connect(function (err) {
     console.log('Database connected');
 });
 
+
 //SetUp
 let sql = fs.readFileSync('glhf.sql').toString();
 db.query(sql, function (err, result) {

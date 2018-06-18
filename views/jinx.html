@@ -1,85 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-<head><link rel="stylesheet" type="text/css" href="/DB101/public/stylesheets/jinx.css"></head>
-</head>
-<body id="background" background="/DB101/public/images/jinx_bkg.jpg">
 
-<div class="bg" id="championbackground">
-    <div class="lol_logo">
-        <a href="http://127.0.0.1:63737/champion_filter.html" target = "_blank"> <img src="/DB101/public/images/lol_icon_new.png"></a>
-    </div>
-    <div class ="profile_part">
-        <img src="/DB101/public/images/jinx_icon.png" class="profile" id = championicon>
-        <div class="name" id="championname">
-           <h2>Jinx &nbsp;</h2>
-        </div>
-        <div class="info" id="championinfo">
-            <p>    
-                ID: &nbsp;1000<br><br>
-                Name: &nbsp; Jinx<br><br>
-                Position:  &nbsp;Bottom Lane &nbsp;<br><br>
-                Health: &nbsp; 531 &nbsp;
-                Health Regen: &nbsp; 531<br><br>
-                Attack Damage: &nbsp; 531&nbsp;
-                Attack Speed: &nbsp; 531<br><br>
-                Armor: &nbsp; 531&nbsp;
-                Magic Resist: &nbsp; 531
-            </p>
-        </div>
-        <div class="filter">
-            <div id="myBtnContainer">
-                <button class="btn active" onclick="filterSelection('all')"> All Relative</button>
-                <button class="btn" onclick="filterSelection('counter')"> Counter</button>
-                <button class="btn" onclick="filterSelection('against')"> Against</button>
-                <button class="btn" onclick="filterSelection('item')"> Items</button>
-            </div>
-            
-            <div class="champion_list">
-                <div class="filterDiv counter" id="champion_ashe"> 
-                    <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" style="width:100px;height:100px;border:none"></a>
-                    <a href="https://www.google.ca/" target="_blank" style="color: aliceblue; text-decoration: none"> Ashe </a> </div>
-                <div class="filterDiv counter" id="champion_jinx"> 
-                    <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" style="width:100px;height:100px;border:none"></a>
-                    <a href="https://www.google.ca/" target="_blank" style="color: aliceblue; text-decoration: none"> Jinx </a> </div>
-                <div class="filterDiv against" id="champion_janna"> 
-                    <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" style="width:100px;height:100px;border:none"></a>
-                    <a href="https://www.google.ca/" target="_blank" style="color: aliceblue; text-decoration: none"> Janna </a> </div>
-                <div class="filterDiv against" id="champion_lulu"> 
-                    <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" alt="link_lulu" style="width:100px;height:100px;border:none"></a>
-                    <a href="https://www.google.ca/" target="_blank" style="color: aliceblue; text-decoration: none"> Lulu </a> </div>
-                <div class="filterDiv item" id="item_guardian_angel"> 
-                    <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" style="width:100px;height:100px;border:none"></a>
-                    <a href="https://www.google.ca/" target="_blank" style="color: aliceblue; text-decoration: none"> Guardian Angel </a> </div>
-                <div class="filterDiv item" id="item_infinite_edge"> 
-                    <a href="https://www.google.ca/" target = "_blank"> <img src="/DB101/public/images/demo.png" style="width:100px;height:100px;border:none"></a>
-                    <a href="https://www.google.ca/" target="_blank" style="color: aliceblue; text-decoration: none"> Infinite Edge </a> </div>
-            </div>
-        </div>
-    </div>
-    <div class="vid" id="jinx_vid">
-        <iframe width="500" height="290" src="https://www.youtube.com/embed/KN3OYwP8nHE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
+<head><link rel="stylesheet" type="text/css" href="../stylesheets/jinx.css"></head>
+</head>
+<body id="background" background="../images/jinx_bkg.jpg">
+
+<div class="bg" id="championBackground">
+    <!--<div class="lol_logo">-->
+        <!--<a target = "_blank"> <img src="../images/lol_icon_new.png"></a>-->
+    <!--</div>-->
+    <!--<div id="champProfile" class ="profile_part">-->
+        <!--<img src="../images/jinx_icon.png" class="profile" id = championicon>-->
+        <!--<div class="name" id="championname">-->
+           <!--<h2>Jinx &nbsp;</h2>-->
+        <!--</div>-->
+        <!--<div class="info" id="championinfo">-->
+            <!--<p>    -->
+                <!--ID: &nbsp;1000<br><br>-->
+                <!--Name: &nbsp; Jinx<br><br>-->
+                <!--Position:  &nbsp;Bottom Lane &nbsp;<br><br>-->
+                <!--Health: &nbsp; 531 &nbsp;-->
+                <!--Health Regen: &nbsp; 531<br><br>-->
+                <!--Attack Damage: &nbsp; 531&nbsp;-->
+                <!--Attack Speed: &nbsp; 531<br><br>-->
+                <!--Armor: &nbsp; 531&nbsp;-->
+                <!--Magic Resist: &nbsp; 531-->
+            <!--</p>-->
+        <!--</div>-->
+        <!--<div class="item_list">-->
+                <!--<div class="item" id="item_guardian_angel"> -->
+                    <!--<a href="singleitem.html"> -->
+                        <!--<img src="../images/demo.png" style="width:100px;height:100px;border:none">-->
+                        <!--<p class="itemname">Guardian Angel</p>-->
+                        <!---->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="item" id="item_infinite_edge"> -->
+                    <!--<a href="singleitem.html"> -->
+                        <!--<img src="../images/demo.png" style="width:100px;height:100px;border:none">-->
+                        <!--<p class="itemname">Infinite Edge</p>-->
+                    <!--</a>-->
+                <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
 </div>
 
-<button class="login_button" onclick="document.getElementById('id01').style.display='block'">Login</button>
+    
+<div class="btns">
 
+    <button class="btn" id="saveButton" onclick="saveMyChamp()">Save This Champion</button>
+    <p id="saved"></p>    
+    <button class="btn" id="login_button" onclick="document.getElementById('id01').style.display='block'">Login</button>
+    <button class="btn" id="against" onclick="gotoCounter()">Play With It</button>
+    <button class="btn" id="backButton" onclick="goBack();">Go Back</button>
+</div>
+    
 <div id="id01" class="modal">
   
   <form class="modal-content animate" action="/action_page.php">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="/DB101/public/images/lol_icon_new.png" alt="Avatar" class="avatar">
+      <img src="../images/lol_icon_new.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <input id="uname" value="" type="text" placeholder="Enter Username" name="uname" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input id="psw" value="" type="password" placeholder="Enter Password" name="psw" required>
         
-      <button class="inner_login_button" type="submit">Login</button>
+      <button class="inner_login_button" type="button" id="loginButton">Login</button>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
@@ -91,94 +84,11 @@
     </div>
   </form>
 </div> 
-    
-<button class="sign_up" onclick="document.getElementById('id01').style.display='block'">Sign up</button>
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="/action_page.php">
-    <div class="container">
-      <h1>Sign Up</h1>
-      <p>Please fill in this form to create an account.</p>
-      <hr>
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-
-      <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-      
-      <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label>
-
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
-      <div class="clearfix">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn">Sign up</button>
-      </div>
-    </div>
-  </form>
-</div>
-
-<button class="saveButton" onclick="myFunction4()">Save This Champion</button> 
-<p id="saved"></p>    
-
-<button class="backButton" onclick="myFunction5()">Go Back</button> 
-
+<script type="text/javascript" src="../javascripts/SendReqWithFn.js"></script>
+<script type="text/javascript" src="../javascripts/SendReq.js"></script>
+<script type="text/javascript" src="../javascripts/singleChampion.js"></script>
 <script>
-filterSelection("all")
-function filterSelection(c) {
-  var x, i;
-  x = document.getElementsByClassName("filterDiv");
-  if (c == "all") c = "";
-  for (i = 0; i < x.length; i++) {
-    w3RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-  }
-}
-
-function w3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-  }
-}
-
-function w3RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);     
-    }
-  }
-  element.className = arr1.join(" ");
-}
-
-// Add active class to the current button (highlight it)
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}   
 
 var modal = document.getElementById('id01');
 
@@ -187,12 +97,26 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
+};
 
-function myFunction4() {
-  document.getElementById("saved").innerHTML = "Champion Saved Successfully";
-}
+var modal = document.getElementById('id01');
 
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
+
+function goBack() {
+    let prev = "../champions";
+    let current = window.location.href;
+    if (current.includes("=")) {
+        let accountID = current.slice(current.indexOf("=") + 1).split("/")[0];
+        prev += "=" + accountID;
+    }
+    location.href = prev;
+}
 </script>
 </body>
 </html>
