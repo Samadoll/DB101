@@ -1,10 +1,15 @@
-Authors:
+# DB101 - A Strategies Build Guide For Games. (version: 1.0)
+# Authors
 
 Jiawei Tan  : Backend and frontend's JavaScript Control logic.
+
 Yan Wang    : Implementation of Connection to MySQL.
+
 Boyang Zhang: UI design, HTML/CSS coding.
+
 Ang Li      : UI design and HTML/CSS coding for Champion Pages
 
+# NOTE
 
 use "npm install" before start.
 
