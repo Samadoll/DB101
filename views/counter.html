@@ -27,8 +27,7 @@
             </div>
 
             <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn" id ="yoursItem" style="width: 200px">Item</button>
-                  <div id="myDropdown" class="dropdown-content">
+                <div id="myDropdown" class="dropdown-content">
                       <a href="https://www.google.ca/" target = "_blank"> <img id="yours-item1" src="../images/demo.png" style="width:100px;height:100px;border:none;"></a>
                       <a href="https://www.google.ca/" target = "_blank"> <img id="yours-item2" src="../images/demo.png" style="width:100px;height:100px;border:none"></a>
                 </div>
@@ -56,8 +55,7 @@
             </div>
 
             <div class="dropdown_counter">
-                <button onclick="myFunctionCounter()" class="dropbtn_counter" id ="counterItem" style="width: 200px">Item</button>
-                  <div id="myDropdownCounter" class="dropdown-content-counter">
+                <div id="myDropdownCounter" class="dropdown-content-counter">
                       <a href="https://www.google.ca/" target = "_blank"> <img id="counter-item1" src="../images/demo.png" style="width:100px;height:100px;border:none;"></a>
                       <a href="https://www.google.ca/" target = "_blank"> <img id="counter-item2" src="../images/demo.png" style="width:100px;height:100px;border:none"></a>
                 </div>
@@ -80,11 +78,7 @@
         </div>
         
         <script>
-        /* When the user clicks on the button, 
-        toggle between hiding and showing the dropdown content */
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
+        
 
         // Close the dropdown if the user clicks outside of it
         window.onclick = function(event) {
@@ -101,9 +95,6 @@
           }
         }
         
-         function myFunctionCounter() {
-            document.getElementById("myDropdownCounter").classList.toggle("show");
-         }
 
         // Close the dropdown if the user clicks outside of it
         window.onclick = function(event) {

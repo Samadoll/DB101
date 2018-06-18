@@ -81,7 +81,6 @@
 }
 
 .dropdown-content {
-    display: none;
     position: relative;
     min-width: 160px;
     overflow: auto;
@@ -125,7 +124,6 @@
 }
 
 .dropdown-content-counter {
-    display: none;
     position: absolute;
     min-width: 160px;
     overflow: auto;
@@ -165,12 +163,18 @@
     left: 35%;
     right: 35%;
     top: 20%;
-    
+    border: 1px dotted;
+    border-left-color: white;
+    border-right-color: white;
+    border-bottom: 0px;
+    border-top: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .lol_logo img{
     width: 30%;
     position: relative;
-    margin-left: 575px;
+    margin-left: 35%;
     margin-top: 10px
 }
