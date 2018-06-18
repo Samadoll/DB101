@@ -21,6 +21,9 @@ class GameBuildFacade {
     // TODO: demo is to save to a json file, replace them later
     // TODO: delete accs.json and users.json later
     register(userID, accID, name, password) {
+        if(password.length < 3){
+            return Promise.reject({code: 400, body: {error: "Password length is less than 3."}});
+        }
         let signupUser = "USE `GLHF`; INSERT INTO user(id, name) VALUES (";
         signupUser += userID + ", '" + name + "') ON DUPLICATE KEY UPDATE name = VALUES(name);";
         console.log(signupUser);
@@ -365,6 +368,26 @@ class GameBuildFacade {
             });
         });
     }
+
+    manageChamp(data){
+        return new Promise((resolve, reject) => {
+            let manage = "USE `GLHF`; SELECT " + data.choice + " FROM Champion";
+            if(data.type){
+                manage += "WHERE type like '%" + data.type + "%'"
+            }
+            console.log(manage);
+            db.query(manage, function (err, result) {
+                if (err) throw err;
+                if (result[1][0]) {
+                    resolve({code: 200, body: {result: result[1]}});
+                }
+                else {
+                    reject({code: 400, body: {error: "Nothing is found."}});
+                }
+            });
+        });
+    }
+
 
     // TODO: show all users from Database
     allUsers() {

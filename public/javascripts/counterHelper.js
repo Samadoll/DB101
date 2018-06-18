@@ -63,7 +63,7 @@ function buildSuggestion(data) {
             '<img id="yours-item' + id + '" src="../images/' + imgName + '.png" style="width:100px;height:100px;border:none;">\n' +
             '<p id="' + id + '" class="itemname">' + name + '</p>\n' +
             '</a>';
-        document.getElementById("myDropdown").innerHTML = innerContent;
+        document.getElementById("myDropdown").innerHTML += innerContent;
     });
 }
 

@@ -23,6 +23,7 @@ CREATE TABLE `Account` (
   id INT PRIMARY KEY,
   password CHAR(20),
   userID INT,
+  CHECK (LENGTH(password) >= 3),
   FOREIGN KEY (userID) REFERENCES User(id)
 );
 
