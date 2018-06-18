@@ -210,9 +210,30 @@ class GameBuildFacade {
         return Promise.reject(null);
     }
 
-    // TODO: users own champion
-    ownChampion(accountID, gameID, ChampionID) {
-        return Promise.reject(null);
+    saveChampion(accountID, championID) {
+        return new Promise((resolve, reject) => {
+            let checkDuplicate = "USE `GLHF`; SELECT COUNT(*) FROM AccOwnChamp WHERE accID = " + accountID + " AND champID = " + championID;
+            console.log(checkDuplicate);
+            db.query(checkDuplicate, function (err, result) {
+                if (err) throw err;
+                if (result[1][0]['COUNT(*)'] === 1) {
+                    reject({code: 400, body: {error: "You've already owned this champion."}});
+                } else {
+                    let save = "USE `GLHF`; INSERT INTO `AccOwnChamp` VALUES (" + accountID + ", " + championID + ")";
+                    console.log(save);
+                    db.query(save, function (err, result) {
+                        if (err) throw err;
+                        console.log(result);
+                        if (result[1].affectedRows === 0) {
+                            reject({code: 400, body: {error: "."}});
+                        } else {
+                            resolve({code: 200, body: {result: "Succeeded."}});
+                        }
+                    });
+                }
+            });
+
+        })
     }
 
 
@@ -236,9 +257,20 @@ class GameBuildFacade {
         return Promise.reject(null);
     }
 
-    // TODO: show info of a Champion
-    showChampionInfo(id, gameID) {
-        return Promise.reject(null);
+    showChampionInfo(id) {
+        return new Promise((resolve, reject) => {
+            let champInfo = "USE `GLHF`; SELECT id, name, lane, type, stat FROM champion WHERE id = " + id ;
+            console.log(champInfo);
+            db.query(champInfo, function (err, result) {
+                if (err) throw err;
+                if (result[1][0]) {
+                    resolve({code: 200, body: {result: result[1][0]}});
+                }
+                else {
+                    reject({code: 400, body: {error: "Nothing is found."}});
+                }
+            });
+        });
     }
 
     // TODO: add Item to Database via api
@@ -256,24 +288,37 @@ class GameBuildFacade {
         return Promise.reject(null);
     }
 
-    // TODO: show info of an Item
     showItemInfo(id) {
-        const data = fs.readFileSync("public/javascripts/items.json", "utf-8");
-        const items = JSON.parse(data);
-        console.log(items[id]);
-        let name = items[id][0].replace(/\s+/g, "-");
-        let result = id + "/" + name + "/";
-        let stat = "";
-        if (items[id][1].includes(",")) {
-            stat = items[id][1].split(", ").join("&").replace(/\s+/g, "-").replace(/\+/g, "_").replace(/\%/g, "PERCENTAGE");
-        } else {
-            stat = items[id][1].replace(/\s+/g, "-").replace(/\+/g, "_").replace(/\%/g, "PERCENTAGE");
-        }
-        result += stat + "/";
-        let extra = items[id][2].replace(/\s+/g, "-").replace(/\+/g, "_").replace(/\%/g, "PERCENTAGE");
-        result += extra;
-        console.log(result);
-        return Promise.resolve({code: 200, body: {result: result}});
+        return new Promise((resolve, reject) => {
+            let itemInfo = "USE `GLHF`; SELECT id, name, stat, extraInfo FROM item WHERE id = " + id;
+            console.log(itemInfo);
+            db.query(itemInfo, function (err, result) {
+                if (err) throw err;
+                if (result[1][0]) {
+                    resolve({code: 200, body: {result: result[1][0]}});
+                }
+                else {
+                    reject({code: 400, body: {error: "Nothing is found."}});
+                }
+            });
+        });
+
+        // const data = fs.readFileSync("public/javascripts/items.json", "utf-8");
+        // const items = JSON.parse(data);
+        // console.log(items[id]);
+        // let name = items[id][0].replace(/\s+/g, "-");
+        // let result = id + "/" + name + "/";
+        // let stat = "";
+        // if (items[id][1].includes(",")) {
+        //     stat = items[id][1].split(", ").join("&").replace(/\s+/g, "-").replace(/\+/g, "_").replace(/\%/g, "PERCENTAGE");
+        // } else {
+        //     stat = items[id][1].replace(/\s+/g, "-").replace(/\+/g, "_").replace(/\%/g, "PERCENTAGE");
+        // }
+        // result += stat + "/";
+        // let extra = items[id][2].replace(/\s+/g, "-").replace(/\+/g, "_").replace(/\%/g, "PERCENTAGE");
+        // result += extra;
+        // console.log(result);
+        // return Promise.resolve({code: 200, body: {result: result}});
     }
 
     // TODO: update all Champions in Database via api
@@ -286,14 +331,39 @@ class GameBuildFacade {
         return Promise.reject(null);
     }
 
-    // TODO: retrieve suggested items based on one champion
     suggestCI(championID) {
-        return Promise.reject(null);
+        return new Promise((resolve, reject) => {
+            let suggestItem = "USE `GLHF`; SELECT Item.id, Item.name FROM Suggest JOIN Item ON Suggest.itemID = Item.id WHERE Suggest.champID = " + championID;
+            console.log(suggestItem);
+            db.query(suggestItem, function (err, result) {
+                if (err) throw err;
+                if (result[1][0]) {
+                    resolve({code: 200, body: {result: result[1]}});
+                }
+                else {
+                    reject({code: 400, body: {error: "Nothing is found."}});
+                }
+            });
+        });
     }
 
-    // TODO: retrieve strategy and suggested items based on two champions
     suggestAgainst(championA, championB) {
-        return Promise.reject(null);
+        return new Promise((resolve, reject) => {
+            let suggestIS = "USE `GLHF`; SELECT AgainstSuggest.itemID, Item.name, Against.Strategy FROM AgainstSuggest " +
+                "JOIN Item ON AgainstSuggest.itemID = item.id " +
+                "JOIN Against ON AgainstSuggest.champ0ID = Against.champ0ID AND AgainstSuggest.champ1ID = Against.champ1ID " +
+                "WHERE AgainstSuggest.champ0ID = " + championA + " AND AgainstSuggest.champ1ID = " + championB;
+            console.log(suggestIS);
+            db.query(suggestIS, function (err, result) {
+                if (err) throw err;
+                if (result[1][0]) {
+                    resolve({code: 200, body: {result: result[1]}});
+                }
+                else {
+                    reject({code: 400, body: {error: "Nothing is found."}});
+                }
+            });
+        });
     }
 
     // TODO: show all users from Database
