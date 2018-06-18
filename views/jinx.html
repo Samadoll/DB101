@@ -53,7 +53,7 @@
     <button class="btn" id="saveButton" onclick="saveMyChamp()">Save This Champion</button>
     <p id="saved"></p>    
     <button class="btn" id="login_button" onclick="document.getElementById('id01').style.display='block'">Login</button>
-    <button class="btn" id="against" onclick="">Play With</button>
+    <button class="btn" id="against" onclick="gotoCounter()">Play With It</button>
     <button class="btn" id="backButton" onclick="goBack();">Go Back</button>
 </div>
     
@@ -62,17 +62,17 @@
   <form class="modal-content animate" action="/action_page.php">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="images/lol_icon_new.png" alt="Avatar" class="avatar">
+      <img src="../images/lol_icon_new.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <input id="uname" value="" type="text" placeholder="Enter Username" name="uname" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input id="psw" value="" type="password" placeholder="Enter Password" name="psw" required>
         
-      <button class="inner_login_button" type="submit">Login</button>
+      <button class="inner_login_button" type="button" id="loginButton">Login</button>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
@@ -86,6 +86,7 @@
 </div> 
 
 <script type="text/javascript" src="../javascripts/SendReqWithFn.js"></script>
+<script type="text/javascript" src="../javascripts/SendReq.js"></script>
 <script type="text/javascript" src="../javascripts/singleChampion.js"></script>
 <script>
 
@@ -108,7 +109,13 @@ window.onclick = function(event) {
 };
 
 function goBack() {
-    window.history.back();
+    let prev = "../champions";
+    let current = window.location.href;
+    if (current.includes("=")) {
+        let accountID = current.slice(current.indexOf("=") + 1).split("/")[0];
+        prev += "=" + accountID;
+    }
+    location.href = prev;
 }
 </script>
 </body>

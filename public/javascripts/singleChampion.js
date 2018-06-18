@@ -6,6 +6,22 @@ cid["champID"] = champID;
 let cJson = JSON.stringify(cid);
 let itemDiv = document.createElement("div");
 itemDiv.className = "item_list";
+if (current.includes("=")) {
+    let accountID = current.slice(current.indexOf("=") + 1).split("/")[0];
+    document.getElementById("login_button").innerHTML = accountID;
+    document.getElementById("login_button").onclick = () => {
+        sendReq("GET", "../Settings/" + accountID, "../Settings/" + accountID, "");
+    };
+}
+function gotoCounter() {
+    let counterPage = "../counterSelection";
+    if (current.includes("=")) {
+        let accountID = current.slice(current.indexOf("=") + 1).split("/")[0];
+        counterPage += "=" + accountID;
+    }
+    counterPage += "&cid=" + champID;
+    location.href = counterPage;
+}
 function saveMyChamp() {
     if (current.includes("=")) {
         const ids = current.slice(current.indexOf("=") + 1).split("/");
@@ -76,5 +92,19 @@ function buildChampionHTML(data) {
     document.getElementById("background").background = "../images/"+ imgName + "_bkg.jpg"
 
 }
+document.getElementById("loginButton").addEventListener("click", () => {
+    const id = document.getElementById("uname").value;
+    const pw = document.getElementById("psw").value;
+    const up = {};
+    up["id"] = id;
+    up["pw"] = pw;
+    let json = JSON.stringify(up);
+    sendReqWithFn("POST", "../login", () => {
+        let part = current.split("/");
+        part[part.length - 2] += "=" + id;
+        console.log(part[part.length - 2]);
+        location.href = part.join("/");
+    }, json);
+});
 sendReqWithFn("POST", "../getSuggestItems", buildSuggestItemHTML, cJson);
 sendReqWithFn("POST", "../getChampionInfo", buildChampionHTML, cJson);

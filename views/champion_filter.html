@@ -123,7 +123,13 @@ for (var i = 0; i < btns.length; i++) {
 
 <script type="text/javascript">
     function goBack() {
-        window.history.back();
+        let prev = "toolbox";
+        let current = window.location.href;
+        if (current.includes("=")) {
+            let accountID = current.slice(current.indexOf("=") + 1);
+            prev += "=" + accountID;
+        }
+        location.href = prev;
     }
     function getLinkWithID(id) {
         let current = window.location.href;

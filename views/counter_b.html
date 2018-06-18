@@ -154,10 +154,10 @@ function addChampion(champion) {
         let div = document.createElement("div");
         div.className = "filterDiv " + type;
         div.innerHTML =
-            '<img id="' + name +'" src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction(this);">' + '<p>' + name + '</p>';
+            '<img id="' + id +'" src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction(this);">' + '<p>' + name + '</p>';
         document.getElementById("main").appendChild(div);
     }
-    let champions = ["1:Ashe:marksman", "2:Jinx:marksman", "3:Janna:support", "4:Lulu:support", "5:Corki:mage", "6:Quinn:assassin", "7:Camille:fighter", "8:Elise:mage", "9:Zac:tank", "10:Sion:tank"];
+    let champions = ["22:Ashe:marksman", "222:Jinx:marksman", "40:Janna:support mage", "117:Lulu:support", "42:Corki:marksman", "133:Quinn:assassin", "164:Camille:fighter tank", "60:Elise:mage fighter", "154:Zac:fighter tank", "14:Sion:tank"];
     champions.forEach(addChampion);
      
      
@@ -169,7 +169,7 @@ function addChampion2(champion) {
         let div = document.createElement("div");
         div.className = "filterDiv2 " + type;
         div.innerHTML =
-            '<img id="' + name +'" src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction2(this);">' + '<p>' + name + '</p>';
+            '<img id="' + id +'" src="images/' + lower + '_icon.png" alt="link_' + lower + '" style="width:100px;height:100px;border:none" onclick="myFunction2(this);">' + '<p>' + name + '</p>';
         document.getElementById("main-right").appendChild(div);
     }
     champions.forEach(addChampion2);
@@ -195,10 +195,14 @@ function confirm(){
     var yours = document.getElementById("championname1");
     var against = document.getElementById("championname2");
     var confirm = document.getElementById("confirm");
-    if (yours.innerHTML != "Not selected yet."){
-        if (against.innerHTML != "Not selected yet.") 
-            confirm.style.backgroundColor = "#4CAF50";
-            confirm.href = "toolbox.html";
+    if (yours.innerHTML != "Not selected yet." && against.innerHTML != "Not selected yet.") {
+        confirm.style.backgroundColor = "#4CAF50";
+        let current = window.location.href;
+        let des = "counterPage";
+        if (current.includes("="))
+            des += "=" + current.slice(current.indexOf("=") + 1).split("/")[0];
+        des += "&aid=" + yours.innerHTML + "&bid=" + against.innerText;
+        confirm.href = des;
     }
 }
 

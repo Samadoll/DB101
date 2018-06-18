@@ -57,6 +57,14 @@ router.get('/counterSelection&cid=:id', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/counter_b.html'));
 });
 
+router.get('/counterSelection=:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/counter_b.html'));
+});
+
+router.get('/counterSelection=id&cid=:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/counter_b.html'));
+});
+
 // router.get('/getItemInfo=:id', (req, res, next) => {
 //     console.log("Server::getItemInfo(..)");
 //     const itemID = req.params.id;
@@ -235,8 +243,6 @@ router.post('/getItemInfo', (req, res, next) => {
     });
 });
 
-// TODO: Test Passed above
-// TODO: Finished Implementing above.
 router.get('/getChampionInfo/:id', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/jinx.html'));
 });
@@ -296,8 +302,35 @@ router.post('/saveMyChampion', (req, res, next) => {
         console.log(err.code);
     });
 });
-
+// TODO: Test Passed above
+// TODO: Finished Implementing above.
 // TODO: counter below
+
+router.get("/counterPage&aid=:aid&bid=:bid", (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/counter.html'));
+});
+
+router.get("/counterPage=:id&aid=:aid&bid=:bid", (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/counter.html'));
+});
+
+router.post('/counterPage', (req, res, next) => {
+    console.log("Server::counter(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    const champA = data['champA'];
+    const champB = data['champB'];
+    gameFacade.suggestAgainst(champA, champB).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
+});
 
 
 module.exports = router;

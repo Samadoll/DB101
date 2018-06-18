@@ -16,4 +16,5 @@ if (current.indexOf("=") !== -1) {
     });
     sign.href = "toolbox";
     document.getElementById("championInside").href = "champions=" + account;
+    document.getElementById("counterInside").href = "counterSelection=" + account;
 }
