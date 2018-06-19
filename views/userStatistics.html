@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/manageUser.css">
+</head>
+<body id="main">
+
+<h1>Users' Statistics</h1>
+<button style="height:80px;width:100px;font-size:20px" type="button" id="showAll" onclick="sendRequest(this.id)">Show All</button>
+<button style="height:80px;width:100px;font-size:20px" type="button" id="max" onclick="sendRequest(this.id)">MAX</button>
+<button style="height:80px;width:100px;font-size:20px" type="button" id="min" onclick="sendRequest(this.id)">MIN</button>
+
+</body>
+
+<script type="text/javascript" src="javascripts/SendReqWithFn"></script>
+<script type="text/javascript">
+    function buildAll(data) {
+        alert("hello");
+    }
+    function buildMin(data) {
+        alert("min");
+    }
+    function buildMax(data) {
+        alert("max");
+    }
+    function sendRequest(id) {
+        const send = {};
+        let operator;
+        let fn;
+        switch (id) {
+            case "max":
+                operator = "max";
+                fn = buildMax;
+                break;
+            case "min":
+                operator = "min";
+                fn = buildMin;
+                break;
+            default:
+                operator = "*";
+                fn = buildAll;
+        }
+        send["operator"] = operator;
+        let json = JSON.stringify(send);
+        sendReqWithFn("POST", "userStatistics", fn, json);
+    }
+</script>
+</html>
