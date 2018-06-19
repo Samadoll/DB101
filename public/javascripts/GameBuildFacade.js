@@ -393,7 +393,7 @@ class GameBuildFacade {
             let operator = data.operator;
             if (operator !== '*')
                 operator += '(avgNum)';
-            let query = "select " + operator + " from (select account.userID, user.name, count(account.userid) as accountNum, sum(countChamp.count) as ChampNum, avg(countChamp.count) as avgNum from " +
+            let query = "USE `GLHF`; select " + operator + " from (select account.userID, user.name, count(account.userid) as accountNum, sum(countChamp.count) as ChampNum, avg(countChamp.count) as avgNum from " +
                 "(select accid, count(accid) as count from accownchamp group by accid) countChamp " +
                 "join account on account.id = countChamp.accid " +
                 "join user on account.userID = user.id group by account.userID) stat";
