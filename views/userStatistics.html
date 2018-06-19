@@ -17,9 +17,42 @@
 <script type="text/javascript">
     function buildAll(data) {
         alert("hello");
+        document.getElementById("main").innerHTML +=
+            '<div style="overflow-x:auto;">\n' +
+            '    <table id="table">\n' +
+            '        <tbody id="content">\n' +
+            '<tr>\n' +
+            '            <th class="column">userID</th>\n' +
+            '            <th class="namecolumn">name</th>\n' +
+            '            <th class="typecolumn">account Number</th>\n' +
+            '            <th class="posicolumn">champion Number</th>\n' +
+            '            <th class="statcolumn">average Champions per userID</th>\n' +
+            '        </tr>' +
+            '        </tbody>\n' +
+            '    </table>\n' +
+            '</div>';
+        data.forEach((item) => {
+            const userID = item["userID"];
+            const name = item["name"];
+            const accNum = item["accountNum"];
+            const champNum = item["ChampNum"];
+            const avg = item["avgNum"];
+            document.getElementById("content").innerHTML +=
+                '<td>' + userID + '</td>' +
+                '<td>' + name + '</td>' +
+                '<td>' + accNum + '</td>' +
+                '<td>' + champNum + '</td>' +
+                '<td>' + avg + '</td>';
+        });
     }
     function buildMin(data) {
         alert("min");
+        const userID = data["userID"];
+        const name = data["name"];
+        const accNum = data["accountNum"];
+        const champNum = data["ChampNum"];
+        const avg = data["avgNum"];
+        let innerContent;
     }
     function buildMax(data) {
         alert("max");
