@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="stylesheets/manageUser.css">
+
+</head>
+    
+<body>
+    
+Select champion features you want to visit.
+<button id="submit">Submit.</button>
+<br>
+<div id="choice">
+    Name: <input type="checkbox" id="name"  onclick="myFunction('name','namecolumn')"  checked="checked">
+    Type: <input type="checkbox" id="type"  onclick="myFunction('type','typecolumn')" checked="checked">
+    Position: <input type="checkbox" id="position"  onclick="myFunction('position','posicolumn')" checked="checked">
+    Stat: <input type="checkbox" id="stat"  onclick="myFunction('stat','statcolumn')" checked="checked">
+</div>
+    
+<div id="myTypeContainer">
+Show all: <input type="checkbox" id="all" class="type" onclick="myF('all');" checked="checked"> 
+Marksman: <input type="checkbox" id="marksman" class="type" onclick="myF('marksman');">
+Support: <input type="checkbox" id="support" class="type" onclick="myF('support');">     
+Mage: <input type="checkbox" id="mage" class="type" onclick="myF('mage');"> 
+Fighter:<input type="checkbox" id="fighter" class="type" onclick="myF('fighter');">
+Tank: <input type="checkbox" id="tank" class="type" onclick="myF('tank');"> 
+Assassin: <input type="checkbox" id="assassin" class="type" onclick="myF('assassin');">
+</div>
+    
+<div style="overflow-x:auto;">
+    <table id="table">
+        <tr>
+            <th class="column">Champion ID</th>
+            <th class="namecolumn">Name</th>
+            <th class="typecolumn">Type</th>
+            <th class="posicolumn">Position</th>
+            <th class="statcolumn">Stat</th>
+        </tr>
+        <div id="content">
+        <tr>
+            <td>1</td>
+            <td class="namecolumn">Ashe</td>
+            <td class="typecolumn">Marksman</td>
+            <td class="posicolumn">ADC</td>
+            <td class="statcolumn">66AD</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td class="namecolumn">Maokai</td>
+            <td class="typecolumn">Tank</td>
+            <td class="posicolumn">Top</td>
+            <td class="statcolumn">666Health</td> 
+            
+            
+        </tr>
+        <tr>
+            <td>3</td>
+            <td class="namecolumn">Jenna</td>
+            <td class="typecolumn">Support</td>
+            <td class="posicolumn">Support</td>
+            <td class="statcolumn">15AP</td>
+        </tr>
+        </div>
+    </table>
+</div>
+
+<script type=text/javascript src="javascripts/SendReqWithFn.js"></script>
+<script type=text/javascript src="javascripts/manageChampionHelper.js"></script>
+
+
+    
+<script>
+function myFunction(ch,co) {
+    var checkBox = document.getElementById(ch);
+    var column = document.getElementsByClassName(co);
+    var type = document.getElementById("type");
+    var i;
+    if (checkBox.checked == false){
+        for (i=0; i<column.length; i++){
+            column[i].innerHTML = "-";
+        }
+        checkBox.removeAttribute("checked");
+        checkBox.checked=false;
+        
+    } else {
+        column.innerHTML = ch;
+        checkBox.setAttribute("checked","checked");
+        checkBox.checked=true;
+        for (i=0; i<column.length; i++){
+            column[i].innerHTML = ch;
+        }
+    }
+    if (type.checked==true){
+            document.getElementById("myTypeContainer").style.display = "block";
+    } else{
+        document.getElementById("myTypeContainer").style.display = "none";
+    }
+}
+    
+function myF(name) {
+    var checkbox = document.getElementById(name);
+    var i, x;
+    x = document.getElementsByClassName("type");
+    for (i = 0; i < x.length; i++) {
+        x[i].removeAttribute("checked");
+        x[i].checked=false;
+    }
+    checkbox.setAttribute("checked","checked");
+    checkbox.checked=true;
+}
+</script>
+</body>
