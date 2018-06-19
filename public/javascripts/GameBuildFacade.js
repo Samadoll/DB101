@@ -18,8 +18,6 @@ class GameBuildFacade {
         console.log("Get Started here.");
     }
 
-    // TODO: demo is to save to a json file, replace them later
-    // TODO: delete accs.json and users.json later
     register(userID, accID, name, password) {
         if(password.length < 3){
             return Promise.reject({code: 400, body: {error: "Password length is less than 3."}});
@@ -375,10 +373,31 @@ class GameBuildFacade {
             console.log(data);
             if(data.type){
                 if (data.type[0] !== "all")
-                    manage += " WHERE type like '%" + data.type + "%'";
+                    manage += " WHERE type LIKE '%" + data.type + "%'";
             }
             console.log(manage);
             db.query(manage, function (err, result) {
+                if (err) throw err;
+                if (result[1][0]) {
+                    resolve({code: 200, body: {result: result[1]}});
+                }
+                else {
+                    reject({code: 400, body: {error: "Nothing is found."}});
+                }
+            });
+        });
+    }
+
+    userStats(data){
+        return new Promise((resolve, reject) => {
+            let operator = data.operator;
+            if (operator !== '*')
+                operator += '(avgNum)';
+            let query = "select " + operator + " from (select account.userID, user.name, count(account.userid) as accountNum, sum(countChamp.count) as ChampNum, avg(countChamp.count) as avgNum from " +
+                "(select accid, count(accid) as count from accownchamp group by accid) countChamp " +
+                "join account on account.id = countChamp.accid " +
+                "join user on account.userID = user.id group by account.userID) stat";
+            db.query(query, function (err, result) {
                 if (err) throw err;
                 if (result[1][0]) {
                     resolve({code: 200, body: {result: result[1]}});

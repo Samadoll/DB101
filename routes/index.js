@@ -349,5 +349,25 @@ router.get('/manageChamp', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../views/manageUser.html'));
 });
 
+router.get('/userStatistics', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/userStatistics.html'));
+});
+
+router.post('/userStatistics', (req, res, next) => {
+    console.log("Server::userStatistics(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    gameFacade.userStats(data).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
+});
+
 
 module.exports = router;
