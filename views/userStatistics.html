@@ -34,33 +34,19 @@
             '        </tbody>\n' +
             '    </table>\n' +
             '</div>';
-        if (choice === "all") {
-            data.forEach((item) => {
-                const userID = item["userID"];
-                const name = item["name"];
-                const accNum = item["accountNum"];
-                const champNum = item["ChampNum"];
-                const avg = item["avgNum"];
-                document.getElementById("content").innerHTML +=
-                    '<td>' + userID + '</td>' +
-                    '<td>' + name + '</td>' +
-                    '<td>' + accNum + '</td>' +
-                    '<td>' + champNum + '</td>' +
-                    '<td>' + avg + '</td>';
-            });
-        } else {
-            const userID = data["userID"];
-            const name = data["name"];
-            const accNum = data["accountNum"];
-            const champNum = data["ChampNum"];
-            const avg = data["avgNum"];
+        data.forEach((item) => {
+            const userID = item["userID"];
+            const name = item["name"];
+            const accNum = item["accountNum"];
+            const champNum = item["ChampNum"];
+            const avg = item["avgNum"];
             document.getElementById("content").innerHTML +=
                 '<td>' + userID + '</td>' +
                 '<td>' + name + '</td>' +
                 '<td>' + accNum + '</td>' +
                 '<td>' + champNum + '</td>' +
                 '<td>' + avg + '</td>';
-        }
+        });
     }
     function buildAll(data) {
         buildForAll(data, "all");
