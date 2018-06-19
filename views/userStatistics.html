@@ -15,8 +15,9 @@
 
 <script type="text/javascript" src="javascripts/SendReqWithFn.js"></script>
 <script type="text/javascript">
-    function buildAll(data) {
-        alert("hello");
+    function buildForAll(data, choice) {
+        document.getElementById("main").innerHTML +=
+            '<p> Showing ' + choice + ".</p>";
         document.getElementById("main").innerHTML +=
             '<div style="overflow-x:auto;">\n' +
             '    <table id="table">\n' +
@@ -31,31 +32,43 @@
             '        </tbody>\n' +
             '    </table>\n' +
             '</div>';
-        data.forEach((item) => {
-            const userID = item["userID"];
-            const name = item["name"];
-            const accNum = item["accountNum"];
-            const champNum = item["ChampNum"];
-            const avg = item["avgNum"];
+        if (choice === "all") {
+            data.forEach((item) => {
+                const userID = item["userID"];
+                const name = item["name"];
+                const accNum = item["accountNum"];
+                const champNum = item["ChampNum"];
+                const avg = item["avgNum"];
+                document.getElementById("content").innerHTML +=
+                    '<td>' + userID + '</td>' +
+                    '<td>' + name + '</td>' +
+                    '<td>' + accNum + '</td>' +
+                    '<td>' + champNum + '</td>' +
+                    '<td>' + avg + '</td>';
+            });
+        } else {
+            const userID = data["userID"];
+            const name = data["name"];
+            const accNum = data["accountNum"];
+            const champNum = data["ChampNum"];
+            const avg = data["avgNum"];
             document.getElementById("content").innerHTML +=
                 '<td>' + userID + '</td>' +
                 '<td>' + name + '</td>' +
                 '<td>' + accNum + '</td>' +
                 '<td>' + champNum + '</td>' +
                 '<td>' + avg + '</td>';
-        });
+        }
+    }
+    function buildAll(data) {
+        buildForAll(data, "all");
+
     }
     function buildMin(data) {
-        alert("min");
-        const userID = data["userID"];
-        const name = data["name"];
-        const accNum = data["accountNum"];
-        const champNum = data["ChampNum"];
-        const avg = data["avgNum"];
-        let innerContent;
+         buildForAll(data, "min");
     }
     function buildMax(data) {
-        alert("max");
+        buildForAll(data, "max");
     }
     function sendRequest(id) {
         const send = {};
