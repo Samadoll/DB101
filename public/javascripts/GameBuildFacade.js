@@ -372,8 +372,10 @@ class GameBuildFacade {
     manageChamp(data){
         return new Promise((resolve, reject) => {
             let manage = "USE `GLHF`; SELECT " + data.choice + " FROM Champion";
+            console.log(data);
             if(data.type){
-                manage += "WHERE type like '%" + data.type + "%'"
+                if (data.type[0] !== "all")
+                    manage += " WHERE type like '%" + data.type + "%'";
             }
             console.log(manage);
             db.query(manage, function (err, result) {

@@ -15,7 +15,7 @@ Select champion features you want to visit.
 <div id="choice">
     Name: <input type="checkbox" id="name"  onclick="myFunction('name','namecolumn')"  checked="checked">
     Type: <input type="checkbox" id="type"  onclick="myFunction('type','typecolumn')" checked="checked">
-    Position: <input type="checkbox" id="position"  onclick="myFunction('position','posicolumn')" checked="checked">
+    Lane: <input type="checkbox" id="lane"  onclick="myFunction('lane','posicolumn')" checked="checked">
     Stat: <input type="checkbox" id="stat"  onclick="myFunction('stat','statcolumn')" checked="checked">
 </div>
     
@@ -31,38 +31,9 @@ Assassin: <input type="checkbox" id="assassin" class="type" onclick="myF('assass
     
 <div style="overflow-x:auto;">
     <table id="table">
-        <tr>
-            <th class="column">Champion ID</th>
-            <th class="namecolumn">Name</th>
-            <th class="typecolumn">Type</th>
-            <th class="posicolumn">Position</th>
-            <th class="statcolumn">Stat</th>
-        </tr>
-        <div id="content">
-        <tr>
-            <td>1</td>
-            <td class="namecolumn">Ashe</td>
-            <td class="typecolumn">Marksman</td>
-            <td class="posicolumn">ADC</td>
-            <td class="statcolumn">66AD</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td class="namecolumn">Maokai</td>
-            <td class="typecolumn">Tank</td>
-            <td class="posicolumn">Top</td>
-            <td class="statcolumn">666Health</td> 
-            
-            
-        </tr>
-        <tr>
-            <td>3</td>
-            <td class="namecolumn">Jenna</td>
-            <td class="typecolumn">Support</td>
-            <td class="posicolumn">Support</td>
-            <td class="statcolumn">15AP</td>
-        </tr>
-        </div>
+        <tbody id="content">
+
+        </tbody>
     </table>
 </div>
 
@@ -96,6 +67,8 @@ function myFunction(ch,co) {
             document.getElementById("myTypeContainer").style.display = "block";
     } else{
         document.getElementById("myTypeContainer").style.display = "none";
+        document.getElementById("all").setAttribute("checked","checked");
+        document.getElementById("all").checked = true;
     }
 }
     

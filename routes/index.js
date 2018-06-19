@@ -345,5 +345,9 @@ router.post('/manageChamp', (req, res, next) => {
     });
 });
 
+router.get('/manageChamp', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../views/manageUser.html'));
+});
+
 
 module.exports = router;
