@@ -369,5 +369,21 @@ router.post('/userStatistics', (req, res, next) => {
     });
 });
 
+router.post('/whoOnlyOwnThis', (req, res, next) => {
+    console.log("Server::whoOwnThis(..)");
+    const raw = req.body;
+    const data = JSON.parse(Object.keys(raw)[0]);
+    const cid = data['champID'];
+    gameFacade.whoOnlyOwnThis(cid).then((response) => {
+        res.status(response.code);
+        res.json(response.body);
+        console.log(response.code);
+        console.log(response.body.result);
+    }).catch((err) => {
+        res.status(err.code);
+        res.json(err.body);
+        console.log(err.code);
+    });
+});
 
 module.exports = router;

@@ -388,6 +388,22 @@ class GameBuildFacade {
         });
     }
 
+    whoOnlyOwnThis(cid){
+        return new Promise((resolve, reject) => {
+            let whoOnlyOwnThis = "USE `GLHF`; select id from account where not exists (select accID from accownchamp where accID = account.id and accownchamp.champID <> " + cid + ");";
+            console.log(whoOnlyOwnThis);
+            db.query(whoOnlyOwnThis, function (err, result) {
+                if (err) throw err;
+                if (result[1][0]) {
+                    resolve({code: 200, body: {result: result[1]}});
+                }
+                else {
+                    reject({code: 400, body: {error: "Nothing is found."}});
+                }
+            });
+        });
+    }
+
     userStats(data){
         return new Promise((resolve, reject) => {
             let operator = data.operator;

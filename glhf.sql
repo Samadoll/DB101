@@ -202,10 +202,8 @@ INSERT INTO `User` VALUES (0, 'Billy');
 INSERT INTO `User` VALUES (1, 'Gary');
 INSERT INTO `User` VALUES (2, 'Beyond');
 
-INSERT INTO `Account` VALUES (123, "billy", 0);
 INSERT INTO `Account` VALUES (1234, "billy", 0);
 INSERT INTO `Account` VALUES (12345, "billy", 0);
-INSERT INTO `Account` VALUES (12346, "billy", 0);
 INSERT INTO `Account` VALUES (356846275, "gary", 1);
 INSERT INTO `Account` VALUES (9527, "beyond", 2);
 
@@ -215,3 +213,4 @@ INSERT INTO `AccOwnChamp` VALUES (356846275, 154);
 INSERT INTO `AccOwnChamp` VALUES (1234, 22);
 INSERT INTO `AccOwnChamp` VALUES (12345, 22);
 INSERT INTO `AccOwnChamp` VALUES (12345, 40);
+INSERT INTO `AccOwnChamp` VALUES (9527, 22);

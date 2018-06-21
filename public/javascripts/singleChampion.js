@@ -92,6 +92,12 @@ function buildChampionHTML(data) {
     document.getElementById("background").background = "../images/"+ imgName + "_bkg.jpg"
 
 }
+function whoOwnThis(data) {
+    document.getElementById("allInfo").innerHTML += "Accounts Who Own This Champion: <br><br>";
+    data.forEach((item) => {
+        document.getElementById("allInfo").innerHTML += item["id"] + "<br><br>";
+    })
+}
 document.getElementById("loginButton").addEventListener("click", () => {
     const id = document.getElementById("uname").value;
     const pw = document.getElementById("psw").value;
@@ -108,3 +114,4 @@ document.getElementById("loginButton").addEventListener("click", () => {
 });
 sendReqWithFn("POST", "../getSuggestItems", buildSuggestItemHTML, cJson);
 sendReqWithFn("POST", "../getChampionInfo", buildChampionHTML, cJson);
+sendReqWithFn("POST", "../whoOnlyOwnThis", whoOwnThis, cJson);
