@@ -104,7 +104,7 @@
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("filterDiv");
-  if (c == "all") c = "";
+  if (c === "all") c = "";
   for (i = 0; i < x.length; i++) {
     removeClass(x[i], "show");
     if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
@@ -114,7 +114,7 @@ function filterSelection(c) {
 function filterSelection2(c) {
   var x, i;
   x = document.getElementsByClassName("filterDiv2");
-  if (c == "all") c = "";
+  if (c === "all") c = "";
   for (i = 0; i < x.length; i++) {
     removeClass(x[i], "show");
     if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
@@ -126,7 +126,7 @@ function addClass(element, name) {
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
   for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+    if (arr1.indexOf(arr2[i]) === -1) {element.className += " " + arr2[i];}
   }
 }
 
@@ -195,7 +195,7 @@ function confirm(){
     var yours = document.getElementById("championname1");
     var against = document.getElementById("championname2");
     var confirm = document.getElementById("confirm");
-    if (yours.innerHTML != "Not selected yet." && against.innerHTML != "Not selected yet.") {
+    if (yours.innerHTML !== "Not selected yet." && against.innerHTML !== "Not selected yet.") {
         confirm.style.backgroundColor = "#4CAF50";
         let current = window.location.href;
         let des = "counterPage";
@@ -217,7 +217,7 @@ if (curr.includes("&")) {
     const cid = curr.split("&")[curr.split("&").length - 1];
     const id = cid.slice(cid.indexOf("=") + 1);
     champions.forEach((item) => {
-        if (item.includes(id)) {
+        if (item.includes(id) && id === item.split(":")[0]) {
             const name = item.split(":")[1];
             const imgName = name.toLowerCase().split(" ").join("");
             document.getElementById("selectedimg1").src = "images/" + imgName + "_icon.png";

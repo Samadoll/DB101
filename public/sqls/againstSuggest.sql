@@ -1,0 +1,14 @@
+USE `GLHF`;
+
+INSERT INTO `AgainstSuggest` VALUES (22, 51, 3006);
+INSERT INTO `AgainstSuggest` VALUES (22, 51, 3085);
+INSERT INTO `AgainstSuggest` VALUES (22, 51, 3087);
+INSERT INTO `AgainstSuggest` VALUES (22, 51, 3031);
+INSERT INTO `AgainstSuggest` VALUES (22, 51, 3095);
+INSERT INTO `AgainstSuggest` VALUES (22, 51, 3072);
+INSERT INTO `AgainstSuggest` VALUES (40, 154, 2055);
+INSERT INTO `AgainstSuggest` VALUES (40, 154, 3158);
+INSERT INTO `AgainstSuggest` VALUES (117, 164, 2055);
+INSERT INTO `AgainstSuggest` VALUES (117, 164, 3802);
+INSERT INTO `AgainstSuggest` VALUES (133, 14, 1038);
+INSERT INTO `AgainstSuggest` VALUES (133, 14, 3087);

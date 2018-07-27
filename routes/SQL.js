@@ -19,21 +19,19 @@ db.connect(function (err) {
 
 
 //SetUp
-let sql = fs.readFileSync('glhf.sql').toString();
-db.query(sql, function (err, result) {
-    if(err) throw err;
-    console.log('Database setup done');
+const setups = ["glhf", "champions", "items", "suggestions", "against", "againstSuggest", "users", "accounts", "accOwnChamp"];
+setups.forEach((item) => {
+    const file = "public/sqls/" + item + ".sql";
+    db.query(fs.readFileSync(file).toString(), (err, result) => {
+        if (err) throw err;
+        console.log("Database " + item + " setup done.");
+    });
 });
-
-router.get('/', function (req, res, next) {
-    let sql = fs.readFileSync('glhf.sql').toString();
-    db.query(sql, function (err, result) {
-        if(err) {
-            console.log(err);
-        }
-        else res.send(result);
-    })
-});
+// let sql = fs.readFileSync('public/sqls/glhf.sql').toString();
+// db.query(sql, function (err, result) {
+//     if(err) throw err;
+//     console.log('Database basic setup done.');
+// });
 
 router.get('/select',function (req, res, next) {
     db.query('SELECT * FROM Champion', function (err, result, fields) {

@@ -1,0 +1,22 @@
+USE `GLHF`;
+
+INSERT INTO `Item` VALUES (3006, "Berserker's Greaves", '+35% Attack Speed, +45 Movement Speed', 'Enhances Movement Speed and Attack Speed', 1);
+INSERT INTO `Item` VALUES (3072, "The Bloodthirster", '+80 Attack Damage, +20% Life Steal', "Your basic attacks can now overheal you. Excess life is stored as a shield that can block 50-350 damage, based on champion level.<br><br>This shield decays slowly if you haven't dealt or taken damage in the last 25 seconds.", 1);
+INSERT INTO `Item` VALUES (3087, "Statikk Shiv", '+35% Attack Speed, +30% Critical Strike, +5% Movement Speed', 'UNIQUE Passive - Shiv Lightning: Your Energized attacks deal 60~140 bonus magic damage (based on level) to up to 5 targets on hit, this effect can critically strike', 1);
+INSERT INTO `Item` VALUES (3031, "Infinity Edge", '+80 Attack Damage, Doubles your critical strike chance.', '15% of critical strike damage dealt to champions is converted to True Damage.', 1);
+INSERT INTO `Item` VALUES (3036, "Lord Dominik's Regards", '+40 Attack Damage, +35% Armor Penetration', 'Overcomes enemies with high health and armor', 1);
+INSERT INTO `Item` VALUES (3094, "Rapid Firecannon", '+30% Attack Speed, +30% Critical Strike Chance, +5% Movement Speed', 'Your Energized attacks gain 35% bonus Range (+150 range maximum) and deal 60~140 bonus magic damage (based on level) on hit.', 1);
+INSERT INTO `Item` VALUES (3085, "Runaan's Hurricane", '+40% Attack Speed, 30% Critical Strike Chance, +7% Movement Speed', 'When basic attacking, bolts are fired at up to 2 enemies near the target, each dealing (40% of Attack Damage) physical damage. Bolts can critically strike and apply on hit effects.', 1);
+
+INSERT INTO `Item` VALUES (3095, "Stormrazor", '+70 Attack Damage, +30% Attack Speed', "UNIQUE Passive: If you haven't attacked in the last 3 seconds, your next basic attack critically strikes for 160% (+1% per 1.5% critical strike chance, max 200%) damage and grants 10% movement speed for 1.75 seconds.", 1);
+INSERT INTO `Item` VALUES (3001, "Abyssal Mask", '+350 Health, +300 Mana, +55 Magic Resist, +10% Cooldown Reduction', "UNIQUE Passive - Eternity: 15% of damage taken from champions is gained as Mana. Spending Mana restores 20% of the cost as Health, up to 25 per spell cast. UNIQUE Aura: Nearby enemy champions take 15% more magic damage", 1);
+INSERT INTO `Item` VALUES (1038, "B. F. Sword", '+40 Attack Damage', "None", 1);
+INSERT INTO `Item` VALUES (2055, "Control Ward", 'Click to Consume: Places a ward that grants vision of the surrounding area., This device will also reveal invisible traps and reveal / disable wards., Control Wards do not disable other Control Wards.', "Can only carry 3 Control Wards in inventory. Limit 1 Control Ward on the map per player", 1);
+INSERT INTO `Item` VALUES (3144, "Bilgewater Cutlass", '+25 Attack Damage, +10% Life Steal', "UNIQUE Active: Deals 100 magic damage and slows the target champion's Movement Speed by 25% for 2 seconds (90 second cooldown)", 1);
+INSERT INTO `Item` VALUES (1054, "Doran's Shield", '+80 Health, Passive: Restores 6 Health every 5 seconds', "Passive: Basic attacks deal an additional 5 physical damage to minions on hit. UNIQUE Passive: Regain an additional 20 health over 10 seconds after taking damage from an enemy champion", 1);
+INSERT INTO `Item` VALUES (3802, "Lost Chapter", '+40 Ability Power, +300 Mana, UNIQUE Passive - Haste: +10% Cooldown Reduction', 'Upon levelling up, restores 20% of your maximum Mana over 3 seconds', 1);
+INSERT INTO `Item` VALUES (3158, "Ionian Boots of Lucidity", 'UNIQUE Passive: +10% Cooldown Reduction, UNIQUE Passive - Enhanced Movement: +45 Movement Speed, UNIQUE Passive: Reduces Summoner Spell cooldowns by 10%', "This item is dedicated in honor of Ionia's victory over Noxus in the Rematch for the Southern Provinces on 10 December, 20 CLE", 1);
+INSERT INTO `Item` VALUES (1051, "Brawler's Gloves", 'UNIQUE Passive: +10% Critical Strike Chance', 'None', 1);
+INSERT INTO `Item` VALUES (1042, "Dagger", '+12% Attack Speed', 'None', 1);
+INSERT INTO `Item` VALUES (3086, "Zeal", '+15% Attack Speed, +15% Critical Strike Chance, UNIQUE Passive: +5% Movement Speed', 'None', 1);
+INSERT INTO `Item` VALUES (2015, "Kircheis Shard", '+15% Attack Speed, +35% Armor Penetration', 'Passive: Moving and attacking will make an attack Energized. UNIQUE Passive - Energized Strike: Your Energized attacks deal 50 bonus magic damage on hit', 1);
