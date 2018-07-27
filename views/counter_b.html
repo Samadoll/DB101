@@ -217,7 +217,7 @@ if (curr.includes("&")) {
     const cid = curr.split("&")[curr.split("&").length - 1];
     const id = cid.slice(cid.indexOf("=") + 1);
     champions.forEach((item) => {
-        if (item.includes(id)) {
+        if (item.includes(id) && item.split(":")[0] === id) {
             const name = item.split(":")[1];
             const imgName = name.toLowerCase().split(" ").join("");
             document.getElementById("selectedimg1").src = "images/" + imgName + "_icon.png";
