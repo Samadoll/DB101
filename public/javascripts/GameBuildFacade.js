@@ -2,9 +2,9 @@ let fs = require("fs");
 let mysql = require('mysql');
 
 const db = mysql.createConnection({
-    host : 'localhost',
-    user :'root',
-    password: 'password',
+    host : '192.168.0.24',
+    user :'gamebuild',
+    password: '1234567',
     multipleStatements: true
 });
 db.connect(function (err) {
@@ -27,6 +27,12 @@ class GameBuildFacade {
         console.log(signupUser);
         db.query(signupUser, function (err) {
             if(err) throw err;
+            const user = JSON.parse(fs.readFileSync("public/data/User.json", "utf-8"));
+            const contentUser = [];
+            contentUser.push(parseInt(userID, 10));
+            contentUser.push(name);
+            user[userID] = contentUser;
+            fs.writeFileSync("public/data/User.json", JSON.stringify(user), "utf-8");
         });
 
         return new Promise((fulfill, reject)=>{
@@ -41,6 +47,13 @@ class GameBuildFacade {
                     console.log(signupAcc);
                     db.query(signupAcc, function (err) {
                         if (err) throw err;
+                        const acc = JSON.parse(fs.readFileSync("public/data/Account.json", "utf-8"));
+                        const contentAcc = [];
+                        contentAcc.push(parseInt(accID, 10));
+                        contentAcc.push(password);
+                        contentAcc.push(parseInt(userID, 10));
+                        acc[accID] = contentAcc;
+                        fs.writeFileSync("public/data/Account.json", JSON.stringify(acc), "utf-8");
                         fulfill({code: 200, body: {result: "OK"}});
                     });
                 }

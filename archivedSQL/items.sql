@@ -7,7 +7,6 @@ INSERT INTO `Item` VALUES (3031, "Infinity Edge", '+80 Attack Damage, Doubles yo
 INSERT INTO `Item` VALUES (3036, "Lord Dominik's Regards", '+40 Attack Damage, +35% Armor Penetration', 'Overcomes enemies with high health and armor', 1);
 INSERT INTO `Item` VALUES (3094, "Rapid Firecannon", '+30% Attack Speed, +30% Critical Strike Chance, +5% Movement Speed', 'Your Energized attacks gain 35% bonus Range (+150 range maximum) and deal 60~140 bonus magic damage (based on level) on hit.', 1);
 INSERT INTO `Item` VALUES (3085, "Runaan's Hurricane", '+40% Attack Speed, 30% Critical Strike Chance, +7% Movement Speed', 'When basic attacking, bolts are fired at up to 2 enemies near the target, each dealing (40% of Attack Damage) physical damage. Bolts can critically strike and apply on hit effects.', 1);
-
 INSERT INTO `Item` VALUES (3095, "Stormrazor", '+70 Attack Damage, +30% Attack Speed', "UNIQUE Passive: If you haven't attacked in the last 3 seconds, your next basic attack critically strikes for 160% (+1% per 1.5% critical strike chance, max 200%) damage and grants 10% movement speed for 1.75 seconds.", 1);
 INSERT INTO `Item` VALUES (3001, "Abyssal Mask", '+350 Health, +300 Mana, +55 Magic Resist, +10% Cooldown Reduction', "UNIQUE Passive - Eternity: 15% of damage taken from champions is gained as Mana. Spending Mana restores 20% of the cost as Health, up to 25 per spell cast. UNIQUE Aura: Nearby enemy champions take 15% more magic damage", 1);
 INSERT INTO `Item` VALUES (1038, "B. F. Sword", '+40 Attack Damage', "None", 1);

@@ -9,24 +9,28 @@ function signUp() {
             !isNaN(document.getElementById("accountid").value)) {
             const userID = document.getElementById("userid").value;
             const accID = document.getElementById("accountid").value;
-            let username = "";
-            if (document.getElementById("username").value.length > 0)
-                username = document.getElementById("username").value;
-            const psw = document.getElementById("psw").value;
-            const pswRepeat = document.getElementById("psw-repeat").value;
-            if (psw === pswRepeat) {
-                // sendReq(userID, username, psw);
-                let user = {};
-                user['id'] = userID;
-                user['accID'] = accID;
-                user['name'] = username;
-                user['pw'] = psw;
-                let json = JSON.stringify(user);
-                let prev = document.referrer;
-                let des = prev.slice(prev.lastIndexOf("/")) + "=" + accID;
-                sendReq("POST", "/signup", des, json);
+            if (userID.indexOf("0") === 0 || accID.indexOf("0") === 0) {
+                alert("0 leading is not allowed.");
             } else {
-                alert("Password does not match.");
+                let username = "";
+                if (document.getElementById("username").value.length > 0)
+                    username = document.getElementById("username").value;
+                const psw = document.getElementById("psw").value;
+                const pswRepeat = document.getElementById("psw-repeat").value;
+                if (psw === pswRepeat) {
+                    // sendReq(userID, username, psw);
+                    let user = {};
+                    user['id'] = userID;
+                    user['accID'] = accID;
+                    user['name'] = username;
+                    user['pw'] = psw;
+                    let json = JSON.stringify(user);
+                    let prev = document.referrer;
+                    let des = prev.slice(prev.lastIndexOf("/")) + "=" + accID;
+                    sendReq("POST", "/signup", des, json);
+                } else {
+                    alert("Password does not match.");
+                }
             }
         } else {
             alert("UserID/AccountID must be numeric.");
